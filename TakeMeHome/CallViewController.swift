@@ -9,6 +9,8 @@ import UIKit
 
 class CallViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var tempIndex:IndexPath? = nil
+    
     @IBOutlet weak var TableViewMain: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -19,6 +21,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = TableViewMain.dequeueReusableCell(withIdentifier: "CallCell", for: indexPath) as! CallCell
         cell.storeNameStr.text = CallItem.callItems[indexPath.row].storeName
+        cell.storeAddress.text = CallItem.callItems[indexPath.row].address
         cell.timeStr.text = CallItem.callItems[indexPath.row].cookingTime! + " 까지 조리 완료"
         
         //셀 디자인
@@ -34,7 +37,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let msg = UIAlertController(title: CallItem.callItems[indexPath.row].storeName, message: "접수하시겠습니까?", preferredStyle: .alert)
         
-        //Alert에 부여할 Yes이벤트 선언
+        
         let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in
             self.YesClick()
         })
@@ -54,6 +57,18 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func YesClick()
     {
+        if let tempIndex1 = tempIndex
+        {
+            do {
+                var temp = CallItem.callItems[tempIndex!.row]
+                CallItem.callItems.remove(at: tempIndex!.row)
+                
+                AcceptanceItem.acceptanceItems.append(AcceptanceItem(address: temp.address!, storeName: temp.storeName!, latitude: temp.latitude!, longitude: temp.longitude!, cookingTime: temp.cookingTime!))
+            }
+            catch {
+                
+            }
+        }
         
     }
     

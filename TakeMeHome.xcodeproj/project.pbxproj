@@ -15,7 +15,7 @@
 		DAC1D5142519DDC700B8328D /* TakeMeHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D5132519DDC700B8328D /* TakeMeHomeTests.swift */; };
 		DAC1D51F2519DDC700B8328D /* TakeMeHomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D51E2519DDC700B8328D /* TakeMeHomeUITests.swift */; };
 		DAC1D5302519E12500B8328D /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D52F2519E12500B8328D /* CallViewController.swift */; };
-		DAC1D5352519E13900B8328D /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D5342519E13900B8328D /* RequestViewController.swift */; };
+		DAC1D5352519E13900B8328D /* AcceptanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D5342519E13900B8328D /* AcceptanceViewController.swift */; };
 		DAC1D53A2519E14600B8328D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D5392519E14600B8328D /* MapViewController.swift */; };
 		DAC1D53F2519E15100B8328D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D53E2519E15100B8328D /* SettingsViewController.swift */; };
 		DAC1D5442519E23B00B8328D /* CallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D5432519E23B00B8328D /* CallCell.swift */; };
@@ -57,6 +57,8 @@
 		DAF2ACB6251B38AA00FD11C1 /* CallItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACB5251B38AA00FD11C1 /* CallItem.swift */; };
 		DAF2ACBA251B39BE00FD11C1 /* Oder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACB9251B39BE00FD11C1 /* Oder.swift */; };
 		DAF2ACCB251B471300FD11C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF2ACC9251B471300FD11C1 /* Main.storyboard */; };
+		DAF2ACD72523118600FD11C1 /* AcceptanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACD62523118600FD11C1 /* AcceptanceCell.swift */; };
+		DAF2ACDB2523138700FD11C1 /* AcceptanceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACDA2523138700FD11C1 /* AcceptanceItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,7 +106,7 @@
 		DAC1D51E2519DDC700B8328D /* TakeMeHomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMeHomeUITests.swift; sourceTree = "<group>"; };
 		DAC1D5202519DDC700B8328D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAC1D52F2519E12500B8328D /* CallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
-		DAC1D5342519E13900B8328D /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
+		DAC1D5342519E13900B8328D /* AcceptanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptanceViewController.swift; sourceTree = "<group>"; };
 		DAC1D5392519E14600B8328D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DAC1D53E2519E15100B8328D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DAC1D5432519E23B00B8328D /* CallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCell.swift; sourceTree = "<group>"; };
@@ -270,6 +272,8 @@
 		DAF2ACB5251B38AA00FD11C1 /* CallItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallItem.swift; sourceTree = "<group>"; };
 		DAF2ACB9251B39BE00FD11C1 /* Oder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oder.swift; sourceTree = "<group>"; };
 		DAF2ACCA251B471300FD11C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DAF2ACD62523118600FD11C1 /* AcceptanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptanceCell.swift; sourceTree = "<group>"; };
+		DAF2ACDA2523138700FD11C1 /* AcceptanceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptanceItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,12 +343,14 @@
 				DAC1D5072519DDC700B8328D /* LaunchScreen.storyboard */,
 				DAC1D50A2519DDC700B8328D /* Info.plist */,
 				DAC1D52F2519E12500B8328D /* CallViewController.swift */,
-				DAC1D5342519E13900B8328D /* RequestViewController.swift */,
+				DAC1D5342519E13900B8328D /* AcceptanceViewController.swift */,
 				DAC1D5392519E14600B8328D /* MapViewController.swift */,
 				DAC1D53E2519E15100B8328D /* SettingsViewController.swift */,
 				DAC1D5432519E23B00B8328D /* CallCell.swift */,
 				DAF2ACB5251B38AA00FD11C1 /* CallItem.swift */,
 				DAF2ACB9251B39BE00FD11C1 /* Oder.swift */,
+				DAF2ACD62523118600FD11C1 /* AcceptanceCell.swift */,
+				DAF2ACDA2523138700FD11C1 /* AcceptanceItem.swift */,
 			);
 			path = TakeMeHome;
 			sourceTree = "<group>";
@@ -762,11 +768,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAF2ACB6251B38AA00FD11C1 /* CallItem.swift in Sources */,
+				DAF2ACDB2523138700FD11C1 /* AcceptanceItem.swift in Sources */,
 				DAC1D5012519DDC600B8328D /* ViewController.swift in Sources */,
 				DAC1D53A2519E14600B8328D /* MapViewController.swift in Sources */,
+				DAF2ACD72523118600FD11C1 /* AcceptanceCell.swift in Sources */,
 				DAC1D53F2519E15100B8328D /* SettingsViewController.swift in Sources */,
 				DAC1D4FD2519DDC600B8328D /* AppDelegate.swift in Sources */,
-				DAC1D5352519E13900B8328D /* RequestViewController.swift in Sources */,
+				DAC1D5352519E13900B8328D /* AcceptanceViewController.swift in Sources */,
 				DAC1D5442519E23B00B8328D /* CallCell.swift in Sources */,
 				DAC1D5302519E12500B8328D /* CallViewController.swift in Sources */,
 				DAC1D4FF2519DDC600B8328D /* SceneDelegate.swift in Sources */,

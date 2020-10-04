@@ -8,9 +8,7 @@ class MapViewController: UIViewController, MTMapViewDelegate {
     var mapPoint1: MTMapPoint?
     var poiItem1: MTMapPOIItem?
     
-    var isMakedCircle: Bool = false
-    var userLocationLatitude: Double?
-    var userLocationLongitude: Double?
+    var allCircle = [MTMapCircle]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,13 +69,14 @@ class MapViewController: UIViewController, MTMapViewDelegate {
         let currentLocation = location?.mapPointGeo()
         if let latitude = currentLocation?.latitude, let longitude = currentLocation?.longitude{
             print("MTMapView updateCurrentLocation (\(latitude),\(longitude)) accuracy (\(accuracy))")
-            if isMakedCircle {
-                mapView.removeCircle(circle(latitude: userLocationLatitude!, longitude: userLocationLongitude!))
+            
+            let userCircle = circle(latitude: latitude, longitude: longitude)
+            for item in allCircle {
+                mapView.removeCircle(item)
             }
-            isMakedCircle = true
-            userLocationLatitude = latitude
-            userLocationLongitude = longitude
-            mapView.addCircle(circle(latitude: latitude, longitude: longitude))
+            allCircle = [MTMapCircle]()
+            allCircle.append(circle(latitude: latitude, longitude: longitude))
+            mapView.addCircle(allCircle[0])
         }
         
     }
