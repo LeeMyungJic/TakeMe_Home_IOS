@@ -10,6 +10,7 @@ import UIKit
 class CallViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tempIndex:IndexPath? = nil
+    static var addCount = 0
     
     @IBOutlet weak var TableViewMain: UITableView!
     
@@ -39,7 +40,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in
-            self.YesClick()
+            self.YesClick(didSelectRowAt: indexPath)
         })
         
         //Alert에 부여할 No이벤트 선언
@@ -55,20 +56,19 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.present(msg, animated: true, completion: nil)
     }
     
-    func YesClick()
+    func YesClick(didSelectRowAt indexPath: IndexPath)
     {
-        if let tempIndex1 = tempIndex
-        {
-            do {
-                var temp = CallItem.callItems[tempIndex!.row]
-                CallItem.callItems.remove(at: tempIndex!.row)
-                
-                AcceptanceItem.acceptanceItems.append(AcceptanceItem(address: temp.address!, storeName: temp.storeName!, latitude: temp.latitude!, longitude: temp.longitude!, cookingTime: temp.cookingTime!))
-            }
-            catch {
-                
-            }
-        }
+        print("YES Click")
+        let temp = AcceptanceItem(address: CallItem.callItems[indexPath.row].address!, storeName: CallItem.callItems[indexPath.row].storeName!, latitude: CallItem.callItems[indexPath.row].latitude!, longitude: CallItem.callItems[indexPath.row].longitude!, cookingTime: CallItem.callItems[indexPath.row].cookingTime!)
+        CallItem.callItems.remove(at: indexPath.row)
+        AcceptanceItem.acceptanceItems.append(temp)
+        TableViewMain.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        AcceptanceViewController.isChange = true
+        CallViewController.addCount = CallViewController.addCount + 1
+        print("에드 카운트")
+        print(CallViewController.addCount)
+        print("acceptanceItems count")
+        print(AcceptanceItem.acceptanceItems.count)
         
     }
     
@@ -82,6 +82,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         TableViewMain.delegate = self
         TableViewMain.dataSource = self
+        print("DidLoad")
         
         
     }

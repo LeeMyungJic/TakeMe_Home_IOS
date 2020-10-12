@@ -10,16 +10,16 @@ import UIKit
 class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var AcceptanceView: UITableView!
-    
+    static var isChange = false
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return AcceptanceItem.acceptanceItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = AcceptanceView.dequeueReusableCell(withIdentifier: "AcceptanceCell", for: indexPath) as! AcceptanceCell
-        cell.nameStr.text = CallItem.callItems[indexPath.row].storeName
-        cell.addressStr.text = CallItem.callItems[indexPath.row].address
-        cell.Time.text = CallItem.callItems[indexPath.row].cookingTime! + " 까지 조리 완료"
+        cell.nameStr.text = AcceptanceItem.acceptanceItems[indexPath.row].storeName
+        cell.addressStr.text = AcceptanceItem.acceptanceItems[indexPath.row].address
+        cell.Time.text = AcceptanceItem.acceptanceItems[indexPath.row].cookingTime! + " 까지 조리 완료"
         
         //셀 디자인
         cell.stack.layer.borderColor = #colorLiteral(red: 0.4344803691, green: 0.5318876505, blue: 1, alpha: 1)
@@ -36,8 +36,23 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         AcceptanceView.dataSource = self
         AcceptanceView.delegate = self
+        
 
         // Do any additional setup after loading the view.
+    }
+    
+    // Call에서 수락한 아이템 최신화
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if(AcceptanceViewController.isChange) {
+            AcceptanceView.beginUpdates()
+            for i in 0...CallViewController.addCount - 1{
+                AcceptanceView.insertRows(at: [IndexPath(row: AcceptanceItem.acceptanceItems.count - CallViewController.addCount, section: 0)], with: .automatic)
+                CallViewController.addCount = CallViewController.addCount - 1
+            }
+            AcceptanceView.endUpdates()
+            AcceptanceViewController.isChange = false
+        }
     }
     
 
