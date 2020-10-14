@@ -20,7 +20,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = TableViewMain.dequeueReusableCell(withIdentifier: "CallCell", for: indexPath) as! CallCell
+        var cell = TableViewMain.dequeueReusableCell(withIdentifier: "CallCell", for: indexPath) as! CallCell
         cell.storeNameStr.text = CallItem.callItems[indexPath.row].storeName
         cell.storeAddress.text = CallItem.callItems[indexPath.row].address
         cell.timeStr.text = CallItem.callItems[indexPath.row].cookingTime! + " 까지 조리 완료"
@@ -31,6 +31,12 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.stack.layer.borderWidth = 1
         // 모서리 둥글게
         cell.stack.layer.cornerRadius = 5
+        
+        // 빈 셀 출력 x
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: nil) as! CallCell
+            cell.stack.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }
         
         return cell
     }
@@ -59,7 +65,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     func YesClick(didSelectRowAt indexPath: IndexPath)
     {
         print("YES Click")
-        let temp = AcceptanceItem(address: CallItem.callItems[indexPath.row].address!, storeName: CallItem.callItems[indexPath.row].storeName!, latitude: CallItem.callItems[indexPath.row].latitude!, longitude: CallItem.callItems[indexPath.row].longitude!, cookingTime: CallItem.callItems[indexPath.row].cookingTime!)
+        let temp = AcceptanceItem(address: CallItem.callItems[indexPath.row].address!, storeName: CallItem.callItems[indexPath.row].storeName!, latitude: CallItem.callItems[indexPath.row].latitude!, longitude: CallItem.callItems[indexPath.row].longitude!, cookingTime: CallItem.callItems[indexPath.row].cookingTime!, oderCode: CallItem.callItems[indexPath.row].oderCode!)
         CallItem.callItems.remove(at: indexPath.row)
         AcceptanceItem.acceptanceItems.append(temp)
         TableViewMain.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)

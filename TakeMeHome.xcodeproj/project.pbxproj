@@ -54,6 +54,8 @@
 		DAC1D6BA2519EB2200B8328D /* daum_th_line.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC1D69E2519EB2200B8328D /* daum_th_line.png */; };
 		DAC1D6BB2519EB2200B8328D /* map_pin_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC1D69F2519EB2200B8328D /* map_pin_shadow.png */; };
 		DAC1D6BC2519EB2200B8328D /* DaumMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC1D6A02519EB2200B8328D /* DaumMap.framework */; };
+		DAF0165D25344CDB000E7CCA /* OderView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF0165C25344CDB000E7CCA /* OderView.storyboard */; };
+		DAF0166125344FEB000E7CCA /* OderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0166025344FEB000E7CCA /* OderViewController.swift */; };
 		DAF2ACB6251B38AA00FD11C1 /* CallItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACB5251B38AA00FD11C1 /* CallItem.swift */; };
 		DAF2ACBA251B39BE00FD11C1 /* Oder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACB9251B39BE00FD11C1 /* Oder.swift */; };
 		DAF2ACCB251B471300FD11C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF2ACC9251B471300FD11C1 /* Main.storyboard */; };
@@ -269,6 +271,8 @@
 		DAC1D69E2519EB2200B8328D /* daum_th_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daum_th_line.png; sourceTree = "<group>"; };
 		DAC1D69F2519EB2200B8328D /* map_pin_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_shadow.png; sourceTree = "<group>"; };
 		DAC1D6A02519EB2200B8328D /* DaumMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DaumMap.framework; sourceTree = "<group>"; };
+		DAF0165C25344CDB000E7CCA /* OderView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OderView.storyboard; sourceTree = "<group>"; };
+		DAF0166025344FEB000E7CCA /* OderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OderViewController.swift; sourceTree = "<group>"; };
 		DAF2ACB5251B38AA00FD11C1 /* CallItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallItem.swift; sourceTree = "<group>"; };
 		DAF2ACB9251B39BE00FD11C1 /* Oder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oder.swift; sourceTree = "<group>"; };
 		DAF2ACCA251B471300FD11C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -351,6 +355,8 @@
 				DAF2ACB9251B39BE00FD11C1 /* Oder.swift */,
 				DAF2ACD62523118600FD11C1 /* AcceptanceCell.swift */,
 				DAF2ACDA2523138700FD11C1 /* AcceptanceItem.swift */,
+				DAF0165C25344CDB000E7CCA /* OderView.storyboard */,
+				DAF0166025344FEB000E7CCA /* OderViewController.swift */,
 			);
 			path = TakeMeHome;
 			sourceTree = "<group>";
@@ -733,6 +739,7 @@
 				DAC1D6B32519EB2200B8328D /* info_box_tail.png in Resources */,
 				DAC1D6A22519EB2200B8328D /* map_pin_custom.png in Resources */,
 				DAC1D6B22519EB2200B8328D /* map_pinup_custom.png in Resources */,
+				DAF0165D25344CDB000E7CCA /* OderView.storyboard in Resources */,
 				DAC1D6A72519EB2200B8328D /* map_pinup@3x.png in Resources */,
 				DAF2ACCB251B471300FD11C1 /* Main.storyboard in Resources */,
 				DAC1D6B12519EB2200B8328D /* point_sprite.png in Resources */,
@@ -773,6 +780,7 @@
 				DAC1D53A2519E14600B8328D /* MapViewController.swift in Sources */,
 				DAF2ACD72523118600FD11C1 /* AcceptanceCell.swift in Sources */,
 				DAC1D53F2519E15100B8328D /* SettingsViewController.swift in Sources */,
+				DAF0166125344FEB000E7CCA /* OderViewController.swift in Sources */,
 				DAC1D4FD2519DDC600B8328D /* AppDelegate.swift in Sources */,
 				DAC1D5352519E13900B8328D /* AcceptanceViewController.swift in Sources */,
 				DAC1D5442519E23B00B8328D /* CallCell.swift in Sources */,

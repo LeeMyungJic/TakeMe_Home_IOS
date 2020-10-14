@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -78,14 +77,16 @@
         <!--접수-->
         <scene sceneID="hWo-tV-eFO">
             <objects>
-                <viewController id="hz4-Ng-FXY" customClass="AcceptanceViewController" customModule="TakeMeHome" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrderViewController" id="hz4-Ng-FXY" customClass="AcceptanceViewController" customModule="TakeMeHome" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8RL-36-pAT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xfu-ij-FZv">
                                 <rect key="frame" x="20" y="108" width="374" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AcceptanceCell" id="fTz-HN-Nax" customClass="AcceptanceCell" customModule="TakeMeHome" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="71.5"/>
@@ -130,6 +131,7 @@
                                                 <constraint firstItem="yIq-0l-m94" firstAttribute="top" secondItem="xtO-TX-JB3" secondAttribute="top" constant="2" id="jgK-Kb-fAp"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="Time" destination="3ei-SS-Tww" id="Byf-6v-9jR"/>
                                             <outlet property="addressStr" destination="xNX-EB-qMY" id="4YN-hM-brd"/>
@@ -344,9 +346,4 @@
             <point key="canvasLocation" x="844" y="119"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

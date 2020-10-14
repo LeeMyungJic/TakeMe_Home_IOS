@@ -11,12 +11,49 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet var AcceptanceView: UITableView!
     static var isChange = false
+    
+    var selectedIndex: Int?
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let storyboard = UIStoryboard.init(name: "OderView", bundle: nil)
+        
+        selectedIndex = indexPath.row
+        
+        let popUp = storyboard.instantiateViewController(identifier: "OderViewController")
+        popUp.modalPresentationStyle = .overCurrentContext
+        popUp.modalTransitionStyle = .crossDissolve
+        
+        let temp = popUp as? OderViewController
+        temp?.addressStr = "주소 값"
+        temp?.arrivalTimeStr = "도착시간 값"
+        
+        for i in 0...Oder.Orders.count {
+            print(Oder.Orders.count)
+            print(i)
+            print(Oder.Orders[i].oderCode!)
+            print(AcceptanceItem.acceptanceItems[indexPath.row].oderCode!)
+            if Oder.Orders[i].oderCode! == AcceptanceItem.acceptanceItems[indexPath.row].oderCode! {
+                temp?.addressStr = Oder.Orders[i].address!
+                temp?.arrivalTimeStr = Oder.Orders[i].arrivalTime!
+                temp?.methodOfPaymentStr = Oder.Orders[i].methodOfPayment!
+                temp?.priceStr = "\(Oder.Orders[i].price!) 원"
+                temp?.requirementStr = Oder.Orders[indexPath.row].requirement!
+                break
+
+            }
+        }
+        
+        self.present(popUp, animated: true, completion: nil)
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return AcceptanceItem.acceptanceItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = AcceptanceView.dequeueReusableCell(withIdentifier: "AcceptanceCell", for: indexPath) as! AcceptanceCell
+        var cell = AcceptanceView.dequeueReusableCell(withIdentifier: "AcceptanceCell", for: indexPath) as! AcceptanceCell
         cell.nameStr.text = AcceptanceItem.acceptanceItems[indexPath.row].storeName
         cell.addressStr.text = AcceptanceItem.acceptanceItems[indexPath.row].address
         cell.Time.text = AcceptanceItem.acceptanceItems[indexPath.row].cookingTime! + " 까지 조리 완료"
@@ -27,6 +64,11 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.stack.layer.borderWidth = 1
         // 모서리 둥글게
         cell.stack.layer.cornerRadius = 5
+        
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: nil) as! AcceptanceCell
+            cell.stack.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }
         
         return cell
     }

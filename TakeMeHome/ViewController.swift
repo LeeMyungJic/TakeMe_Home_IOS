@@ -18,7 +18,6 @@ class ViewController: UIViewController {
         passStr.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         
     }
-
-
+    
 }
 
