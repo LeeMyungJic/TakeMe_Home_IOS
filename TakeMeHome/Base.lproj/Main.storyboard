@@ -41,7 +41,7 @@
                                             <color key="titleColor" red="0.45373748600000002" green="0.52895288880000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <segue destination="n9T-AP-oRn" kind="show" id="BxQ-lY-yXs"/>
+                                            <action selector="Login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MRL-tJ-bPg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqV-DZ-3SB">
@@ -82,8 +82,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="접수 목록" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJy-B8-CFO">
+                                <rect key="frame" x="164" y="108" width="89" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xfu-ij-FZv">
-                                <rect key="frame" x="20" y="108" width="374" height="725"/>
+                                <rect key="frame" x="20" y="94.5" width="374" height="738.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -146,7 +152,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Xfu-ij-FZv" firstAttribute="bottom" secondItem="fTO-So-gWu" secondAttribute="bottom" constant="20" id="37h-OK-4mF"/>
-                            <constraint firstItem="Xfu-ij-FZv" firstAttribute="top" secondItem="fTO-So-gWu" secondAttribute="top" constant="20" id="VNt-Lx-alk"/>
+                            <constraint firstItem="TJy-B8-CFO" firstAttribute="centerX" secondItem="8RL-36-pAT" secondAttribute="centerX" id="8yW-IR-0lA"/>
+                            <constraint firstItem="TJy-B8-CFO" firstAttribute="top" secondItem="fTO-So-gWu" secondAttribute="top" constant="20" id="GSm-8v-eO0"/>
+                            <constraint firstItem="Xfu-ij-FZv" firstAttribute="top" secondItem="TJy-B8-CFO" secondAttribute="bottom" constant="10" id="JQp-ER-Oct"/>
                             <constraint firstItem="fTO-So-gWu" firstAttribute="trailing" secondItem="Xfu-ij-FZv" secondAttribute="trailing" constant="20" id="Zpq-Ac-Cej"/>
                             <constraint firstItem="Xfu-ij-FZv" firstAttribute="leading" secondItem="fTO-So-gWu" secondAttribute="leading" constant="20" id="pvx-rH-FsH"/>
                         </constraints>
@@ -169,7 +177,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c9H-Rg-JQi">
-                                <rect key="frame" x="20" y="108" width="374" height="34"/>
+                                <rect key="frame" x="20" y="64" width="374" height="34"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xwr-mw-cE3">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
@@ -221,8 +229,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="콜목록" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2e-A2-5SS">
+                                <rect key="frame" x="185" y="64" width="44.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h6J-Id-CVq">
-                                <rect key="frame" x="20" y="106" width="374" height="685"/>
+                                <rect key="frame" x="20" y="159" width="374" height="634"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -293,10 +307,12 @@
                         <viewLayoutGuide key="safeArea" id="912-Hh-wiY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="h6J-Id-CVq" firstAttribute="top" secondItem="912-Hh-wiY" secondAttribute="top" constant="20" id="6Gh-po-0ZH"/>
+                            <constraint firstItem="m2e-A2-5SS" firstAttribute="centerX" secondItem="gcB-ND-xWo" secondAttribute="centerX" id="FUg-Lb-XTY"/>
+                            <constraint firstItem="m2e-A2-5SS" firstAttribute="top" secondItem="912-Hh-wiY" secondAttribute="top" constant="20" id="b9H-dX-lfw"/>
                             <constraint firstItem="912-Hh-wiY" firstAttribute="bottom" secondItem="h6J-Id-CVq" secondAttribute="bottom" constant="20" id="bMU-Bz-ieX"/>
                             <constraint firstItem="h6J-Id-CVq" firstAttribute="leading" secondItem="912-Hh-wiY" secondAttribute="leading" constant="20" id="bNx-vi-FRt"/>
                             <constraint firstItem="912-Hh-wiY" firstAttribute="trailing" secondItem="h6J-Id-CVq" secondAttribute="trailing" constant="20" id="dRR-Cq-5ou"/>
+                            <constraint firstItem="h6J-Id-CVq" firstAttribute="top" secondItem="m2e-A2-5SS" secondAttribute="bottom" constant="10" id="nl8-FO-pXq"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Call" id="PFl-h0-1iS"/>
@@ -306,12 +322,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxx-nj-4aw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3896" y="-1159"/>
+            <point key="canvasLocation" x="3895.652173913044" y="-1159.1517857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="wTd-7L-BdH">
             <objects>
-                <tabBarController id="n9T-AP-oRn" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBar" id="n9T-AP-oRn" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="OJy-Bg-bOO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QXr-R8-UJS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>

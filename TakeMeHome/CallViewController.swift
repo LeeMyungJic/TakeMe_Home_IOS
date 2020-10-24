@@ -10,9 +10,31 @@ import UIKit
 class CallViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tempIndex:IndexPath? = nil
+    var itemData:Array<Dictionary<String, Any>>?
+    
     static var addCount = 0
     
     @IBOutlet weak var TableViewMain: UITableView!
+    
+    // Call 아이템 가져오기
+    func getItems() {
+        let task = URLSession.shared.dataTask(with: URL(string : "")!) { (data, response, error) in
+            if let dataJson = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: dataJson, options: []) as! Dictionary<String, Any>
+                    
+                    let receivedItems = json["item 이름"] as! Array<Dictionary<String, Any>>
+                    
+                    self.TableViewMain.reloadData()
+                }
+                
+                catch {
+                    
+                }
+            }
+        }
+        task.resume()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CallItem.callItems.count
@@ -21,6 +43,25 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = TableViewMain.dequeueReusableCell(withIdentifier: "CallCell", for: indexPath) as! CallCell
+        
+        /*
+        let inx = indexPath.row
+        if let receivedItem = itemData {
+            let row = receivedItem[indexPath.row]
+            if let r = row as? Dictionary<String, Any> {
+                // 아이템 각 항목이 있으면 넣어주기
+                if let address = r["address"] as? String, let storeName = r["storeName"] as? String, let cookingTime = r["cookingTime"] as? String, let latitude = r["latitude"] as? String, let longitude = r["longitude"] as? String, let oderCode = r["oderCode"] as? String {
+                    
+                    cell.storeNameStr.text = storeName
+                    cell.storeAddress.text = address
+                    cell.timeStr.text = cookingTime
+                    
+                }
+            }
+        }
+        */
+ 
+        
         cell.storeNameStr.text = CallItem.callItems[indexPath.row].storeName
         cell.storeAddress.text = CallItem.callItems[indexPath.row].address
         cell.timeStr.text = CallItem.callItems[indexPath.row].cookingTime! + " 까지 조리 완료"
