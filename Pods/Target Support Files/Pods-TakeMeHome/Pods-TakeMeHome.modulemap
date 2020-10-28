@@ -1,0 +1,6 @@
+framework module Pods_TakeMeHome {
+  umbrella header "Pods-TakeMeHome-umbrella.h"
+
+  export *
+  module * { export * }
+}

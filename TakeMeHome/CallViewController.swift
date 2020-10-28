@@ -12,7 +12,11 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     var tempIndex:IndexPath? = nil
     var itemData:Array<Dictionary<String, Any>>?
     
+    var mTimer:Timer?
     static var addCount = 0
+    var count = 0
+    let interval = 2.0
+    let timeSelector: Selector = #selector(CallViewController.timerCallback)
     
     @IBOutlet weak var TableViewMain: UITableView!
     
@@ -45,22 +49,22 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
         var cell = TableViewMain.dequeueReusableCell(withIdentifier: "CallCell", for: indexPath) as! CallCell
         
         /*
-        let inx = indexPath.row
-        if let receivedItem = itemData {
-            let row = receivedItem[indexPath.row]
-            if let r = row as? Dictionary<String, Any> {
-                // 아이템 각 항목이 있으면 넣어주기
-                if let address = r["address"] as? String, let storeName = r["storeName"] as? String, let cookingTime = r["cookingTime"] as? String, let latitude = r["latitude"] as? String, let longitude = r["longitude"] as? String, let oderCode = r["oderCode"] as? String {
-                    
-                    cell.storeNameStr.text = storeName
-                    cell.storeAddress.text = address
-                    cell.timeStr.text = cookingTime
-                    
-                }
-            }
-        }
-        */
- 
+         let inx = indexPath.row
+         if let receivedItem = itemData {
+         let row = receivedItem[indexPath.row]
+         if let r = row as? Dictionary<String, Any> {
+         // 아이템 각 항목이 있으면 넣어주기
+         if let address = r["address"] as? String, let storeName = r["storeName"] as? String, let cookingTime = r["cookingTime"] as? String, let latitude = r["latitude"] as? String, let longitude = r["longitude"] as? String, let oderCode = r["oderCode"] as? String {
+         
+         cell.storeNameStr.text = storeName
+         cell.storeAddress.text = address
+         cell.timeStr.text = cookingTime
+         
+         }
+         }
+         }
+         */
+        
         
         cell.storeNameStr.text = CallItem.callItems[indexPath.row].storeName
         cell.storeAddress.text = CallItem.callItems[indexPath.row].address
@@ -129,20 +133,31 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         TableViewMain.delegate = self
         TableViewMain.dataSource = self
-        print("DidLoad")
         
+//        if let timer = mTimer {
+//            //timer 객체가 nil 이 아닌경우에는 invalid 상태에만 시작한다
+//            if !timer.isValid {
+//                /** 1초마다 timerCallback함수를 호출하는 타이머 */
+//                mTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
+//            }
+//        }else{
+//            //timer 객체가 nil 인 경우에 객체를 생성하고 타이머를 시작한다
+//            /** 1초마다 timerCallback함수를 호출하는 타이머 */
+//            mTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
+//        }
         
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func timerCallback() {
+        
+        print("타임 콜백 !!")
+        
+        TableViewMain.beginUpdates()
+        CallItem.callItems.append(CallItem(address: "인천광역시 남동구 만수동", storeName: "한신포차 만수점", latitude: 37.44923885384186, longitude: 126.73117584962965, cookingTime: "12:42", odercode: "T24A"))
+        TableViewMain.insertRows(at: [IndexPath(row: CallItem.callItems.count - 1, section: 0)], with: .automatic)
+        TableViewMain.endUpdates()
     }
-    */
-
 }
+
+
+

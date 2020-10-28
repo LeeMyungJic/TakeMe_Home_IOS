@@ -1,12 +1,26 @@
 import UIKit
+import Alamofire
+import SwiftyJSON
+
+public struct Place{
+        let placeName :String
+        let longitudeX:String
+        let latitudeY:String
+    }
+    
 
 public let DEFAULT_POSITION = MTMapPointGeo(latitude: 37.576568, longitude: 127.029148)
 class MapViewController: UIViewController, MTMapViewDelegate {
     
     var mapView: MTMapView?
     
+    var resultList=[Place]()
+    
     var mapPoint1: MTMapPoint?
     var poiItem1: MTMapPOIItem?
+    
+    let session: URLSession = URLSession.shared
+    let URLBase = "https://dapi.kakao.com/v2/local/search/address.{format}"
     
     var latitude : Double = 0.0
     var longitude : Double = 0.0
@@ -34,9 +48,75 @@ class MapViewController: UIViewController, MTMapViewDelegate {
             
             
             self.view.addSubview(mapView)
+            
+            //getAddress()
+            
+            let request: Request = Request()
+
+             
+
+            let url: URL = URL(string: "https://dapi.kakao.com/v2/local/search/address")!
+
+            let body: NSMutableDictionary = NSMutableDictionary()
+
+            body.setValue("value", forKey: "key")
+
+             fff()
+
+//            try request.get(url: url, completionHandler: { (data, response, error) in
+//                print("!!!! 통신 성공 !!!!")
+//            })
+            
         }
         
+        
     }
+   
+    func fff() {
+        let keyword = "인주대로 857"
+        let headers: HTTPHeaders = [
+                    "Authorization": "KakaoAK d05457ec212e64c5f266ca54ee2728db"
+                ]
+                
+        let parameters: [String: Any] = [
+                    "query": keyword,
+                    "page": 1,
+                    "size": 15
+                ]
+                
+        AF.request("https://dapi.kakao.com/v2/local/search/address.json", method: .get,
+                   parameters: parameters, headers: headers)
+            .responseJSON(completionHandler: { response in
+                switch response.result {
+                case .success(let value):
+                    print("통신 성공 !!")
+                    
+                    print(response.result)
+                    print("total_count : \(JSON(value)["meta"]["total_count"])")
+                    print("is_end : \(JSON(value)["meta"]["is_end"])")
+                    print("documents : \(JSON(value)["documents"])")
+                    
+                    
+                    if let detailsPlace = JSON(value)["documents"].array{
+                        for item in detailsPlace{
+                            let placeName = item["address_name"].string ?? ""
+                            let longitudeX = item["x"].string ?? ""
+                            let latitudeY = item["y"].string ?? ""
+                            self.resultList.append(Place(placeName: placeName, longitudeX: longitudeX, latitudeY: latitudeY))
+                        }
+                        
+                    }
+                //print("\(self.resultList[0].placeName)")
+                //print("\(self.resultList[0].longitudeX)")
+                //print("\(self.resultList[0].latitudeY)")
+                
+                case .failure(let error):
+                    print(error)
+                }
+            })
+    }
+
+    
     override func viewWillDisappear(_ animated: Bool) {
         let userCircle = circle(latitude: latitude, longitude: longitude)
         for item in allCircle {
@@ -110,8 +190,4 @@ class MapViewController: UIViewController, MTMapViewDelegate {
     func mapView(_ mapView: MTMapView?, updateDeviceHeading headingAngle: MTMapRotationAngle) {
         print("MTMapView updateDeviceHeading (\(headingAngle)) degrees")
     }
-    
-    
-    
-    
 }
