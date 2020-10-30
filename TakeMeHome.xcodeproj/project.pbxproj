@@ -62,10 +62,14 @@
 		DAF0166125344FEB000E7CCA /* OderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0166025344FEB000E7CCA /* OderViewController.swift */; };
 		DAF2ACB6251B38AA00FD11C1 /* CallItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACB5251B38AA00FD11C1 /* CallItem.swift */; };
 		DAF2ACBA251B39BE00FD11C1 /* Oder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACB9251B39BE00FD11C1 /* Oder.swift */; };
-		DAF2ACCB251B471300FD11C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF2ACC9251B471300FD11C1 /* Main.storyboard */; };
+		DAF2ACCB251B471300FD11C1 /* Rider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF2ACC9251B471300FD11C1 /* Rider.storyboard */; };
 		DAF2ACD72523118600FD11C1 /* AcceptanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACD62523118600FD11C1 /* AcceptanceCell.swift */; };
 		DAF2ACDB2523138700FD11C1 /* AcceptanceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACDA2523138700FD11C1 /* AcceptanceItem.swift */; };
 		DAFA286C25496A8F001B7781 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA286B25496A8F001B7781 /* JoinViewController.swift */; };
+		DAFA2872254C1600001B7781 /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFA2871254C1600001B7781 /* Manager.storyboard */; };
+		DAFA2876254C16D3001B7781 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA2875254C16D3001B7781 /* StoreTableViewCell.swift */; };
+		DAFA287A254C1740001B7781 /* ManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA2879254C1740001B7781 /* ManagerViewController.swift */; };
+		DAFA288C254C1E4F001B7781 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFA288B254C1E4F001B7781 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,7 +292,7 @@
 		DAF0166025344FEB000E7CCA /* OderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OderViewController.swift; sourceTree = "<group>"; };
 		DAF2ACB5251B38AA00FD11C1 /* CallItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallItem.swift; sourceTree = "<group>"; };
 		DAF2ACB9251B39BE00FD11C1 /* Oder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oder.swift; sourceTree = "<group>"; };
-		DAF2ACCA251B471300FD11C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DAF2ACCA251B471300FD11C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Rider.storyboard; sourceTree = "<group>"; };
 		DAF2ACD62523118600FD11C1 /* AcceptanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptanceCell.swift; sourceTree = "<group>"; };
 		DAF2ACDA2523138700FD11C1 /* AcceptanceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptanceItem.swift; sourceTree = "<group>"; };
 		DAFA283225495F68001B7781 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -329,6 +333,10 @@
 		DAFA285625495F68001B7781 /* SessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
 		DAFA285725495F68001B7781 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DAFA286B25496A8F001B7781 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
+		DAFA2871254C1600001B7781 /* Manager.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
+		DAFA2875254C16D3001B7781 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
+		DAFA2879254C1740001B7781 /* ManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerViewController.swift; sourceTree = "<group>"; };
+		DAFA288B254C1E4F001B7781 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DDAF3D4BD51C8E833C7FD2F4 /* Pods-TakeMeHome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome.release.xcconfig"; path = "Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome.release.xcconfig"; sourceTree = "<group>"; };
 		F9D1872365B3C1ED33B183B3 /* Pods-TakeMeHomeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHomeTests.release.xcconfig"; path = "Target Support Files/Pods-TakeMeHomeTests/Pods-TakeMeHomeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -410,7 +418,8 @@
 		DAC1D4FB2519DDC600B8328D /* TakeMeHome */ = {
 			isa = PBXGroup;
 			children = (
-				DAF2ACC9251B471300FD11C1 /* Main.storyboard */,
+				DAF2ACC9251B471300FD11C1 /* Rider.storyboard */,
+				DAFA288B254C1E4F001B7781 /* Main.storyboard */,
 				DAC1D4FC2519DDC600B8328D /* AppDelegate.swift */,
 				DAC1D4FE2519DDC600B8328D /* SceneDelegate.swift */,
 				DAC1D5002519DDC600B8328D /* ViewController.swift */,
@@ -430,6 +439,9 @@
 				DAF0165C25344CDB000E7CCA /* OderView.storyboard */,
 				DAF0166025344FEB000E7CCA /* OderViewController.swift */,
 				DA4BC37225481ADC00DCEF1F /* Request.swift */,
+				DAFA2871254C1600001B7781 /* Manager.storyboard */,
+				DAFA2875254C16D3001B7781 /* StoreTableViewCell.swift */,
+				DAFA2879254C1740001B7781 /* ManagerViewController.swift */,
 			);
 			path = TakeMeHome;
 			sourceTree = "<group>";
@@ -874,7 +886,8 @@
 				DAC1D6B22519EB2200B8328D /* map_pinup_custom.png in Resources */,
 				DAF0165D25344CDB000E7CCA /* OderView.storyboard in Resources */,
 				DAC1D6A72519EB2200B8328D /* map_pinup@3x.png in Resources */,
-				DAF2ACCB251B471300FD11C1 /* Main.storyboard in Resources */,
+				DAF2ACCB251B471300FD11C1 /* Rider.storyboard in Resources */,
+				DAFA2872254C1600001B7781 /* Manager.storyboard in Resources */,
 				DAC1D6B12519EB2200B8328D /* point_sprite.png in Resources */,
 				DAC1D6B92519EB2200B8328D /* map_present_background_update.png in Resources */,
 				DAC1D6B52519EB2200B8328D /* map_present_direction.png in Resources */,
@@ -883,6 +896,7 @@
 				DAC1D5062519DDC700B8328D /* Assets.xcassets in Resources */,
 				DAC1D6BA2519EB2200B8328D /* daum_th_line.png in Resources */,
 				DAC1D6A42519EB2200B8328D /* map_pinup.png in Resources */,
+				DAFA288C254C1E4F001B7781 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1013,8 +1027,10 @@
 				DA4BC37325481ADC00DCEF1F /* Request.swift in Sources */,
 				DAF2ACB6251B38AA00FD11C1 /* CallItem.swift in Sources */,
 				DAF2ACDB2523138700FD11C1 /* AcceptanceItem.swift in Sources */,
+				DAFA2876254C16D3001B7781 /* StoreTableViewCell.swift in Sources */,
 				DAC1D5012519DDC600B8328D /* ViewController.swift in Sources */,
 				DAC1D53A2519E14600B8328D /* MapViewController.swift in Sources */,
+				DAFA287A254C1740001B7781 /* ManagerViewController.swift in Sources */,
 				DAF2ACD72523118600FD11C1 /* AcceptanceCell.swift in Sources */,
 				DAC1D53F2519E15100B8328D /* SettingsViewController.swift in Sources */,
 				DAF0166125344FEB000E7CCA /* OderViewController.swift in Sources */,
@@ -1068,12 +1084,12 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		DAF2ACC9251B471300FD11C1 /* Main.storyboard */ = {
+		DAF2ACC9251B471300FD11C1 /* Rider.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DAF2ACCA251B471300FD11C1 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Rider.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

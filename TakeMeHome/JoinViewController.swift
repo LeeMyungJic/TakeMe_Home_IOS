@@ -18,11 +18,11 @@ class JoinViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        addressStr.attributedPlaceholder = NSAttributedString(string: "주소를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
     }
     @IBAction func search(_ sender: Any) {
-        print(addressStr.text)
-        let keyword = "인주대로 857"
+        
+        let keyword = addressStr.text
         let headers: HTTPHeaders = [
                     "Authorization": "KakaoAK d05457ec212e64c5f266ca54ee2728db"
                 ]
@@ -51,8 +51,8 @@ class JoinViewController: UIViewController {
                             let placeName = item["address_name"].string ?? ""
                             let longitudeX = item["x"].string ?? ""
                             let latitudeY = item["y"].string ?? ""
-                            self.x.text = "x좌표 : " + longitudeX
-                            self.y.text = "y좌표 : " + latitudeY
+                            self.x.text = "x좌표 : " + latitudeY
+                            self.y.text = "y좌표 : " + longitudeX
                             self.name.text = "주소 : " + placeName
                         }
                         
@@ -65,6 +65,13 @@ class JoinViewController: UIViewController {
                     print(error)
                 }
             })
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
     }
     
     

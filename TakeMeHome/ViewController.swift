@@ -31,36 +31,60 @@ class ViewController: UIViewController {
     
     @IBAction func Login(_ sender: Any) {
         
-        guard let id = idStr.text, !id.isEmpty else { return }
-                guard let password = passStr.text, !password.isEmpty else { return }
-                
-                // Model이 해당 유저를 가지고 있는지 검사
-                var loginSuccess: Bool = false
-        
-        if idStr.text == id, passStr.text == password {
-            loginSuccess = true
+//        guard let id = idStr.text, !id.isEmpty else { return }
+//                guard let password = passStr.text, !password.isEmpty else { return }
+//
+//                // Model이 해당 유저를 가지고 있는지 검사
+//                var loginSuccess: Bool = false
+//
+//        if idStr.text == id, passStr.text == password {
+//            loginSuccess = true
+//        }
+//
+//        if loginSuccess {
+//            print("로그인 성공")
+//            guard let main = self.storyboard?.instantiateViewController(identifier: "TabBar") else{return}
+//            self.present(main, animated: true)
+//        }else {
+//            UIView.animate(withDuration: 0.2, animations: {
+//                self.idStr.frame.origin.x -= 10
+//                self.passStr.frame.origin.x -= 10
+//            }, completion: { _ in
+//                UIView.animate(withDuration: 0.2, animations: {
+//                    self.idStr.frame.origin.x += 20
+//                    self.passStr.frame.origin.x += 20
+//                }, completion: { _ in
+//                    UIView.animate(withDuration: 0.2, animations: {
+//                        self.idStr.frame.origin.x -= 10
+//                        self.passStr.frame.origin.x -= 10
+//                    })
+//                })
+        //            })
+        //        }
+        if(idStr.text == "a") {
+            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
+            
+            let popUp = storyboard.instantiateViewController(identifier: "ManagerViewController")
+            popUp.modalPresentationStyle = .overCurrentContext
+            popUp.modalTransitionStyle = .crossDissolve
+            
+            self.present(popUp, animated: true, completion: nil)
         }
-        
-        if loginSuccess {
-            print("로그인 성공")
-            guard let main = self.storyboard?.instantiateViewController(identifier: "TabBar") else{return}
-            self.present(main, animated: true)
-        }else {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.idStr.frame.origin.x -= 10
-                self.passStr.frame.origin.x -= 10
-            }, completion: { _ in
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.idStr.frame.origin.x += 20
-                    self.passStr.frame.origin.x += 20
-                }, completion: { _ in
-                    UIView.animate(withDuration: 0.2, animations: {
-                        self.idStr.frame.origin.x -= 10
-                        self.passStr.frame.origin.x -= 10
-                    })
-                })
-            })
+        else {
+            let storyboard = UIStoryboard.init(name: "Rider", bundle: nil)
+            
+            let popUp = storyboard.instantiateViewController(identifier: "TabBar")
+            popUp.modalPresentationStyle = .overCurrentContext
+            popUp.modalTransitionStyle = .crossDissolve
+            
+            self.present(popUp, animated: true, completion: nil)
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        
+        self.view.endEditing(true)
+        
     }
 }
 
