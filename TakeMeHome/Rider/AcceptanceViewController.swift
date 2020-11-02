@@ -12,6 +12,8 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet var AcceptanceView: UITableView!
     static var isChange = false
     
+    static var acceptanceCalls = [Order]()
+    
     var selectedIndex: Int?
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -28,35 +30,30 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
         temp?.addressStr = "주소 값"
         temp?.arrivalTimeStr = "도착시간 값"
         
-        for i in 0...Oder.Orders.count {
-            print(Oder.Orders.count)
-            print(i)
-            print(Oder.Orders[i].oderCode!)
-            print(AcceptanceItem.acceptanceItems[indexPath.row].oderCode!)
-            if Oder.Orders[i].oderCode! == AcceptanceItem.acceptanceItems[indexPath.row].oderCode! {
-                temp?.addressStr = Oder.Orders[i].address!
-                temp?.arrivalTimeStr = Oder.Orders[i].arrivalTime!
-                temp?.methodOfPaymentStr = Oder.Orders[i].methodOfPayment!
-                temp?.priceStr = "\(Oder.Orders[i].price!) 원"
-                temp?.requirementStr = Oder.Orders[indexPath.row].requirement!
-                break
-
-            }
-        }
+        
+        temp?.addressStr = AcceptanceViewController.acceptanceCalls[selectedIndex!].storeAddress!
+        temp?.arrivalTimeStr = AcceptanceViewController.acceptanceCalls[selectedIndex!].arrivalTime!
+        temp?.methodOfPaymentStr = AcceptanceViewController.acceptanceCalls[selectedIndex!].methodOfPayment!
+        temp?.priceStr = "\(AcceptanceViewController.acceptanceCalls[selectedIndex!].price!) 원"
+        temp?.requirementStr = AcceptanceViewController.acceptanceCalls[selectedIndex!].requirement!
+        
+        
+        
+        
         
         self.present(popUp, animated: true, completion: nil)
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AcceptanceItem.acceptanceItems.count
+        return AcceptanceViewController.acceptanceCalls.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = AcceptanceView.dequeueReusableCell(withIdentifier: "AcceptanceCell", for: indexPath) as! AcceptanceCell
-        cell.nameStr.text = AcceptanceItem.acceptanceItems[indexPath.row].storeName
-        cell.addressStr.text = AcceptanceItem.acceptanceItems[indexPath.row].address
-        cell.Time.text = AcceptanceItem.acceptanceItems[indexPath.row].cookingTime! + " 까지 조리 완료"
+        cell.nameStr.text = AcceptanceViewController.acceptanceCalls[indexPath.row].storeName
+        cell.addressStr.text = AcceptanceViewController.acceptanceCalls[indexPath.row].storeAddress
+        cell.Time.text = AcceptanceViewController.acceptanceCalls[indexPath.row].cookingTime! + " 까지 조리 완료"
         
         //셀 디자인
         cell.stack.layer.borderColor = #colorLiteral(red: 0.4344803691, green: 0.5318876505, blue: 1, alpha: 1)
@@ -89,7 +86,7 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
         if(AcceptanceViewController.isChange) {
             AcceptanceView.beginUpdates()
             for i in 0...CallViewController.addCount - 1{
-                AcceptanceView.insertRows(at: [IndexPath(row: AcceptanceItem.acceptanceItems.count - CallViewController.addCount, section: 0)], with: .automatic)
+                AcceptanceView.insertRows(at: [IndexPath(row: AcceptanceViewController.acceptanceCalls.count - CallViewController.addCount, section: 0)], with: .automatic)
                 CallViewController.addCount = CallViewController.addCount - 1
             }
             AcceptanceView.endUpdates()

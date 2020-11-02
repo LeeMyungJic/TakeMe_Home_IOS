@@ -41,7 +41,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CallItem.callItems.count
+        return Order.Orders.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,8 +66,8 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
          */
         
         
-        cell.storeNameStr.text = CallItem.callItems[indexPath.row].storeName
-        cell.storeAddress.text = CallItem.callItems[indexPath.row].address
+        cell.storeNameStr.text = Order.Orders[indexPath.row].storeName
+        cell.storeAddress.text = Order.Orders[indexPath.row].storeAddress
         cell.timeStr.text = CallItem.callItems[indexPath.row].cookingTime! + " 까지 조리 완료"
         
         //셀 디자인
@@ -110,16 +110,16 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     func YesClick(didSelectRowAt indexPath: IndexPath)
     {
         print("YES Click")
-        let temp = AcceptanceItem(address: CallItem.callItems[indexPath.row].address!, storeName: CallItem.callItems[indexPath.row].storeName!, latitude: CallItem.callItems[indexPath.row].latitude!, longitude: CallItem.callItems[indexPath.row].longitude!, cookingTime: CallItem.callItems[indexPath.row].cookingTime!, oderCode: CallItem.callItems[indexPath.row].oderCode!)
-        CallItem.callItems.remove(at: indexPath.row)
-        AcceptanceItem.acceptanceItems.append(temp)
+        AcceptanceViewController.acceptanceCalls.append(Order.Orders[indexPath.row])
+        Order.Orders.remove(at: indexPath.row)
         TableViewMain.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         AcceptanceViewController.isChange = true
         CallViewController.addCount = CallViewController.addCount + 1
+        
         print("에드 카운트")
-        print(CallViewController.addCount)
-        print("acceptanceItems count")
-        print(AcceptanceItem.acceptanceItems.count)
+                print(CallViewController.addCount)
+                print("acceptanceItems count")
+                print(AcceptanceViewController.acceptanceCalls.count)
         
     }
     

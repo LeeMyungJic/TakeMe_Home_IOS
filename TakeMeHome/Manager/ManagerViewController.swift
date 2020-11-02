@@ -21,6 +21,11 @@ class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDa
         
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        ManagerCallViewController.getStoreName = ManagerViewController.stores[indexPath.row]
+    }
+    
+    
     
 
     @IBOutlet var StoreName: UILabel!

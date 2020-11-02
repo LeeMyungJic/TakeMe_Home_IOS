@@ -61,7 +61,7 @@
 		DAF0165D25344CDB000E7CCA /* OderView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF0165C25344CDB000E7CCA /* OderView.storyboard */; };
 		DAF0166125344FEB000E7CCA /* OderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0166025344FEB000E7CCA /* OderViewController.swift */; };
 		DAF2ACB6251B38AA00FD11C1 /* CallItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACB5251B38AA00FD11C1 /* CallItem.swift */; };
-		DAF2ACBA251B39BE00FD11C1 /* Oder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACB9251B39BE00FD11C1 /* Oder.swift */; };
+		DAF2ACBA251B39BE00FD11C1 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACB9251B39BE00FD11C1 /* Order.swift */; };
 		DAF2ACCB251B471300FD11C1 /* Rider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF2ACC9251B471300FD11C1 /* Rider.storyboard */; };
 		DAF2ACD72523118600FD11C1 /* AcceptanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACD62523118600FD11C1 /* AcceptanceCell.swift */; };
 		DAF2ACDB2523138700FD11C1 /* AcceptanceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACDA2523138700FD11C1 /* AcceptanceItem.swift */; };
@@ -70,6 +70,9 @@
 		DAFA2876254C16D3001B7781 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA2875254C16D3001B7781 /* StoreTableViewCell.swift */; };
 		DAFA287A254C1740001B7781 /* ManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA2879254C1740001B7781 /* ManagerViewController.swift */; };
 		DAFA288C254C1E4F001B7781 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFA288B254C1E4F001B7781 /* Main.storyboard */; };
+		DAFA289F254C2A76001B7781 /* ManagerCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA289E254C2A76001B7781 /* ManagerCallViewController.swift */; };
+		DAFA28A3254C2A89001B7781 /* AddCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA28A2254C2A89001B7781 /* AddCallViewController.swift */; };
+		DAFA28A7254C2D78001B7781 /* ManagerCallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA28A6254C2D78001B7781 /* ManagerCallCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,7 +294,7 @@
 		DAF0165C25344CDB000E7CCA /* OderView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OderView.storyboard; sourceTree = "<group>"; };
 		DAF0166025344FEB000E7CCA /* OderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OderViewController.swift; sourceTree = "<group>"; };
 		DAF2ACB5251B38AA00FD11C1 /* CallItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallItem.swift; sourceTree = "<group>"; };
-		DAF2ACB9251B39BE00FD11C1 /* Oder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oder.swift; sourceTree = "<group>"; };
+		DAF2ACB9251B39BE00FD11C1 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		DAF2ACCA251B471300FD11C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Rider.storyboard; sourceTree = "<group>"; };
 		DAF2ACD62523118600FD11C1 /* AcceptanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptanceCell.swift; sourceTree = "<group>"; };
 		DAF2ACDA2523138700FD11C1 /* AcceptanceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptanceItem.swift; sourceTree = "<group>"; };
@@ -337,6 +340,9 @@
 		DAFA2875254C16D3001B7781 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
 		DAFA2879254C1740001B7781 /* ManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerViewController.swift; sourceTree = "<group>"; };
 		DAFA288B254C1E4F001B7781 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DAFA289E254C2A76001B7781 /* ManagerCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerCallViewController.swift; sourceTree = "<group>"; };
+		DAFA28A2254C2A89001B7781 /* AddCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCallViewController.swift; sourceTree = "<group>"; };
+		DAFA28A6254C2D78001B7781 /* ManagerCallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerCallCell.swift; sourceTree = "<group>"; };
 		DDAF3D4BD51C8E833C7FD2F4 /* Pods-TakeMeHome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome.release.xcconfig"; path = "Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome.release.xcconfig"; sourceTree = "<group>"; };
 		F9D1872365B3C1ED33B183B3 /* Pods-TakeMeHomeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHomeTests.release.xcconfig"; path = "Target Support Files/Pods-TakeMeHomeTests/Pods-TakeMeHomeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -418,30 +424,19 @@
 		DAC1D4FB2519DDC600B8328D /* TakeMeHome */ = {
 			isa = PBXGroup;
 			children = (
-				DAF2ACC9251B471300FD11C1 /* Rider.storyboard */,
-				DAFA288B254C1E4F001B7781 /* Main.storyboard */,
+				DAF2ACB9251B39BE00FD11C1 /* Order.swift */,
+				DAFA289B254C2888001B7781 /* Login */,
+				DAFA289A254C2874001B7781 /* Rider */,
+				DAFA2899254C2868001B7781 /* Manager */,
 				DAC1D4FC2519DDC600B8328D /* AppDelegate.swift */,
 				DAC1D4FE2519DDC600B8328D /* SceneDelegate.swift */,
 				DAC1D5002519DDC600B8328D /* ViewController.swift */,
 				DAC1D5052519DDC700B8328D /* Assets.xcassets */,
 				DAC1D5072519DDC700B8328D /* LaunchScreen.storyboard */,
 				DAC1D50A2519DDC700B8328D /* Info.plist */,
-				DAC1D52F2519E12500B8328D /* CallViewController.swift */,
-				DAC1D5342519E13900B8328D /* AcceptanceViewController.swift */,
-				DAC1D5392519E14600B8328D /* MapViewController.swift */,
-				DAFA286B25496A8F001B7781 /* JoinViewController.swift */,
-				DAC1D53E2519E15100B8328D /* SettingsViewController.swift */,
-				DAC1D5432519E23B00B8328D /* CallCell.swift */,
-				DAF2ACB5251B38AA00FD11C1 /* CallItem.swift */,
-				DAF2ACB9251B39BE00FD11C1 /* Oder.swift */,
-				DAF2ACD62523118600FD11C1 /* AcceptanceCell.swift */,
-				DAF2ACDA2523138700FD11C1 /* AcceptanceItem.swift */,
 				DAF0165C25344CDB000E7CCA /* OderView.storyboard */,
 				DAF0166025344FEB000E7CCA /* OderViewController.swift */,
 				DA4BC37225481ADC00DCEF1F /* Request.swift */,
-				DAFA2871254C1600001B7781 /* Manager.storyboard */,
-				DAFA2875254C16D3001B7781 /* StoreTableViewCell.swift */,
-				DAFA2879254C1740001B7781 /* ManagerViewController.swift */,
 			);
 			path = TakeMeHome;
 			sourceTree = "<group>";
@@ -755,6 +750,44 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
+		DAFA2899254C2868001B7781 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DAFA2879254C1740001B7781 /* ManagerViewController.swift */,
+				DAFA2875254C16D3001B7781 /* StoreTableViewCell.swift */,
+				DAFA2871254C1600001B7781 /* Manager.storyboard */,
+				DAFA289E254C2A76001B7781 /* ManagerCallViewController.swift */,
+				DAFA28A2254C2A89001B7781 /* AddCallViewController.swift */,
+				DAFA28A6254C2D78001B7781 /* ManagerCallCell.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		DAFA289A254C2874001B7781 /* Rider */ = {
+			isa = PBXGroup;
+			children = (
+				DAF2ACC9251B471300FD11C1 /* Rider.storyboard */,
+				DAC1D52F2519E12500B8328D /* CallViewController.swift */,
+				DAC1D5342519E13900B8328D /* AcceptanceViewController.swift */,
+				DAC1D5392519E14600B8328D /* MapViewController.swift */,
+				DAC1D5432519E23B00B8328D /* CallCell.swift */,
+				DAC1D53E2519E15100B8328D /* SettingsViewController.swift */,
+				DAF2ACB5251B38AA00FD11C1 /* CallItem.swift */,
+				DAF2ACD62523118600FD11C1 /* AcceptanceCell.swift */,
+				DAF2ACDA2523138700FD11C1 /* AcceptanceItem.swift */,
+			);
+			path = Rider;
+			sourceTree = "<group>";
+		};
+		DAFA289B254C2888001B7781 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DAFA288B254C1E4F001B7781 /* Main.storyboard */,
+				DAFA286B25496A8F001B7781 /* JoinViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1033,14 +1066,17 @@
 				DAFA287A254C1740001B7781 /* ManagerViewController.swift in Sources */,
 				DAF2ACD72523118600FD11C1 /* AcceptanceCell.swift in Sources */,
 				DAC1D53F2519E15100B8328D /* SettingsViewController.swift in Sources */,
+				DAFA28A3254C2A89001B7781 /* AddCallViewController.swift in Sources */,
 				DAF0166125344FEB000E7CCA /* OderViewController.swift in Sources */,
+				DAFA289F254C2A76001B7781 /* ManagerCallViewController.swift in Sources */,
 				DAC1D4FD2519DDC600B8328D /* AppDelegate.swift in Sources */,
 				DAC1D5352519E13900B8328D /* AcceptanceViewController.swift in Sources */,
 				DAC1D5442519E23B00B8328D /* CallCell.swift in Sources */,
 				DAC1D5302519E12500B8328D /* CallViewController.swift in Sources */,
 				DAC1D4FF2519DDC600B8328D /* SceneDelegate.swift in Sources */,
 				DAFA286C25496A8F001B7781 /* JoinViewController.swift in Sources */,
-				DAF2ACBA251B39BE00FD11C1 /* Oder.swift in Sources */,
+				DAF2ACBA251B39BE00FD11C1 /* Order.swift in Sources */,
+				DAFA28A7254C2D78001B7781 /* ManagerCallCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
