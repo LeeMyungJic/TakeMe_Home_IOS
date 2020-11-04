@@ -47,7 +47,6 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = TableViewMain.dequeueReusableCell(withIdentifier: "CallCell", for: indexPath) as! CallCell
-        
         /*
          let inx = indexPath.row
          if let receivedItem = itemData {
@@ -68,7 +67,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.storeNameStr.text = Order.Orders[indexPath.row].storeName
         cell.storeAddress.text = Order.Orders[indexPath.row].storeAddress
-        cell.timeStr.text = CallItem.callItems[indexPath.row].cookingTime! + " 까지 조리 완료"
+        cell.timeStr.text = Order.Orders[indexPath.row].cookingTime! + " 까지 조리 완료"
         
         //셀 디자인
         cell.stack.layer.borderColor = #colorLiteral(red: 0.4344803691, green: 0.5318876505, blue: 1, alpha: 1)
@@ -87,7 +86,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let msg = UIAlertController(title: CallItem.callItems[indexPath.row].storeName, message: "접수하시겠습니까?", preferredStyle: .alert)
+        let msg = UIAlertController(title: Order.Orders[indexPath.row].storeName, message: "접수하시겠습니까?", preferredStyle: .alert)
         
         
         let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in
@@ -153,8 +152,8 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("타임 콜백 !!")
         
         TableViewMain.beginUpdates()
-        CallItem.callItems.append(CallItem(address: "인천광역시 남동구 만수동", storeName: "한신포차 만수점", latitude: 37.44923885384186, longitude: 126.73117584962965, cookingTime: "12:42", odercode: "T24A"))
-        TableViewMain.insertRows(at: [IndexPath(row: CallItem.callItems.count - 1, section: 0)], with: .automatic)
+        
+        TableViewMain.insertRows(at: [IndexPath(row: Order.Orders.count - 1, section: 0)], with: .automatic)
         TableViewMain.endUpdates()
     }
 }

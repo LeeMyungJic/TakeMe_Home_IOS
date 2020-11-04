@@ -60,11 +60,9 @@
 		DAC1D6BC2519EB2200B8328D /* DaumMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC1D6A02519EB2200B8328D /* DaumMap.framework */; };
 		DAF0165D25344CDB000E7CCA /* OderView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF0165C25344CDB000E7CCA /* OderView.storyboard */; };
 		DAF0166125344FEB000E7CCA /* OderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0166025344FEB000E7CCA /* OderViewController.swift */; };
-		DAF2ACB6251B38AA00FD11C1 /* CallItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACB5251B38AA00FD11C1 /* CallItem.swift */; };
 		DAF2ACBA251B39BE00FD11C1 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACB9251B39BE00FD11C1 /* Order.swift */; };
 		DAF2ACCB251B471300FD11C1 /* Rider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF2ACC9251B471300FD11C1 /* Rider.storyboard */; };
 		DAF2ACD72523118600FD11C1 /* AcceptanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACD62523118600FD11C1 /* AcceptanceCell.swift */; };
-		DAF2ACDB2523138700FD11C1 /* AcceptanceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACDA2523138700FD11C1 /* AcceptanceItem.swift */; };
 		DAFA286C25496A8F001B7781 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA286B25496A8F001B7781 /* JoinViewController.swift */; };
 		DAFA2872254C1600001B7781 /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFA2871254C1600001B7781 /* Manager.storyboard */; };
 		DAFA2876254C16D3001B7781 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA2875254C16D3001B7781 /* StoreTableViewCell.swift */; };
@@ -293,11 +291,9 @@
 		DAC1D6A02519EB2200B8328D /* DaumMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DaumMap.framework; sourceTree = "<group>"; };
 		DAF0165C25344CDB000E7CCA /* OderView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OderView.storyboard; sourceTree = "<group>"; };
 		DAF0166025344FEB000E7CCA /* OderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OderViewController.swift; sourceTree = "<group>"; };
-		DAF2ACB5251B38AA00FD11C1 /* CallItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallItem.swift; sourceTree = "<group>"; };
 		DAF2ACB9251B39BE00FD11C1 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		DAF2ACCA251B471300FD11C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Rider.storyboard; sourceTree = "<group>"; };
 		DAF2ACD62523118600FD11C1 /* AcceptanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptanceCell.swift; sourceTree = "<group>"; };
-		DAF2ACDA2523138700FD11C1 /* AcceptanceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptanceItem.swift; sourceTree = "<group>"; };
 		DAFA283225495F68001B7781 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		DAFA283425495F68001B7781 /* MultipartFormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
 		DAFA283525495F68001B7781 /* RequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInterceptor.swift; sourceTree = "<group>"; };
@@ -772,9 +768,7 @@
 				DAC1D5392519E14600B8328D /* MapViewController.swift */,
 				DAC1D5432519E23B00B8328D /* CallCell.swift */,
 				DAC1D53E2519E15100B8328D /* SettingsViewController.swift */,
-				DAF2ACB5251B38AA00FD11C1 /* CallItem.swift */,
 				DAF2ACD62523118600FD11C1 /* AcceptanceCell.swift */,
-				DAF2ACDA2523138700FD11C1 /* AcceptanceItem.swift */,
 			);
 			path = Rider;
 			sourceTree = "<group>";
@@ -1058,8 +1052,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA4BC37325481ADC00DCEF1F /* Request.swift in Sources */,
-				DAF2ACB6251B38AA00FD11C1 /* CallItem.swift in Sources */,
-				DAF2ACDB2523138700FD11C1 /* AcceptanceItem.swift in Sources */,
 				DAFA2876254C16D3001B7781 /* StoreTableViewCell.swift in Sources */,
 				DAC1D5012519DDC600B8328D /* ViewController.swift in Sources */,
 				DAC1D53A2519E14600B8328D /* MapViewController.swift in Sources */,

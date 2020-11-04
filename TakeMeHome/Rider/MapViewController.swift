@@ -132,7 +132,7 @@ class MapViewController: UIViewController, MTMapViewDelegate {
     
     func makeMarker(){
         // 콜 아이템 : 노랑 핀
-        for item in CallItem.callItems {
+        for item in Order.Orders {
             self.mapPoint1 = MTMapPoint(geoCoord: MTMapPointGeo(latitude: item.latitude!, longitude: item.longitude!
             ))
             poiItem1 = MTMapPOIItem()
@@ -143,7 +143,7 @@ class MapViewController: UIViewController, MTMapViewDelegate {
         }
         
         // 접수 아이템 : 레드 핀
-        for item in AcceptanceItem.acceptanceItems {
+        for item in AcceptanceViewController.acceptanceCalls {
             self.mapPoint1 = MTMapPoint(geoCoord: MTMapPointGeo(latitude: item.latitude!, longitude: item.longitude!
             ))
             poiItem1 = MTMapPOIItem()

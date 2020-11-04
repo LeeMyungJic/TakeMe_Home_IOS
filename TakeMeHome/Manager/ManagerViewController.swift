@@ -26,12 +26,8 @@ class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDa
     }
     
     
-    
-
-    @IBOutlet var StoreName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("GOGOGOGOGOOGO")
         TableMain.delegate = self
         TableMain.dataSource = self
 
