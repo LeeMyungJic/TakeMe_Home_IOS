@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--주문하기-->
+        <scene sceneID="x0r-Tx-9jY">
+            <objects>
+                <viewController id="Eqv-1p-Clr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e6K-pb-KbP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주문하기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOz-GO-WrJ">
+                                <rect key="frame" x="20" y="64" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="L56-qh-dKv">
+                                <rect key="frame" x="20" y="93" width="374" height="631"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAu-bH-ggI">
+                                <rect key="frame" x="20" y="763" width="374" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KpO-Uc-p4x"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KpO-Uc-p4x" firstAttribute="trailing" secondItem="BOz-GO-WrJ" secondAttribute="trailing" constant="20" id="JmU-X5-R0L"/>
+                            <constraint firstItem="hAu-bH-ggI" firstAttribute="leading" secondItem="KpO-Uc-p4x" secondAttribute="leading" constant="20" id="OlC-mt-KLq"/>
+                            <constraint firstItem="KpO-Uc-p4x" firstAttribute="trailing" secondItem="hAu-bH-ggI" secondAttribute="trailing" constant="20" id="VLx-id-edP"/>
+                            <constraint firstItem="KpO-Uc-p4x" firstAttribute="bottom" secondItem="hAu-bH-ggI" secondAttribute="bottom" constant="20" id="eFw-h8-yYJ"/>
+                            <constraint firstItem="BOz-GO-WrJ" firstAttribute="leading" secondItem="KpO-Uc-p4x" secondAttribute="leading" constant="20" id="hOz-bx-jQG"/>
+                            <constraint firstItem="BOz-GO-WrJ" firstAttribute="top" secondItem="KpO-Uc-p4x" secondAttribute="top" constant="20" id="rx2-8Q-gsl"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="주문하기" id="vhd-aV-f7m"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iHm-SG-RIk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="118.84057971014494" y="-16.071428571428569"/>
+        </scene>
+        <!--주문 목록-->
+        <scene sceneID="NbW-92-edi">
+            <objects>
+                <viewController id="qhy-VB-osq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JDA-A0-0lR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6Q-Gf-fE4">
+                                <rect key="frame" x="186" y="77" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="f9d-eI-kC9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="주문 목록" id="atR-Zv-Ji2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hOi-K5-LJT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="120" y="-623"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Cwa-3g-qy3">
+            <objects>
+                <tabBarController id="KOy-OM-14L" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LCO-Yt-yHm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="qhy-VB-osq" kind="relationship" relationship="viewControllers" id="XiJ-oP-Elk"/>
+                        <segue destination="Eqv-1p-Clr" kind="relationship" relationship="viewControllers" id="T9Y-tC-8s4"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Lt-vt-1Ls" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-770" y="-319"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

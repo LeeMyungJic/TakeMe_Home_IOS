@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class JoinViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource  {
     
-    let person = ["Manager", "Rider", "User"]
+    let person = ["점주", "라이더", "사용자"]
     
     let pickerView = UIPickerView()
     
@@ -34,13 +34,13 @@ class JoinViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         
         nameStr.attributedPlaceholder = NSAttributedString(string: "이름을 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         
-        emailStr.attributedPlaceholder = NSAttributedString(string: "이메일을 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        emailStr.attributedPlaceholder = NSAttributedString(string: "example@naver.com", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         
         passStr.attributedPlaceholder = NSAttributedString(string: "비밀번호를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         
         passChkStr.attributedPlaceholder = NSAttributedString(string: "비밀번호를 한 번 더 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-        phoneStr.attributedPlaceholder = NSAttributedString(string: "비밀번호를 한 번 더 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-        addressStr.attributedPlaceholder = NSAttributedString(string: "주소를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        phoneStr.attributedPlaceholder = NSAttributedString(string: "휴대폰 번호를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        addressStr.attributedPlaceholder = NSAttributedString(string: "주소 검색(ex : 인주대로 857)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         personStr.attributedPlaceholder = NSAttributedString(string: "가입자 유형을 선택하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
     }
     @IBAction func search(_ sender: Any) {
@@ -72,10 +72,9 @@ class JoinViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
                     if let detailsPlace = JSON(value)["documents"].array{
                         for item in detailsPlace{
                             let placeName = item["address_name"].string ?? ""
-                            let longitudeX = item["x"].string ?? ""
-                            let latitudeY = item["y"].string ?? ""
+                            self.longitude = Double(item["x"].string ?? "0.0")
+                            self.latitude = Double(item["y"].string ?? "0.0")
                             self.addressStr.text = placeName
-                            //self.longitude = longitudeX
                         }
                     }
                 case .failure(let error):
@@ -132,66 +131,27 @@ class JoinViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     @IBAction func join(_ sender: Any) {
         
-        //        let urlPath = "http://localhost:8080/api/v1/customers"
-        //        let url = NSURL(string: urlPath)
-        //
-        //        let session = URLSession.shared
-        //
-        //        let task = session.dataTask(with: url! as URL) { (data, response, error) in
-        //            if error == nil {
-        //                let urlContent = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-        //                print(urlContent ?? "No contents")
-        //            }
-        //            else {
-        //                print("error occurred")
-        //            }
-        //        }
-        //        task.resume()
-        
-        
-        
-        
-        
+        var param: [String:Any] = ["":""]
+        var url = URL(string: NetWorkController.baseUrl + "http://localhost:8080/api/v1/customers");
         //"address": "addressStr.text","location" : 0,
-        
-        let param = ["email": "\(emailStr.text!)", "name": "\(nameStr.text!)", "password": "\(passStr.text!)", "phoneNumber": "\(phoneStr.text!)"]
-        let paramData = try! JSONSerialization.data(withJSONObject: param, options: [])
-        
-        let url = URL(string: "http://e38122c2f521.ngrok.io/api/v1/riders");
-        
-        var request = URLRequest(url: url!)
-        request.httpMethod = "POST"
-        request.httpBody = paramData
-        
-        // 4. HTTP 메시지에 포함될 헤더 설정
-        request.addValue("application/json;charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.setValue(String(paramData.count), forHTTPHeaderField: "Content-Length")
-        
-        // 5. URLSession 객체를 통해 전송 및 응답값 처리 로직 작성
-        
-        let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
-            
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
-            if let e = error {
-                NSLog("An error has occured: \(e.localizedDescription)")
-                return
-            }
-            // 응답 처리 로직
-           
+        switch personStr.text {
+        case "사용자":
+            print("User 선택")
+            url = URL(string: NetWorkController.baseUrl + "/api/v1/riders")
+            param = ["address": "\(addressStr.text!)", "email": "\(emailStr.text!)", "location": ["x":self.latitude, "y":self.longitude], "name": "\(nameStr.text!)", "password": "\(passStr.text!)", "phoneNumber": "\(phoneStr.text!)"]
+        case "라이더":
+            print("Rider 선택")
+            url = URL(string: NetWorkController.baseUrl + "/api/v1/riders")
+            param = ["email": "\(emailStr.text!)", "name": "\(nameStr.text!)", "password": "\(passStr.text!)", "phoneNumber": "\(phoneStr.text!)"]
+        case "점주":
+            print("Manager 선택")
+            url = URL(string: NetWorkController.baseUrl + "/api/v1/owners")
+            param = ["address": "\(addressStr.text!)", "email": "\(emailStr.text!)", "location": ["x":self.latitude, "y":self.longitude], "name": "\(nameStr.text!)", "password": "\(passStr.text!)", "phoneNumber": "\(phoneStr.text!)"]
+        default:
+            print("")
         }
-        // POST 전송
-        task.resume()
+        
+        Post(param: param, url: url!)
         
         
     }
@@ -210,30 +170,6 @@ class JoinViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
      // Pass the selected object to the new view controller.
      }
      */
-    
-}
-struct UserData: Decodable {
-    let userId: Int
-    let id: Int
-    let title: String
-    let body: String
-    
-}
-
-struct PostUserData: Codable {
-    let userId: String
-    let id: Int?
-    let title: String
-    let body: String
-    init(id: Int? = nil) {
-        self.userId = "1"
-        self.title = "Title"
-        self.body = "Body"
-        self.id = id }
-    func toUserData() -> UserData {
-        return UserData(userId: Int(userId) ?? 0, id: id ?? 0, title: title, body: body)
-        
-    }
     
 }
 

@@ -58,6 +58,13 @@
 		DAC1D6BA2519EB2200B8328D /* daum_th_line.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC1D69E2519EB2200B8328D /* daum_th_line.png */; };
 		DAC1D6BB2519EB2200B8328D /* map_pin_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC1D69F2519EB2200B8328D /* map_pin_shadow.png */; };
 		DAC1D6BC2519EB2200B8328D /* DaumMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC1D6A02519EB2200B8328D /* DaumMap.framework */; };
+		DAC728502553E59600602FBD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7284F2553E59600602FBD /* Post.swift */; };
+		DAC728642553F1CD00602FBD /* NVActivityIndicatorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC728632553F1CD00602FBD /* NVActivityIndicatorView.storyboard */; };
+		DAC728682553F2B600602FBD /* NVActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC728672553F2B600602FBD /* NVActivityIndicatorViewController.swift */; };
+		DAC7286F2553F4D000602FBD /* CustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC7286E2553F4D000602FBD /* CustomerStoryboard.storyboard */; };
+		DAC728752553FC4D00602FBD /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC728742553FC4D00602FBD /* AddRestaurantViewController.swift */; };
+		DAC72879255400C900602FBD /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC72878255400C900602FBD /* NetworkController.swift */; };
+		DAC7287F2554075800602FBD /* Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7287E2554075800602FBD /* Get.swift */; };
 		DAF0165D25344CDB000E7CCA /* OderView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF0165C25344CDB000E7CCA /* OderView.storyboard */; };
 		DAF0166125344FEB000E7CCA /* OderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0166025344FEB000E7CCA /* OderViewController.swift */; };
 		DAF2ACBA251B39BE00FD11C1 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACB9251B39BE00FD11C1 /* Order.swift */; };
@@ -289,6 +296,13 @@
 		DAC1D69E2519EB2200B8328D /* daum_th_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daum_th_line.png; sourceTree = "<group>"; };
 		DAC1D69F2519EB2200B8328D /* map_pin_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_shadow.png; sourceTree = "<group>"; };
 		DAC1D6A02519EB2200B8328D /* DaumMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DaumMap.framework; sourceTree = "<group>"; };
+		DAC7284F2553E59600602FBD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		DAC728632553F1CD00602FBD /* NVActivityIndicatorView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NVActivityIndicatorView.storyboard; sourceTree = "<group>"; };
+		DAC728672553F2B600602FBD /* NVActivityIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorViewController.swift; sourceTree = "<group>"; };
+		DAC7286E2553F4D000602FBD /* CustomerStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomerStoryboard.storyboard; sourceTree = "<group>"; };
+		DAC728742553FC4D00602FBD /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantViewController.swift; sourceTree = "<group>"; };
+		DAC72878255400C900602FBD /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		DAC7287E2554075800602FBD /* Get.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Get.swift; sourceTree = "<group>"; };
 		DAF0165C25344CDB000E7CCA /* OderView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OderView.storyboard; sourceTree = "<group>"; };
 		DAF0166025344FEB000E7CCA /* OderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OderViewController.swift; sourceTree = "<group>"; };
 		DAF2ACB9251B39BE00FD11C1 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -420,19 +434,22 @@
 		DAC1D4FB2519DDC600B8328D /* TakeMeHome */ = {
 			isa = PBXGroup;
 			children = (
+				DAC7286D2553F4B800602FBD /* Customer */,
+				DAC7284E2553E57700602FBD /* Network */,
 				DAF2ACB9251B39BE00FD11C1 /* Order.swift */,
 				DAFA289B254C2888001B7781 /* Login */,
 				DAFA289A254C2874001B7781 /* Rider */,
-				DAFA2899254C2868001B7781 /* Manager */,
+				DAFA2899254C2868001B7781 /* Owner */,
 				DAC1D4FC2519DDC600B8328D /* AppDelegate.swift */,
 				DAC1D4FE2519DDC600B8328D /* SceneDelegate.swift */,
-				DAC1D5002519DDC600B8328D /* ViewController.swift */,
 				DAC1D5052519DDC700B8328D /* Assets.xcassets */,
 				DAC1D5072519DDC700B8328D /* LaunchScreen.storyboard */,
 				DAC1D50A2519DDC700B8328D /* Info.plist */,
 				DAF0165C25344CDB000E7CCA /* OderView.storyboard */,
 				DAF0166025344FEB000E7CCA /* OderViewController.swift */,
 				DA4BC37225481ADC00DCEF1F /* Request.swift */,
+				DAC728632553F1CD00602FBD /* NVActivityIndicatorView.storyboard */,
+				DAC728672553F2B600602FBD /* NVActivityIndicatorViewController.swift */,
 			);
 			path = TakeMeHome;
 			sourceTree = "<group>";
@@ -694,6 +711,24 @@
 			path = Headers;
 			sourceTree = "<group>";
 		};
+		DAC7284E2553E57700602FBD /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DAC7284F2553E59600602FBD /* Post.swift */,
+				DAC72878255400C900602FBD /* NetworkController.swift */,
+				DAC7287E2554075800602FBD /* Get.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		DAC7286D2553F4B800602FBD /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				DAC7286E2553F4D000602FBD /* CustomerStoryboard.storyboard */,
+			);
+			path = Customer;
+			sourceTree = "<group>";
+		};
 		DAFA283125495F68001B7781 /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,7 +781,7 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
-		DAFA2899254C2868001B7781 /* Manager */ = {
+		DAFA2899254C2868001B7781 /* Owner */ = {
 			isa = PBXGroup;
 			children = (
 				DAFA2879254C1740001B7781 /* ManagerViewController.swift */,
@@ -755,8 +790,9 @@
 				DAFA289E254C2A76001B7781 /* ManagerCallViewController.swift */,
 				DAFA28A2254C2A89001B7781 /* AddCallViewController.swift */,
 				DAFA28A6254C2D78001B7781 /* ManagerCallCell.swift */,
+				DAC728742553FC4D00602FBD /* AddRestaurantViewController.swift */,
 			);
-			path = Manager;
+			path = Owner;
 			sourceTree = "<group>";
 		};
 		DAFA289A254C2874001B7781 /* Rider */ = {
@@ -776,6 +812,7 @@
 		DAFA289B254C2888001B7781 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				DAC1D5002519DDC600B8328D /* ViewController.swift */,
 				DAFA288B254C1E4F001B7781 /* Main.storyboard */,
 				DAFA286B25496A8F001B7781 /* JoinViewController.swift */,
 			);
@@ -897,6 +934,7 @@
 				DAC1D6B62519EB2200B8328D /* map_pin.png in Resources */,
 				DAC1D6AF2519EB2200B8328D /* map_pin_red.png in Resources */,
 				DAC1D6A12519EB2200B8328D /* map_pinup_custom@3x.png in Resources */,
+				DAC7286F2553F4D000602FBD /* CustomerStoryboard.storyboard in Resources */,
 				DAC1D6A92519EB2200B8328D /* copyright.png in Resources */,
 				DAC1D6A82519EB2200B8328D /* map_pin_shadow@3x.png in Resources */,
 				DAC1D5092519DDC700B8328D /* LaunchScreen.storyboard in Resources */,
@@ -923,6 +961,7 @@
 				DAC1D5062519DDC700B8328D /* Assets.xcassets in Resources */,
 				DAC1D6BA2519EB2200B8328D /* daum_th_line.png in Resources */,
 				DAC1D6A42519EB2200B8328D /* map_pinup.png in Resources */,
+				DAC728642553F1CD00602FBD /* NVActivityIndicatorView.storyboard in Resources */,
 				DAFA288C254C1E4F001B7781 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1051,15 +1090,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAC72879255400C900602FBD /* NetworkController.swift in Sources */,
 				DA4BC37325481ADC00DCEF1F /* Request.swift in Sources */,
 				DAFA2876254C16D3001B7781 /* StoreTableViewCell.swift in Sources */,
 				DAC1D5012519DDC600B8328D /* ViewController.swift in Sources */,
 				DAC1D53A2519E14600B8328D /* MapViewController.swift in Sources */,
 				DAFA287A254C1740001B7781 /* ManagerViewController.swift in Sources */,
+				DAC728752553FC4D00602FBD /* AddRestaurantViewController.swift in Sources */,
 				DAF2ACD72523118600FD11C1 /* AcceptanceCell.swift in Sources */,
 				DAC1D53F2519E15100B8328D /* SettingsViewController.swift in Sources */,
+				DAC7287F2554075800602FBD /* Get.swift in Sources */,
 				DAFA28A3254C2A89001B7781 /* AddCallViewController.swift in Sources */,
 				DAF0166125344FEB000E7CCA /* OderViewController.swift in Sources */,
+				DAC728682553F2B600602FBD /* NVActivityIndicatorViewController.swift in Sources */,
 				DAFA289F254C2A76001B7781 /* ManagerCallViewController.swift in Sources */,
 				DAC1D4FD2519DDC600B8328D /* AppDelegate.swift in Sources */,
 				DAC1D5352519E13900B8328D /* AcceptanceViewController.swift in Sources */,
@@ -1067,6 +1110,7 @@
 				DAC1D5302519E12500B8328D /* CallViewController.swift in Sources */,
 				DAC1D4FF2519DDC600B8328D /* SceneDelegate.swift in Sources */,
 				DAFA286C25496A8F001B7781 /* JoinViewController.swift in Sources */,
+				DAC728502553E59600602FBD /* Post.swift in Sources */,
 				DAF2ACBA251B39BE00FD11C1 /* Order.swift in Sources */,
 				DAFA28A7254C2D78001B7781 /* ManagerCallCell.swift in Sources */,
 			);
