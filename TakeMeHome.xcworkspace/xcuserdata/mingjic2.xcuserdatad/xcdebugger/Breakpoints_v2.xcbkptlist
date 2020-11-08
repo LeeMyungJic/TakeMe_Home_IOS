@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "DCD1897E-40B8-48F6-92A4-719BF091D27D"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1CD42B29-3877-4E27-97F5-69C48A848322"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TakeMeHome/Owner/ManagerViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "ManagerViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "1CD42B29-3877-4E27-97F5-69C48A848322 - 71a7a848bd33bc59"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TakeMeHome.ManagerViewController.stores.getter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "TakeMeHome"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mingjic2/Desktop/xcode/TakeMeHome/TakeMeHome/Owner/ManagerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "122">
+               </Location>
+               <Location
+                  uuid = "1CD42B29-3877-4E27-97F5-69C48A848322 - d9ddf2675e25f065"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TakeMeHome.ManagerViewController.stores.setter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "TakeMeHome"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mingjic2/Desktop/xcode/TakeMeHome/TakeMeHome/Owner/ManagerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  uuid = "1CD42B29-3877-4E27-97F5-69C48A848322 - ce39c460901d22"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TakeMeHome.ManagerViewController.stores.modify : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "TakeMeHome"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mingjic2/Desktop/xcode/TakeMeHome/TakeMeHome/Owner/ManagerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "1CD42B29-3877-4E27-97F5-69C48A848322 - 9975f8546e1488f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TakeMeHome.ManagerViewController.stores.modify : Swift.Array&lt;Swift.String&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "TakeMeHome"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mingjic2/Desktop/xcode/TakeMeHome/TakeMeHome/Owner/ManagerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "1CD42B29-3877-4E27-97F5-69C48A848322 - 16264deac4928dfa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TakeMeHome.ManagerViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; TakeMeHome.ManagerViewController"
+                  moduleName = "TakeMeHome"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mingjic2/Desktop/xcode/TakeMeHome/TakeMeHome/Owner/ManagerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "191">
+               </Location>
+               <Location
+                  uuid = "1CD42B29-3877-4E27-97F5-69C48A848322 - 8a57e58cb45320cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TakeMeHome.ManagerViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;TakeMeHome.ManagerViewController&gt;"
+                  moduleName = "TakeMeHome"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mingjic2/Desktop/xcode/TakeMeHome/TakeMeHome/Owner/ManagerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "126">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -11,6 +11,7 @@
 		9E11986F5EFCF7472A5774F9 /* Pods_TakeMeHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7685134D0F9ACDEA25456B3 /* Pods_TakeMeHome.framework */; };
 		C2E76C0A37DAE001012AB568 /* Pods_TakeMeHomeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6D398CE8D000A9E64A4BDA /* Pods_TakeMeHomeTests.framework */; };
 		DA4BC37325481ADC00DCEF1F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BC37225481ADC00DCEF1F /* Request.swift */; };
+		DAB9FEA72557D96600C12743 /* UpdateStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FEA62557D96600C12743 /* UpdateStoreViewController.swift */; };
 		DAC1D4FD2519DDC600B8328D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D4FC2519DDC600B8328D /* AppDelegate.swift */; };
 		DAC1D4FF2519DDC600B8328D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D4FE2519DDC600B8328D /* SceneDelegate.swift */; };
 		DAC1D5012519DDC600B8328D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D5002519DDC600B8328D /* ViewController.swift */; };
@@ -65,6 +66,8 @@
 		DAC728752553FC4D00602FBD /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC728742553FC4D00602FBD /* AddRestaurantViewController.swift */; };
 		DAC72879255400C900602FBD /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC72878255400C900602FBD /* NetworkController.swift */; };
 		DAC7287F2554075800602FBD /* Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7287E2554075800602FBD /* Get.swift */; };
+		DAC728832557C94900602FBD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC728822557C94900602FBD /* MenuViewController.swift */; };
+		DAC728872557C95E00602FBD /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC728862557C95E00602FBD /* MenuCell.swift */; };
 		DAF0165D25344CDB000E7CCA /* OderView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF0165C25344CDB000E7CCA /* OderView.storyboard */; };
 		DAF0166125344FEB000E7CCA /* OderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0166025344FEB000E7CCA /* OderViewController.swift */; };
 		DAF2ACBA251B39BE00FD11C1 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACB9251B39BE00FD11C1 /* Order.swift */; };
@@ -119,6 +122,7 @@
 		D7685134D0F9ACDEA25456B3 /* Pods_TakeMeHome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TakeMeHome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D78B49D4C2F2EB5BD36C5B55 /* Pods-TakeMeHome-TakeMeHomeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome-TakeMeHomeUITests.release.xcconfig"; path = "Target Support Files/Pods-TakeMeHome-TakeMeHomeUITests/Pods-TakeMeHome-TakeMeHomeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DA4BC37225481ADC00DCEF1F /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		DAB9FEA62557D96600C12743 /* UpdateStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStoreViewController.swift; sourceTree = "<group>"; };
 		DAC1D4F92519DDC600B8328D /* TakeMeHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC1D4FC2519DDC600B8328D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAC1D4FE2519DDC600B8328D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -303,6 +307,8 @@
 		DAC728742553FC4D00602FBD /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantViewController.swift; sourceTree = "<group>"; };
 		DAC72878255400C900602FBD /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		DAC7287E2554075800602FBD /* Get.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Get.swift; sourceTree = "<group>"; };
+		DAC728822557C94900602FBD /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		DAC728862557C95E00602FBD /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		DAF0165C25344CDB000E7CCA /* OderView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OderView.storyboard; sourceTree = "<group>"; };
 		DAF0166025344FEB000E7CCA /* OderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OderViewController.swift; sourceTree = "<group>"; };
 		DAF2ACB9251B39BE00FD11C1 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -791,6 +797,9 @@
 				DAFA28A2254C2A89001B7781 /* AddCallViewController.swift */,
 				DAFA28A6254C2D78001B7781 /* ManagerCallCell.swift */,
 				DAC728742553FC4D00602FBD /* AddRestaurantViewController.swift */,
+				DAC728822557C94900602FBD /* MenuViewController.swift */,
+				DAC728862557C95E00602FBD /* MenuCell.swift */,
+				DAB9FEA62557D96600C12743 /* UpdateStoreViewController.swift */,
 			);
 			path = Owner;
 			sourceTree = "<group>";
@@ -1097,6 +1106,7 @@
 				DAC1D53A2519E14600B8328D /* MapViewController.swift in Sources */,
 				DAFA287A254C1740001B7781 /* ManagerViewController.swift in Sources */,
 				DAC728752553FC4D00602FBD /* AddRestaurantViewController.swift in Sources */,
+				DAC728832557C94900602FBD /* MenuViewController.swift in Sources */,
 				DAF2ACD72523118600FD11C1 /* AcceptanceCell.swift in Sources */,
 				DAC1D53F2519E15100B8328D /* SettingsViewController.swift in Sources */,
 				DAC7287F2554075800602FBD /* Get.swift in Sources */,
@@ -1110,9 +1120,11 @@
 				DAC1D5302519E12500B8328D /* CallViewController.swift in Sources */,
 				DAC1D4FF2519DDC600B8328D /* SceneDelegate.swift in Sources */,
 				DAFA286C25496A8F001B7781 /* JoinViewController.swift in Sources */,
+				DAC728872557C95E00602FBD /* MenuCell.swift in Sources */,
 				DAC728502553E59600602FBD /* Post.swift in Sources */,
 				DAF2ACBA251B39BE00FD11C1 /* Order.swift in Sources */,
 				DAFA28A7254C2D78001B7781 /* ManagerCallCell.swift in Sources */,
+				DAB9FEA72557D96600C12743 /* UpdateStoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

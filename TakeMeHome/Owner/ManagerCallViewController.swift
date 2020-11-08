@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var TableViewMain: UITableView!
     
+    static var restaurantId : Int = 0;
     var callList = [Order]()
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         callList = [Order]()

@@ -9,9 +9,12 @@ import Foundation
 
 let session: URLSession = URLSession.shared
 
-func Get(url: URL) {
-    //let paramData = try! JSONSerialization.data(withJSONObject: param, options: [])
+func Get(param: [String:Any],url: URL) {
+    let paramData = try! JSONSerialization.data(withJSONObject: param, options: [])
     var request = URLRequest(url: url)
+    request.httpBody = paramData
+    
+    // 4. HTTP 메시지에 포함될 헤더 설정
     request.httpMethod = "GET"
 
     // 4. HTTP 메시지에 포함될 헤더 설정

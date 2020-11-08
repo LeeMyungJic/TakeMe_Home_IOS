@@ -47,12 +47,6 @@ class AddRestaurantViewController: UIViewController {
                 case .success(let value):
                     print("통신 성공 !!")
                     
-                    print(response.result)
-                    print("total_count : \(JSON(value)["meta"]["total_count"])")
-                    print("is_end : \(JSON(value)["meta"]["is_end"])")
-                    print("documents : \(JSON(value)["documents"])")
-                    
-                    
                     if let detailsPlace = JSON(value)["documents"].array{
                         for item in detailsPlace{
                             let placeName = item["address_name"].string ?? ""
