@@ -12,6 +12,12 @@
 		C2E76C0A37DAE001012AB568 /* Pods_TakeMeHomeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6D398CE8D000A9E64A4BDA /* Pods_TakeMeHomeTests.framework */; };
 		DA4BC37325481ADC00DCEF1F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BC37225481ADC00DCEF1F /* Request.swift */; };
 		DAB9FEA72557D96600C12743 /* UpdateStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FEA62557D96600C12743 /* UpdateStoreViewController.swift */; };
+		DAB9FEF725592F7300C12743 /* OrderReceptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FEF625592F7300C12743 /* OrderReceptionViewController.swift */; };
+		DAB9FEFB25592FA700C12743 /* OrderReCeptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FEFA25592FA700C12743 /* OrderReCeptionCell.swift */; };
+		DAB9FEFF255934DA00C12743 /* Put.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FEFE255934DA00C12743 /* Put.swift */; };
+		DAB9FF03255938AE00C12743 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FF02255938AE00C12743 /* HttpMethod.swift */; };
+		DAB9FF0725593A2800C12743 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FF0625593A2800C12743 /* API.swift */; };
+		DAB9FF0D25593B9900C12743 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FF0C25593B9900C12743 /* Config.swift */; };
 		DAC1D4FD2519DDC600B8328D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D4FC2519DDC600B8328D /* AppDelegate.swift */; };
 		DAC1D4FF2519DDC600B8328D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D4FE2519DDC600B8328D /* SceneDelegate.swift */; };
 		DAC1D5012519DDC600B8328D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D5002519DDC600B8328D /* ViewController.swift */; };
@@ -123,6 +129,12 @@
 		D78B49D4C2F2EB5BD36C5B55 /* Pods-TakeMeHome-TakeMeHomeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome-TakeMeHomeUITests.release.xcconfig"; path = "Target Support Files/Pods-TakeMeHome-TakeMeHomeUITests/Pods-TakeMeHome-TakeMeHomeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DA4BC37225481ADC00DCEF1F /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		DAB9FEA62557D96600C12743 /* UpdateStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStoreViewController.swift; sourceTree = "<group>"; };
+		DAB9FEF625592F7300C12743 /* OrderReceptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReceptionViewController.swift; sourceTree = "<group>"; };
+		DAB9FEFA25592FA700C12743 /* OrderReCeptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReCeptionCell.swift; sourceTree = "<group>"; };
+		DAB9FEFE255934DA00C12743 /* Put.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Put.swift; sourceTree = "<group>"; };
+		DAB9FF02255938AE00C12743 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HttpMethod.swift; path = ../Customer/HttpMethod.swift; sourceTree = "<group>"; };
+		DAB9FF0625593A2800C12743 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		DAB9FF0C25593B9900C12743 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		DAC1D4F92519DDC600B8328D /* TakeMeHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC1D4FC2519DDC600B8328D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAC1D4FE2519DDC600B8328D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -720,9 +732,13 @@
 		DAC7284E2553E57700602FBD /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				DAB9FF02255938AE00C12743 /* HttpMethod.swift */,
 				DAC7284F2553E59600602FBD /* Post.swift */,
 				DAC72878255400C900602FBD /* NetworkController.swift */,
 				DAC7287E2554075800602FBD /* Get.swift */,
+				DAB9FEFE255934DA00C12743 /* Put.swift */,
+				DAB9FF0625593A2800C12743 /* API.swift */,
+				DAB9FF0C25593B9900C12743 /* Config.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -800,6 +816,8 @@
 				DAC728822557C94900602FBD /* MenuViewController.swift */,
 				DAC728862557C95E00602FBD /* MenuCell.swift */,
 				DAB9FEA62557D96600C12743 /* UpdateStoreViewController.swift */,
+				DAB9FEF625592F7300C12743 /* OrderReceptionViewController.swift */,
+				DAB9FEFA25592FA700C12743 /* OrderReCeptionCell.swift */,
 			);
 			path = Owner;
 			sourceTree = "<group>";
@@ -1107,10 +1125,12 @@
 				DAFA287A254C1740001B7781 /* ManagerViewController.swift in Sources */,
 				DAC728752553FC4D00602FBD /* AddRestaurantViewController.swift in Sources */,
 				DAC728832557C94900602FBD /* MenuViewController.swift in Sources */,
+				DAB9FEFF255934DA00C12743 /* Put.swift in Sources */,
 				DAF2ACD72523118600FD11C1 /* AcceptanceCell.swift in Sources */,
 				DAC1D53F2519E15100B8328D /* SettingsViewController.swift in Sources */,
 				DAC7287F2554075800602FBD /* Get.swift in Sources */,
 				DAFA28A3254C2A89001B7781 /* AddCallViewController.swift in Sources */,
+				DAB9FEFB25592FA700C12743 /* OrderReCeptionCell.swift in Sources */,
 				DAF0166125344FEB000E7CCA /* OderViewController.swift in Sources */,
 				DAC728682553F2B600602FBD /* NVActivityIndicatorViewController.swift in Sources */,
 				DAFA289F254C2A76001B7781 /* ManagerCallViewController.swift in Sources */,
@@ -1118,11 +1138,15 @@
 				DAC1D5352519E13900B8328D /* AcceptanceViewController.swift in Sources */,
 				DAC1D5442519E23B00B8328D /* CallCell.swift in Sources */,
 				DAC1D5302519E12500B8328D /* CallViewController.swift in Sources */,
+				DAB9FEF725592F7300C12743 /* OrderReceptionViewController.swift in Sources */,
+				DAB9FF03255938AE00C12743 /* HttpMethod.swift in Sources */,
+				DAB9FF0725593A2800C12743 /* API.swift in Sources */,
 				DAC1D4FF2519DDC600B8328D /* SceneDelegate.swift in Sources */,
 				DAFA286C25496A8F001B7781 /* JoinViewController.swift in Sources */,
 				DAC728872557C95E00602FBD /* MenuCell.swift in Sources */,
 				DAC728502553E59600602FBD /* Post.swift in Sources */,
 				DAF2ACBA251B39BE00FD11C1 /* Order.swift in Sources */,
+				DAB9FF0D25593B9900C12743 /* Config.swift in Sources */,
 				DAFA28A7254C2D78001B7781 /* ManagerCallCell.swift in Sources */,
 				DAB9FEA72557D96600C12743 /* UpdateStoreViewController.swift in Sources */,
 			);

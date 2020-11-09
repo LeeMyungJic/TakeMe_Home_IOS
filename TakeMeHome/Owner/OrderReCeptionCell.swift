@@ -1,25 +1,21 @@
 //
-//  ManagerCallCell.swift
+//  OrderReCeptionCell.swift
 //  TakeMeHome
 //
-//  Created by 이명직 on 2020/10/30.
+//  Created by 이명직 on 2020/11/09.
 //
 
 import UIKit
 
-class ManagerCallCell: UITableViewCell {
+class OrderReCeptionCell: UITableViewCell {
 
-    
     @IBOutlet var stack: UIStackView!
-    
     @IBOutlet var address: UILabel!
     @IBOutlet var name: UILabel!
     @IBOutlet var price: UILabel!
     @IBOutlet var number: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         // Initialization code
     }
 

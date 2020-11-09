@@ -1,22 +1,17 @@
 //
-//  ManagerCallViewController.swift
+//  OrderReceptionViewController.swift
 //  TakeMeHome
 //
-//  Created by 이명직 on 2020/10/30.
+//  Created by 이명직 on 2020/11/09.
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
-class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet var TableViewMain: UITableView!
+class OrderReceptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    static var restaurantId : Int = 0;
-    var callList = [order]()
+    var orderList = [order]()
     
-    func getCall() {
-        callList = [order]()
+    func getOrder() {
         let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/orders/" + "\(ManagerCallViewController.restaurantId)")!) { (data, response, error) in
             
             if let dataJson = data {
@@ -83,7 +78,7 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
                                             }
                                         }
                                         
-                                        self.callList.append(order(productName: orderProductName, address: orderAddress, price: orderPrice, customerNumber: orderNumber))
+                                        self.orderList.append(order(productName: orderProductName, address: orderAddress, price: orderPrice, customerNumber: orderNumber))
                                         print("")
                                     }
                                     
@@ -106,7 +101,7 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
             // UI부분이니까 백그라운드 말고 메인에서 실행되도록 !
             DispatchQueue.main.async {
                 //reloadData로 데이터를 가져왔으니 쓰라고 통보 ㅎㅎ
-                self.TableViewMain.reloadData()
+                self.TableMain.reloadData()
             }
             
         }
@@ -118,38 +113,17 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return callList.count
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard.init(name: "OderView", bundle: nil)
-        
-        let popUp = storyboard.instantiateViewController(identifier: "OderViewController")
-        popUp.modalPresentationStyle = .overCurrentContext
-        popUp.modalTransitionStyle = .crossDissolve
-        
-        let temp = popUp as? OderViewController
-        temp?.addressStr = "주소 값"
-        temp?.arrivalTimeStr = "도착시간 값"
-        
-        temp?.requirementStr = callList[indexPath.row].productName!
-        temp?.addressStr = callList[indexPath.row].address!
-        temp?.priceStr = "\(callList[indexPath.row].price!) 원"
-        
-        //temp?.methodOfPaymentStr = callList[indexPath.row].methodOfPayment!
-        //temp?.requirementStr = callList[indexPath.row].requirement!
-        
-        self.present(popUp, animated: true, completion: nil)
+        return orderList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = TableViewMain.dequeueReusableCell(withIdentifier: "ManagerCallCell", for: indexPath) as! ManagerCallCell
+        var cell = TableMain.dequeueReusableCell(withIdentifier: "OrderReCeptionCell", for: indexPath) as! OrderReCeptionCell
         
         
-        cell.address.text = "주소 : " + callList[indexPath.row].address!
-        cell.name.text = "메뉴 : " + callList[indexPath.row].productName!
-        cell.price.text = "가격 : \(callList[indexPath.row].price!) 원"
-        cell.number.text = "고객 번호 : \(callList[indexPath.row].customerNumber!)"
+        cell.address.text = "주소 : " + orderList[indexPath.row].address!
+        cell.name.text = "메뉴 : " + orderList[indexPath.row].productName!
+        cell.price.text = "가격 : \(orderList[indexPath.row].price!) 원"
+        cell.number.text = "고객 번호 : \(orderList[indexPath.row].customerNumber!)"
         
         //셀 디자인
         cell.stack.layer.borderColor = #colorLiteral(red: 0.4344803691, green: 0.5318876505, blue: 1, alpha: 1)
@@ -158,27 +132,47 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
         // 모서리 둥글게
         cell.stack.layer.cornerRadius = 5
         
-        // 빈 셀 출력 x
-        //        else {
-        //            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: nil) as! ManagerCallCell
-        //            cell.stack.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        //        }
-        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let msg = UIAlertController(title: Order.Orders[indexPath.row].storeName, message: "주문을 접수하시겠습니까?", preferredStyle: .alert)
+        
+        
+        let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in
+            self.YesClick(didSelectRowAt: indexPath)
+        })
+        
+        //Alert에 부여할 No이벤트 선언
+        let NO = UIAlertAction(title: "취소", style: .cancel) { (action) -> Void in
+            self.NoClick()
+        }
+        
+        //Alert에 이벤트 연결
+        msg.addAction(YES)
+        msg.addAction(NO)
+        
+        //Alert 호출
+        self.present(msg, animated: true, completion: nil)
+    }
     
-    static var getStoreName = "NULL"
-    @IBOutlet var StoreName: UILabel!
+    func YesClick(didSelectRowAt indexPath: IndexPath)
+    {
+        print("YES Click")
+       
+    }
+    
+    func NoClick()
+    {
+        
+    }
+    
+    
+    @IBOutlet var TableMain: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TableViewMain.delegate = self
-        TableViewMain.dataSource = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        getCall()
+        // Do any additional setup after loading the view.
     }
     
     
@@ -193,55 +187,4 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
      */
     
 }
-struct order {
-    var productName: String?
-    var address: String?
-    var price: Int?
-    var customerNumber: String?
-}
 
-//struct order {
-//    var orderFindResponses: [String:Any]?
-//
-//
-//struct orderFindResponses {
-//    var menuNameCounts: [String:Any]?
-//    var orderCustomer: [String:Any]?
-//    var orderDelivery: [String:Any]?
-//    var orderRestaurant: [String:Any]?
-//    var orderRider: [String:Any]?
-//    "orderFindResponses": [
-//      {
-//        "menuNameCounts": {
-//          "menuNameCounts": [
-//            {
-//              "count": 0,
-//              "name": "string"
-//            }
-//          ]
-//        },
-//        "orderCustomer": {
-//          "name": "string",
-//          "phoneNumber": "string"
-//        },
-//        "orderDelivery": {
-//          "address": "string",
-//          "distance": 0,
-//          "price": 0,
-//          "status": "REQUEST"
-//        },
-//        "orderRestaurant": {
-//          "address": "string",
-//          "name": "string",
-//          "number": "string"
-//        },
-//        "orderRider": {
-//          "name": "string",
-//          "phoneNumber": "string"
-//        },
-//        "orderStatus": "REQUEST"
-//      }
-//    ]
-//  }
-//}
-//}

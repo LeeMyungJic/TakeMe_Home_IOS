@@ -23,38 +23,8 @@ class UpdateStoreViewController: UIViewController {
     var latitude: Double?
     
     func getInfo() {
-        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/restaurants/restaurant/\(ManagerCallViewController.restaurantId)")!) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/restaurants/restaurant/1")!) { (data, response, error) in
             
-            if let dataJson = data {
-                
-                do {
-                    // JSONSerialization로 데이터 변환하기
-                    if let json = try JSONSerialization.jsonObject(with: dataJson, options: .allowFragments) as? [String: AnyObject]
-                    {
-                        //print(json["data"] as? [String:Any])
-                        if let temp = json["data"] as? [String:Any] {
-//                            self.rAddress = temp["address"] as? String
-//                            print(self.rAddress)
-//                            self.rName = temp["name"] as? String
-//                            print(self.rName)
-//                            self.rNumber = temp["number"] as? String
-//                            print(self.rNumber)
-                            // prepare로 넘기장
-//                            self.nameStr.attributedPlaceholder = NSAttributedString(string: temp["name"] as? String ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-//                            self.addressStr.attributedPlaceholder = NSAttributedString(string: temp["address"] as? String ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-//                            self.numberStr.attributedPlaceholder = NSAttributedString(string: temp["number"] as? String ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-                            
-                        }
-                    }
-                    
-                }
-                catch {
-                    print("JSON 파상 에러")
-                    
-                }
-                print("JSON 파싱 완료") // 메일 쓰레드에서 화면 갱신 DispatchQueue.main.async { self.tvMovie.reloadData() }
-                
-            }
         }
         task.resume()
     }
@@ -62,7 +32,7 @@ class UpdateStoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getInfo()
+        //getInfo()
 
         // Do any additional setup after loading the view.
     }
@@ -109,5 +79,15 @@ class UpdateStoreViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    @IBAction func Update(_ sender: Any) {
+        let url = URL(string: NetWorkController.baseUrl + "/api/v1/restaurants/restaurant/" + "\(ManagerCallViewController.restaurantId)")
+        let param = ["address": "\(addressStr.text!)", "location": ["x":self.latitude, "y":self.longitude], "name": "\(nameStr.text!)", "number": "\(numberStr.text!)", "ownerId": 1] as [String : Any]
+        Put(param: param, url: url!)
+        
+        guard let moveFirst = tabBarController?.viewControllers?[0] else {
+            return
+        }
+        tabBarController?.selectedViewController = moveFirst
+    }
     
 }

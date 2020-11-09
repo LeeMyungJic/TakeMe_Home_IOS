@@ -44,6 +44,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         dismissPickerView()
     }
     
+    
+    @IBAction func Join(_ sender: Any) {
+        let addStore = self.storyboard?.instantiateViewController(withIdentifier: "JoinViewController")
+        self.present(addStore!, animated: true, completion: nil)
+    }
+    
     @IBAction func Login(_ sender: Any) {
         
         //        var url = URL(string: "")

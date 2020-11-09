@@ -65,13 +65,7 @@ class AddRestaurantViewController: UIViewController {
         let param = ["address": "\(addressStr.text!)", "location": ["x":self.latitude, "y":self.longitude], "name": "\(StoreName.text!)", "number": "\(Number.text!)", "ownerId": 1] as [String : Any]
         Post(param: param, url: url!)
         
-        let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
-        
-        let popUp = storyboard.instantiateViewController(identifier: "ManagerViewController")
-        popUp.modalPresentationStyle = .overCurrentContext
-        popUp.modalTransitionStyle = .crossDissolve
-        
-        self.present(popUp, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
         
     }

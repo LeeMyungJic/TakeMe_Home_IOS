@@ -14,6 +14,7 @@ class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
     
     func getStores() {
+        stores = [getItem]()
         let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/restaurants/1")!) { (data, response, error) in
             
             if let dataJson = data {
@@ -63,9 +64,14 @@ class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDa
         
         task.resume()
     }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stores.count
+    }
+    @IBAction func addStore(_ sender: Any) {
+        let addStore = self.storyboard?.instantiateViewController(withIdentifier: "AddRestaurantViewController")
+        self.present(addStore!, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,13 +85,15 @@ class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDa
         ManagerCallViewController.restaurantId = stores[indexPath.row].id!
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getStores()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getStores()
         TableMain.delegate = self
         TableMain.dataSource = self
-        
         // Do any additional setup after loading the view.
     }
     

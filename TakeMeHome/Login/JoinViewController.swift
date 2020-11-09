@@ -152,7 +152,7 @@ class JoinViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         }
         
         Post(param: param, url: url!)
-        
+        self.dismiss(animated: true, completion: nil)
         
     }
     
