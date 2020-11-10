@@ -18,13 +18,13 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
     func getCall() {
         callList = [order]()
         let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/orders/" + "\(ManagerCallViewController.restaurantId)")!) { (data, response, error) in
-            
+            print("연결!")
             if let dataJson = data {
-                
                 do {
                     // JSONSerialization로 데이터 변환하기
                     if let json = try JSONSerialization.jsonObject(with: dataJson, options: .allowFragments) as? [String: AnyObject]
                     {
+                        print(json)
                         //print(json["data"] as? [String:Any])
                         if let temp = json["data"] as? [String:Any] {
                             if let temp2 = temp["orderFindResponses"] as? NSArray {
@@ -32,7 +32,7 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
                                     var orderAddress : String?
                                     var orderPrice : Int?
                                     var orderNumber : String?
-                                    var orderProductName = ""
+                                    
                                     if let temp = i as? NSDictionary {
                                         
                                         if let orderCustomer = temp["orderCustomer"] as? [String:Any]{
@@ -71,20 +71,24 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
                                             print("menuNameCounts")
                                             if let menuNameCountsT = menuNameCounts["menuNameCounts"] as? [[String:Any]]{
                                                 print("menuNameCountsT")
-                                                for i in 0...menuNameCountsT.count {
-                                                    if (i == menuNameCountsT.count - 1) {
-                                                        orderProductName += menuNameCountsT[0]["name"] as? String ?? ""
+                                                var orderProductName = ""
+                                                
+                                                for i in menuNameCountsT {
+                                                    for item in i{
+                                                        //print(item["name"] as? String ?? "")
+                                                        //print(item.value)
                                                     }
-                                                    else {
-                                                        print("상품명 : " + "\(menuNameCountsT[0]["name"] as? String)")
-                                                        orderProductName += menuNameCountsT[0]["name"] as? String ?? "" + ","
-                                                    }
+                                                    var temp = i["name"] as? String ?? ""
+                                                    var countTemp = i["count"] as? Int
+                                            
+                                                        orderProductName += temp + " x" + "\(countTemp!)\n"
+                                                    
                                                 }
+                                                self.callList.append(order(productName: orderProductName, address: orderAddress, price: orderPrice, customerNumber: orderNumber))
+                                                print("")
                                             }
                                         }
                                         
-                                        self.callList.append(order(productName: orderProductName, address: orderAddress, price: orderPrice, customerNumber: orderNumber))
-                                        print("")
                                     }
                                     
                                 }
@@ -131,7 +135,6 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
         let temp = popUp as? OderViewController
         temp?.addressStr = "주소 값"
         temp?.arrivalTimeStr = "도착시간 값"
-        
         temp?.requirementStr = callList[indexPath.row].productName!
         temp?.addressStr = callList[indexPath.row].address!
         temp?.priceStr = "\(callList[indexPath.row].price!) 원"

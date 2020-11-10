@@ -18,6 +18,12 @@
 		DAB9FF03255938AE00C12743 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FF02255938AE00C12743 /* HttpMethod.swift */; };
 		DAB9FF0725593A2800C12743 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FF0625593A2800C12743 /* API.swift */; };
 		DAB9FF0D25593B9900C12743 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FF0C25593B9900C12743 /* Config.swift */; };
+		DAB9FF11255A746200C12743 /* CustomerOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FF10255A746200C12743 /* CustomerOrderViewController.swift */; };
+		DAB9FF15255A747700C12743 /* CustomerOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FF14255A747700C12743 /* CustomerOrderCell.swift */; };
+		DAB9FF19255A758500C12743 /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FF18255A758500C12743 /* StoreDetailViewController.swift */; };
+		DAB9FF1D255A75A100C12743 /* StoreDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FF1C255A75A100C12743 /* StoreDetailCell.swift */; };
+		DAB9FF23255A872C00C12743 /* LastOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FF22255A872C00C12743 /* LastOrderViewController.swift */; };
+		DAB9FF29255AF33400C12743 /* Calculate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAB9FF28255AF33400C12743 /* Calculate.storyboard */; };
 		DAC1D4FD2519DDC600B8328D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D4FC2519DDC600B8328D /* AppDelegate.swift */; };
 		DAC1D4FF2519DDC600B8328D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D4FE2519DDC600B8328D /* SceneDelegate.swift */; };
 		DAC1D5012519DDC600B8328D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC1D5002519DDC600B8328D /* ViewController.swift */; };
@@ -68,7 +74,7 @@
 		DAC728502553E59600602FBD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7284F2553E59600602FBD /* Post.swift */; };
 		DAC728642553F1CD00602FBD /* NVActivityIndicatorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC728632553F1CD00602FBD /* NVActivityIndicatorView.storyboard */; };
 		DAC728682553F2B600602FBD /* NVActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC728672553F2B600602FBD /* NVActivityIndicatorViewController.swift */; };
-		DAC7286F2553F4D000602FBD /* CustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC7286E2553F4D000602FBD /* CustomerStoryboard.storyboard */; };
+		DAC7286F2553F4D000602FBD /* Customer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC7286E2553F4D000602FBD /* Customer.storyboard */; };
 		DAC728752553FC4D00602FBD /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC728742553FC4D00602FBD /* AddRestaurantViewController.swift */; };
 		DAC72879255400C900602FBD /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC72878255400C900602FBD /* NetworkController.swift */; };
 		DAC7287F2554075800602FBD /* Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7287E2554075800602FBD /* Get.swift */; };
@@ -80,7 +86,7 @@
 		DAF2ACCB251B471300FD11C1 /* Rider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF2ACC9251B471300FD11C1 /* Rider.storyboard */; };
 		DAF2ACD72523118600FD11C1 /* AcceptanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2ACD62523118600FD11C1 /* AcceptanceCell.swift */; };
 		DAFA286C25496A8F001B7781 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA286B25496A8F001B7781 /* JoinViewController.swift */; };
-		DAFA2872254C1600001B7781 /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFA2871254C1600001B7781 /* Manager.storyboard */; };
+		DAFA2872254C1600001B7781 /* Owner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFA2871254C1600001B7781 /* Owner.storyboard */; };
 		DAFA2876254C16D3001B7781 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA2875254C16D3001B7781 /* StoreTableViewCell.swift */; };
 		DAFA287A254C1740001B7781 /* ManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA2879254C1740001B7781 /* ManagerViewController.swift */; };
 		DAFA288C254C1E4F001B7781 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFA288B254C1E4F001B7781 /* Main.storyboard */; };
@@ -135,6 +141,12 @@
 		DAB9FF02255938AE00C12743 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HttpMethod.swift; path = ../Customer/HttpMethod.swift; sourceTree = "<group>"; };
 		DAB9FF0625593A2800C12743 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		DAB9FF0C25593B9900C12743 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		DAB9FF10255A746200C12743 /* CustomerOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerOrderViewController.swift; sourceTree = "<group>"; };
+		DAB9FF14255A747700C12743 /* CustomerOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerOrderCell.swift; sourceTree = "<group>"; };
+		DAB9FF18255A758500C12743 /* StoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
+		DAB9FF1C255A75A100C12743 /* StoreDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailCell.swift; sourceTree = "<group>"; };
+		DAB9FF22255A872C00C12743 /* LastOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastOrderViewController.swift; sourceTree = "<group>"; };
+		DAB9FF28255AF33400C12743 /* Calculate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calculate.storyboard; sourceTree = "<group>"; };
 		DAC1D4F92519DDC600B8328D /* TakeMeHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC1D4FC2519DDC600B8328D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAC1D4FE2519DDC600B8328D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -315,7 +327,7 @@
 		DAC7284F2553E59600602FBD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		DAC728632553F1CD00602FBD /* NVActivityIndicatorView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NVActivityIndicatorView.storyboard; sourceTree = "<group>"; };
 		DAC728672553F2B600602FBD /* NVActivityIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorViewController.swift; sourceTree = "<group>"; };
-		DAC7286E2553F4D000602FBD /* CustomerStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomerStoryboard.storyboard; sourceTree = "<group>"; };
+		DAC7286E2553F4D000602FBD /* Customer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Customer.storyboard; sourceTree = "<group>"; };
 		DAC728742553FC4D00602FBD /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantViewController.swift; sourceTree = "<group>"; };
 		DAC72878255400C900602FBD /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		DAC7287E2554075800602FBD /* Get.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Get.swift; sourceTree = "<group>"; };
@@ -364,7 +376,7 @@
 		DAFA285625495F68001B7781 /* SessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
 		DAFA285725495F68001B7781 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DAFA286B25496A8F001B7781 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
-		DAFA2871254C1600001B7781 /* Manager.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
+		DAFA2871254C1600001B7781 /* Owner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Owner.storyboard; sourceTree = "<group>"; };
 		DAFA2875254C16D3001B7781 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
 		DAFA2879254C1740001B7781 /* ManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerViewController.swift; sourceTree = "<group>"; };
 		DAFA288B254C1E4F001B7781 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -468,6 +480,7 @@
 				DA4BC37225481ADC00DCEF1F /* Request.swift */,
 				DAC728632553F1CD00602FBD /* NVActivityIndicatorView.storyboard */,
 				DAC728672553F2B600602FBD /* NVActivityIndicatorViewController.swift */,
+				DAB9FF28255AF33400C12743 /* Calculate.storyboard */,
 			);
 			path = TakeMeHome;
 			sourceTree = "<group>";
@@ -746,7 +759,12 @@
 		DAC7286D2553F4B800602FBD /* Customer */ = {
 			isa = PBXGroup;
 			children = (
-				DAC7286E2553F4D000602FBD /* CustomerStoryboard.storyboard */,
+				DAC7286E2553F4D000602FBD /* Customer.storyboard */,
+				DAB9FF10255A746200C12743 /* CustomerOrderViewController.swift */,
+				DAB9FF14255A747700C12743 /* CustomerOrderCell.swift */,
+				DAB9FF18255A758500C12743 /* StoreDetailViewController.swift */,
+				DAB9FF1C255A75A100C12743 /* StoreDetailCell.swift */,
+				DAB9FF22255A872C00C12743 /* LastOrderViewController.swift */,
 			);
 			path = Customer;
 			sourceTree = "<group>";
@@ -808,7 +826,7 @@
 			children = (
 				DAFA2879254C1740001B7781 /* ManagerViewController.swift */,
 				DAFA2875254C16D3001B7781 /* StoreTableViewCell.swift */,
-				DAFA2871254C1600001B7781 /* Manager.storyboard */,
+				DAFA2871254C1600001B7781 /* Owner.storyboard */,
 				DAFA289E254C2A76001B7781 /* ManagerCallViewController.swift */,
 				DAFA28A2254C2A89001B7781 /* AddCallViewController.swift */,
 				DAFA28A6254C2D78001B7781 /* ManagerCallCell.swift */,
@@ -956,12 +974,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAC1D6B72519EB2200B8328D /* map_present.png in Resources */,
+				DAB9FF29255AF33400C12743 /* Calculate.storyboard in Resources */,
 				DAC1D6AD2519EB2200B8328D /* map_pin@3x.png in Resources */,
 				DAC1D6AB2519EB2200B8328D /* map_pin_red@3x.png in Resources */,
 				DAC1D6B62519EB2200B8328D /* map_pin.png in Resources */,
 				DAC1D6AF2519EB2200B8328D /* map_pin_red.png in Resources */,
 				DAC1D6A12519EB2200B8328D /* map_pinup_custom@3x.png in Resources */,
-				DAC7286F2553F4D000602FBD /* CustomerStoryboard.storyboard in Resources */,
+				DAC7286F2553F4D000602FBD /* Customer.storyboard in Resources */,
 				DAC1D6A92519EB2200B8328D /* copyright.png in Resources */,
 				DAC1D6A82519EB2200B8328D /* map_pin_shadow@3x.png in Resources */,
 				DAC1D5092519DDC700B8328D /* LaunchScreen.storyboard in Resources */,
@@ -979,7 +998,7 @@
 				DAF0165D25344CDB000E7CCA /* OderView.storyboard in Resources */,
 				DAC1D6A72519EB2200B8328D /* map_pinup@3x.png in Resources */,
 				DAF2ACCB251B471300FD11C1 /* Rider.storyboard in Resources */,
-				DAFA2872254C1600001B7781 /* Manager.storyboard in Resources */,
+				DAFA2872254C1600001B7781 /* Owner.storyboard in Resources */,
 				DAC1D6B12519EB2200B8328D /* point_sprite.png in Resources */,
 				DAC1D6B92519EB2200B8328D /* map_present_background_update.png in Resources */,
 				DAC1D6B52519EB2200B8328D /* map_present_direction.png in Resources */,
@@ -1118,6 +1137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAC72879255400C900602FBD /* NetworkController.swift in Sources */,
+				DAB9FF23255A872C00C12743 /* LastOrderViewController.swift in Sources */,
 				DA4BC37325481ADC00DCEF1F /* Request.swift in Sources */,
 				DAFA2876254C16D3001B7781 /* StoreTableViewCell.swift in Sources */,
 				DAC1D5012519DDC600B8328D /* ViewController.swift in Sources */,
@@ -1141,13 +1161,17 @@
 				DAB9FEF725592F7300C12743 /* OrderReceptionViewController.swift in Sources */,
 				DAB9FF03255938AE00C12743 /* HttpMethod.swift in Sources */,
 				DAB9FF0725593A2800C12743 /* API.swift in Sources */,
+				DAB9FF1D255A75A100C12743 /* StoreDetailCell.swift in Sources */,
 				DAC1D4FF2519DDC600B8328D /* SceneDelegate.swift in Sources */,
+				DAB9FF11255A746200C12743 /* CustomerOrderViewController.swift in Sources */,
+				DAB9FF19255A758500C12743 /* StoreDetailViewController.swift in Sources */,
 				DAFA286C25496A8F001B7781 /* JoinViewController.swift in Sources */,
 				DAC728872557C95E00602FBD /* MenuCell.swift in Sources */,
 				DAC728502553E59600602FBD /* Post.swift in Sources */,
 				DAF2ACBA251B39BE00FD11C1 /* Order.swift in Sources */,
 				DAB9FF0D25593B9900C12743 /* Config.swift in Sources */,
 				DAFA28A7254C2D78001B7781 /* ManagerCallCell.swift in Sources */,
+				DAB9FF15255A747700C12743 /* CustomerOrderCell.swift in Sources */,
 				DAB9FEA72557D96600C12743 /* UpdateStoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

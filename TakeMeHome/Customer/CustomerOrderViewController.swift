@@ -1,41 +1,30 @@
-//
-//  ManagerViewController.swift
-//  TakeMeHome
-//
-//  Created by 이명직 on 2020/10/30.
-//
-
 import UIKit
 
-class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class CustomerOrderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var stores = [getItem]()
-    static var ownerId : Int?
+    static var restaurantId : Int?
+    static var userId : Int?
     @IBOutlet var TableMain: UITableView!
-    
+    var stores = [store]()
     
     func getStores() {
-        stores = [getItem]()
-        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/restaurants/1")!) { (data, response, error) in
-            
+        stores = [store]()
+        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/restaurants")!) { (data, response, error) in
             if let dataJson = data {
-                
+                print(data)
                 do {
-                    // JSONSerialization로 데이터 변환하기
                     if let json = try JSONSerialization.jsonObject(with: dataJson, options: .allowFragments) as? [String: AnyObject]
                     {
                         //print(json["data"] as? [String:Any])
-                        print(json)
                         if let temp = json["data"] as? [String:Any] {
                             if let temp2 = temp["restaurantFindAllResponse"] as? NSArray {
                                 for i in temp2 {
                                     if let temp = i as? NSDictionary {
                                         print(temp["name"] as! String)
-                                        if let tempLocation = temp["location"] as? [String:Any]{
                                         
-                                        self.stores.append(getItem(address: temp["address"] as? String, name: temp["name"] as! String, id: temp["id"] as? Int, location: getLocation(x: tempLocation["x"] as? Double, y: tempLocation["y"] as? Double), number: temp["number"] as! String))
+                                            self.stores.append(store(name: temp["name"] as! String, id: temp["id"] as! Int))
+                                            
                                         
-                                    }
                                     }
                                     
                                 }
@@ -61,44 +50,43 @@ class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDa
             }
             
         }
-        // Json Parsing
-        
-        
         task.resume()
     }
-
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stores.count
     }
-    @IBAction func addStore(_ sender: Any) {
-        let addStore = self.storyboard?.instantiateViewController(withIdentifier: "AddRestaurantViewController")
-        self.present(addStore!, animated: true, completion: nil)
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = TableMain.dequeueReusableCell(withIdentifier: "StoreTableViewCell", for: indexPath) as! StoreTableViewCell
-        cell.StoreName.text = stores[indexPath.row].name
+        let cell = TableMain.dequeueReusableCell(withIdentifier: "CustomerOrderCell", for: indexPath) as! CustomerOrderCell
         
+        cell.StoreName.text = stores[indexPath.row].name
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ManagerCallViewController.getStoreName = stores[indexPath.row].name!
-        ManagerCallViewController.restaurantId = stores[indexPath.row].id!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        TableMain.delegate = self
+        TableMain.dataSource = self
+        
+        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         getStores()
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        TableMain.delegate = self
-        TableMain.dataSource = self
-        // Do any additional setup after loading the view.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let id = segue.identifier, "gogo" == id {
+            if let controller = segue.destination as? StoreDetailViewController {
+                if let indexPath = TableMain.indexPathForSelectedRow {
+                    StoreDetailViewController.restaurantName = stores[indexPath.row].name
+                    StoreDetailViewController.restaurantId = stores[indexPath.row].id
+                }
+            }
+        }
     }
-    
     
     /*
      // MARK: - Navigation
@@ -112,16 +100,7 @@ class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
 }
 
-struct getItem {
-    var address: String?
+struct store {
     var name : String?
     var id : Int?
-    var location : getLocation?
-    var number : String?
 }
-
-struct getLocation {
-    var x : Double?
-    var y : Double?
-}
-

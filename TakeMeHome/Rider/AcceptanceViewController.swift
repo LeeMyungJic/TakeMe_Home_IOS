@@ -10,11 +10,114 @@ import UIKit
 class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var AcceptanceView: UITableView!
-    static var isChange = false
     
-    static var acceptanceCalls = [Order]()
+    var callList = [getCall]()
     
     var selectedIndex: Int?
+    
+    func getItems() {
+        callList = [getCall]()
+        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/orders/riders/" + "\(CallViewController.riderId!)")!) { (data, response, error) in
+            print("연결!")
+            if let dataJson = data {
+                print(dataJson)
+                do {
+                    // JSONSerialization로 데이터 변환하기
+                    if let json = try JSONSerialization.jsonObject(with: dataJson, options: .allowFragments) as? [String: AnyObject]
+                    {
+                        
+                        //print(json["data"] as? [String:Any])
+                        if let temp = json["data"] as? NSArray{
+                            print(temp)
+//                            if let temp2 = temp["orderFindRequestStatusResponses"] as? NSArray {
+                                print("=================================================")
+                                for i in temp {
+                                    var address: String?
+                                    var price: Int?
+                                    var number: String?
+                                    var payment: String?
+                                    var distance: Double?
+                                    var storeAddress: String?
+                                    var storeNumber: String?
+                                    var payStatus: String?
+                                    
+                                    var status : String?
+                                    if let temp = i as? NSDictionary {
+                                        print("=======================================================")
+                                        if let orderCustomer = temp["orderCustomer"] as? [String:Any]{
+                                            print("orderCustomer")
+                                            print("고객명 : " + "\(orderCustomer["name"] as! String)")
+                                            print("전화번호 : " + "\(orderCustomer["phoneNumber"] as! String)")
+                                            number = orderCustomer["phoneNumber"] as! String
+                                        }
+                                        if let orderDelivery = temp["orderDelivery"] as? [String:Any]{
+                                            print("orderDelivery")
+                                            print("배달 주소 : " + "\(orderDelivery["address"] as! String)")
+                                            distance = orderDelivery["distance"] as! Double
+                                            address = orderDelivery["address"] as! String
+                                            price = orderDelivery["price"] as! Int
+                                            
+                                            
+                                            status = orderDelivery["status"] as! String
+                                        }
+                                        if let orderRestaurant = temp["orderRestaurant"] as? [String:Any]{
+                                            print("orderRestaurant")
+                                            print("가게 주소 : " + "\(orderRestaurant["address"] as! String)")
+                                            print("가게 이름 : " + "\(orderRestaurant["name"] as! String)")
+                                            
+                                            storeAddress = orderRestaurant["address"] as! String
+                                            print("가게 번호 : " + "\(orderRestaurant["number"] as! String)")
+                                        }
+                                        if let orderRider = temp["orderRider"] as? [String:Any]{
+                                            print(orderRider)
+                                            print("라이더 이름 : " + "\(orderRider["name"] as? String)")
+                                            print("라이더 번호 : " + "\(orderRider["phoneNumber"] as? String)")
+                                            
+                                        }
+                                        if let paymentType = temp["paymentType"] {
+                                            payment = paymentType as? String
+                                        }
+                                        if let paymentStatus = temp["paymentStatus"] {
+                                            payStatus = paymentStatus as? String
+                                        }
+                                        
+                                        
+                                            self.callList.append(getCall(address: address, price: price, number: number, payment: payment, distance: distance, storeAddress: storeAddress, storeNumber: storeNumber, payStatus: payStatus))
+                                        
+                                        
+                                        
+                                        
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                    
+                
+                catch {
+                    print("JSON 파상 에러")
+                    
+                }
+                print("JSON 파싱 완료") // 메일 쓰레드에서 화면 갱신 DispatchQueue.main.async { self.tvMovie.reloadData() }
+                
+            }
+            
+            
+            
+            // UI부분이니까 백그라운드 말고 메인에서 실행되도록 !
+            DispatchQueue.main.async {
+                //reloadData로 데이터를 가져왔으니 쓰라고 통보 ㅎㅎ
+                self.AcceptanceView.reloadData()
+            }
+            
+        }
+        // Json Parsing
+        
+        
+        task.resume()
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -27,15 +130,12 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
         popUp.modalTransitionStyle = .crossDissolve
         
         let temp = popUp as? OderViewController
-        temp?.addressStr = "주소 값"
-        temp?.arrivalTimeStr = "도착시간 값"
         
-        
-        temp?.addressStr = AcceptanceViewController.acceptanceCalls[selectedIndex!].storeAddress!
-        temp?.arrivalTimeStr = AcceptanceViewController.acceptanceCalls[selectedIndex!].arrivalTime!
-        temp?.methodOfPaymentStr = AcceptanceViewController.acceptanceCalls[selectedIndex!].methodOfPayment!
-        temp?.priceStr = "\(AcceptanceViewController.acceptanceCalls[selectedIndex!].price!) 원"
-        temp?.requirementStr = AcceptanceViewController.acceptanceCalls[selectedIndex!].requirement!
+        temp?.addressStr = callList[indexPath.row].address!
+        temp?.arrivalTimeStr = callList[indexPath.row].payStatus!
+        temp?.methodOfPaymentStr = callList[indexPath.row].payment!
+        temp?.priceStr = "\(callList[indexPath.row].price!) 원"
+        temp?.requirementStr = callList[indexPath.row].number!
         
         
         
@@ -46,14 +146,14 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AcceptanceViewController.acceptanceCalls.count
+        return callList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = AcceptanceView.dequeueReusableCell(withIdentifier: "AcceptanceCell", for: indexPath) as! AcceptanceCell
-        cell.nameStr.text = AcceptanceViewController.acceptanceCalls[indexPath.row].storeName
-        cell.addressStr.text = AcceptanceViewController.acceptanceCalls[indexPath.row].storeAddress
-        cell.Time.text = AcceptanceViewController.acceptanceCalls[indexPath.row].cookingTime! + " 까지 조리 완료"
+        cell.nameStr.text = "배달지 : " + callList[indexPath.row].address!
+        cell.addressStr.text = "결제 여부 : " + callList[indexPath.row].payStatus!
+        cell.Time.text = "결제 금액 : " + "\(callList[indexPath.row].price!)"
         
         //셀 디자인
         cell.stack.layer.borderColor = #colorLiteral(red: 0.4344803691, green: 0.5318876505, blue: 1, alpha: 1)
@@ -83,15 +183,7 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
     // Call에서 수락한 아이템 최신화
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if(AcceptanceViewController.isChange) {
-            AcceptanceView.beginUpdates()
-            for i in 0...CallViewController.addCount - 1{
-                AcceptanceView.insertRows(at: [IndexPath(row: AcceptanceViewController.acceptanceCalls.count - CallViewController.addCount, section: 0)], with: .automatic)
-                CallViewController.addCount = CallViewController.addCount - 1
-            }
-            AcceptanceView.endUpdates()
-            AcceptanceViewController.isChange = false
-        }
+        getItems()
     }
     
 
@@ -105,4 +197,16 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     */
 
+}
+
+struct getCall {
+    var address: String?
+    var price: Int?
+    var number: String?
+    var payment: String?
+    var distance: Double?
+    var storeAddress: String?
+    var storeNumber: String?
+    var payStatus: String?
+    
 }

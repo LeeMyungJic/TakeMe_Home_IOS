@@ -143,15 +143,15 @@ class MapViewController: UIViewController, MTMapViewDelegate {
         }
         
         // 접수 아이템 : 레드 핀
-        for item in AcceptanceViewController.acceptanceCalls {
-            self.mapPoint1 = MTMapPoint(geoCoord: MTMapPointGeo(latitude: item.latitude!, longitude: item.longitude!
-            ))
-            poiItem1 = MTMapPOIItem()
-            poiItem1?.markerType = MTMapPOIItemMarkerType.redPin
-            poiItem1?.mapPoint = mapPoint1
-            poiItem1?.itemName = item.storeName
-            mapView!.add(poiItem1)
-        }
+//        for item in AcceptanceViewController.acceptanceCalls {
+//            self.mapPoint1 = MTMapPoint(geoCoord: MTMapPointGeo(latitude: item.latitude!, longitude: item.longitude!
+//            ))
+//            poiItem1 = MTMapPOIItem()
+//            poiItem1?.markerType = MTMapPOIItemMarkerType.redPin
+//            poiItem1?.mapPoint = mapPoint1
+//            poiItem1?.itemName = item.storeName
+//            mapView!.add(poiItem1)
+//        }
     }
     
     func circle(latitude:Double, longitude:Double) -> MTMapCircle {

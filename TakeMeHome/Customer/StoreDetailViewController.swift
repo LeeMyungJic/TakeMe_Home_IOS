@@ -1,19 +1,16 @@
-//
-//  MenuViewController.swift
-//  TakeMeHome
-//
-//  Created by 이명직 on 2020/11/08.
-//
-
 import UIKit
 
-class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    static var restaurantName : String?
+    static var restaurantId : Int?
+    @IBOutlet var Label: UILabel!
     var menus = [menu]()
+    @IBOutlet var TableMain: UITableView!
     
     func getMenus() {
         menus = [menu]()
-        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/menus/" + "\(ManagerCallViewController.restaurantId)")!) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/menus/" + "\(StoreDetailViewController.restaurantId!)")!) { (data, response, error) in
             if let dataJson = data {
                 
                 do {
@@ -62,15 +59,14 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = TableMain.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
+        let cell = TableMain.dequeueReusableCell(withIdentifier: "StoreDetailCell", for: indexPath) as! StoreDetailCell
         
-        cell.name.text = menus[indexPath.row].name
-        cell.price.text = "\(menus[indexPath.row].price!)원"
+        cell.Name.text = menus[indexPath.row].name
+        cell.Price.text = "\(menus[indexPath.row].price!)원"
+        cell.Status.text = menus[indexPath.row].status
         return cell
     }
-    
-    
-    @IBOutlet var TableMain: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,6 +78,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         getMenus()
+        Label.text = StoreDetailViewController.restaurantName
+        print(StoreDetailViewController.restaurantName)
+        print("\(StoreDetailViewController.restaurantId)")
     }
     
     /*
@@ -94,10 +93,4 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
      }
      */
     
-}
-
-struct menu {
-    var name: String?
-    var price: Int?
-    var status: String?
 }

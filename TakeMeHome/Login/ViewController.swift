@@ -15,8 +15,20 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     @IBOutlet var passStr: UITextField!
     @IBOutlet var personStr: UITextField!
     
+    var loginBool : Bool = false
+    var select : String?
+    var ident : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       aaa()
+        
+
+        
+        
+
+        
         // Do any additional setup after loading the view.
         let border = CALayer()
         
@@ -50,72 +62,185 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         self.present(addStore!, animated: true, completion: nil)
     }
     
+    func aaa() {
+        let url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/reception")
+        
+        let cc = ["count" : 1] as? [String:Int]
+        let dd = ["menuId" : 1] as? [String:Int]
+        
+        let ns = ["count": 1, "menuId": 1] as [String:Int]
+        
+        let array:Array = [ns, ns]
+        
+        let result = array
+        
+        print(result)
+
+        
+        //var menuIdCounts : [String:menuIdCountsArray]?
+        var menuIdCounts : Array<Dictionary<String,Any>> = [["count":1, "menuId":1], ["count":1, "menuId":1]]
+        
+        print(array)
+        
+        let param = ["customId": 1, "menuIdCounts" : ["menuIdCounts" : array], "paymentStatus": "COMPLITE", "paymentType": "CARD", "restaurantId" : 1, "totalPrice" : 0] as [String : Any]
+        print(param)
+        Post(param: param, url: url!)
+    }
+    
     @IBAction func Login(_ sender: Any) {
         
-        //        var url = URL(string: "")
-        //        var param = ["email":idStr.text, "password":passStr.text] as [String:Any]
-        //        switch personStr.text {
-        //        case "라이더":
-        //            url = URL(string: NetWorkController.baseUrl + "/api/v1/riders/login")
-        //        case "점주":
-        //            url = URL(string: NetWorkController.baseUrl + "/api/v1/owners/login")
-        //        case "사용자":
-        //            url = URL(string: NetWorkController.baseUrl + "/api/v1/customers/login")
-        //        default:
-        //           print()
-        //        }
-        //
-        //
-        //        Post(param: param, url: url!)
+        var url = URL(string: "")
+        var param = ["email":idStr.text, "password":passStr.text] as [String:Any]
+        switch personStr.text {
+        case "라이더":
+            url = URL(string: NetWorkController.baseUrl + "/api/v1/riders/login")
+            select = "Rider"
+            ident = "TabBar"
+        case "점주":
+            url = URL(string: NetWorkController.baseUrl + "/api/v1/owners/login")
+            select = "Owner"
+            ident = select
+        case "사용자":
+            url = URL(string: NetWorkController.baseUrl + "/api/v1/customers/login")
+            select = "Customer"
+            ident = select
+        default:
+            print()
+        }
+        if let person = personStr.text, let urlT = url {
+            login(param: param, url: urlT, isGet: true, person: person)
+            
+        }
+        else {
+            print("가입 유형을 선택하세요")
+        }
         
-        //        guard let id = idStr.text, !id.isEmpty else { return }
-        //                guard let password = passStr.text, !password.isEmpty else { return }
+//        orderFindResponses =     (
+//                    {
+//                menuNameCounts =             {
+//                    menuNameCounts =                 (
+//                                            {
+//                            count = 2;
+//                            name = "\Uc544\Uba54\Ub9ac\Uce74\Ub178";
+//                        },
+//                                            {
+//                            count = 1;
+//                            name = "\Uc544\Uc774\Uc2a4\Ud2f0";
+//                        },
+//                                            {
+//                            count = 3;
+//                            name = "\Ubc84\Ube14\Ud2f0";
+//                        }
+//                    );
+//                };
+//                orderCustomer =             {
+//                    name = string;
+//                    phoneNumber = string;
+//                };
+//                orderDelivery =             {
+//                    address = string;
+//                    distance = 0;
+//                    price = 45000;
+//                    status = NONE;
+//                };
+//                orderRestaurant =             {
+//                    address = "\Ub9cc\Uc2181\Ub3d9";
+//                    name = "\Uc2a4\Ud0c0\Ubc85\Uc2a4";
+//                    number = "032 473 2141";
+//                };
+//                orderRider = "<null>";
+//                orderStatus = ORDER;
+//                paymentStatus = COMPLITE;
+//                paymentType = CARD;
+//                totalPrice = 0;
+//            },
+//                    {
+//                menuNameCounts =             {
+//                    menuNameCounts =                 (
+//                                            {
+//                            count = 3;
+//                            name = "\Uc544\Uba54\Ub9ac\Uce74\Ub178";
+//                        },
+//                                            {
+//                            count = 2;
+//                            name = "\Ubc84\Ube14\Ud2f0";
+//                        }
+//                    );
+//                };
+//                orderCustomer =             {
+//                    name = string;
+//                    phoneNumber = string;
+//                };
+//                orderDelivery =             {
+//                    address = string;
+//                    distance = 0;
+//                    price = 45000;
+//                    status = NONE;
+//                };
+//                orderRestaurant =             {
+//                    address = "\Ub9cc\Uc2181\Ub3d9";
+//                    name = "\Uc2a4\Ud0c0\Ubc85\Uc2a4";
+//                    number = "032 473 2141";
+//                };
+//                orderRider = "<null>";
+//                orderStatus = ORDER;
+//                paymentStatus = COMPLITE;
+//                paymentType = CARD;
+//                totalPrice = 0;
+//            }
+//        );
+        
+        
+        
+        
+        //                guard let id = idStr.text, !id.isEmpty else { return }
+        //                        guard let password = passStr.text, !password.isEmpty else { return }
         //
-        //                // Model이 해당 유저를 가지고 있는지 검사
-        //                var loginSuccess: Bool = false
+        //                        // Model이 해당 유저를 가지고 있는지 검사
+        //                        var loginSuccess: Bool = false
         //
-        //        if idStr.text == id, passStr.text == password {
-        //            loginSuccess = true
-        //        }
+        //                if idStr.text == id, passStr.text == password {
+        //                    loginSuccess = true
+        //                }
         //
-        //        if loginSuccess {
-        //            print("로그인 성공")
-        //            guard let main = self.storyboard?.instantiateViewController(identifier: "TabBar") else{return}
-        //            self.present(main, animated: true)
-        //        }else {
-        //            UIView.animate(withDuration: 0.2, animations: {
-        //                self.idStr.frame.origin.x -= 10
-        //                self.passStr.frame.origin.x -= 10
-        //            }, completion: { _ in
-        //                UIView.animate(withDuration: 0.2, animations: {
-        //                    self.idStr.frame.origin.x += 20
-        //                    self.passStr.frame.origin.x += 20
-        //                }, completion: { _ in
+        //                if loginSuccess {
+        //                    print("로그인 성공")
+        //                    guard let main = self.storyboard?.instantiateViewController(identifier: "TabBar") else{return}
+        //                    self.present(main, animated: true)
+        //                }else {
         //                    UIView.animate(withDuration: 0.2, animations: {
         //                        self.idStr.frame.origin.x -= 10
         //                        self.passStr.frame.origin.x -= 10
+        //                    }, completion: { _ in
+        //                        UIView.animate(withDuration: 0.2, animations: {
+        //                            self.idStr.frame.origin.x += 20
+        //                            self.passStr.frame.origin.x += 20
+        //                        }, completion: { _ in
+        //                            UIView.animate(withDuration: 0.2, animations: {
+        //                                self.idStr.frame.origin.x -= 10
+        //                                self.passStr.frame.origin.x -= 10
+        //                            })
+        //                        })
         //                    })
-        //                })
-        //            })
+        //                }
+        //        if(idStr.text == "a") {
+        //            let storyboard = UIStoryboard.init(name: "Customer", bundle: nil)
+        //
+        //            let popUp = storyboard.instantiateViewController(identifier: "Customer")
+        //            popUp.modalPresentationStyle = .overCurrentContext
+        //            popUp.modalTransitionStyle = .crossDissolve
+        //
+        //            self.present(popUp, animated: true, completion: nil)
         //        }
-        if(idStr.text == "a") {
-            let storyboard = UIStoryboard.init(name: "Manager", bundle: nil)
-            
-            let popUp = storyboard.instantiateViewController(identifier: "ManagerViewController")
-            popUp.modalPresentationStyle = .overCurrentContext
-            popUp.modalTransitionStyle = .crossDissolve
-            
-            self.present(popUp, animated: true, completion: nil)
-        }
-        else {
-            let storyboard = UIStoryboard.init(name: "Rider", bundle: nil)
-            
-            let popUp = storyboard.instantiateViewController(identifier: "TabBar")
-            popUp.modalPresentationStyle = .overCurrentContext
-            popUp.modalTransitionStyle = .crossDissolve
-            
-            self.present(popUp, animated: true, completion: nil)
-        }
+        //        else {
+        //            let storyboard = UIStoryboard.init(name: "Rider", bundle: nil)
+        //
+        //            let popUp = storyboard.instantiateViewController(identifier: "TabBar")
+        //            popUp.modalPresentationStyle = .overCurrentContext
+        //            popUp.modalTransitionStyle = .crossDissolve
+        //
+        //            self.present(popUp, animated: true, completion: nil)
+        //        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -163,5 +288,87 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         // 피커뷰 내리기
         personStr.resignFirstResponder()
     }
+    
+    func login(param: [String:Any], url: URL, isGet: Bool = false, person: String = "") {
+        let paramData = try! JSONSerialization.data(withJSONObject: param, options: [])
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = paramData
+        
+        // 4. HTTP 메시지에 포함될 헤더 설정
+        request.addValue("application/json;charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue(String(paramData.count), forHTTPHeaderField: "Content-Length")
+        
+        // 5. URLSession 객체를 통해 전송 및 응답값 처리 로직 작성
+        
+        let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
+            
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            //print("responseString = \(responseString)")
+            if isGet {
+                
+                do {
+                    // JSONSerialization로 데이터 변환하기
+                    if let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: AnyObject]
+                    {
+                        
+                        if let temp2 = json["data"] as? Int {
+                            
+                            switch person {
+                            case "라이더":
+                                CallViewController.riderId = temp2
+                            case "사용자":
+                                CustomerOrderViewController.userId = temp2
+                            case "점주":
+                                ManagerViewController.ownerId = temp2
+                            default:
+                                print("")
+                            }
+                            self.move()
+                        }
+                    }
+                    
+                }
+                catch {
+                    print("JSON 파상 에러")
+                    
+                }
+                print("JSON 파싱 완료") // 메일 쓰레드에서 화면 갱신 DispatchQueue.main.async { self.tvMovie.reloadData() }
+                
+            }
+            
+            if let e = error {
+                NSLog("An error has occured: \(e.localizedDescription)")
+                return
+            }
+            // 응답 처리 로직
+            
+        }
+        // POST 전송
+        task.resume()
+    }
+    
+    func move() {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard.init(name: self.select!, bundle: nil)
+            
+            let popUp = storyboard.instantiateViewController(identifier: self.ident!)
+            popUp.modalPresentationStyle = .overCurrentContext
+            popUp.modalTransitionStyle = .crossDissolve
+            
+            self.present(popUp, animated: true, completion: nil)
+        }
+    }
+    
 }
 
