@@ -7,102 +7,103 @@
 
 import UIKit
 
-class LastOrderViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class LastOrderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        LastOrderViewController.menuList.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = TableMain.dequeueReusableCell(withIdentifier: "LastOrderCell", for: indexPath) as! LastOrderCell
+        
+        
+        cell.nameLabel.text = "\(LastOrderViewController.menuList[indexPath.row].name!) x \(LastOrderViewController.menuList[indexPath.row].count!)"
+        cell.priceLabel.text = "\(LastOrderViewController.menuList[indexPath.row].count! * LastOrderViewController.price[indexPath.row]) 원"
+        return cell
     }
-    */
-
-    /*
-     if let temp = json["data"] as? [String:Any] {
-         if let temp2 = temp["orderFindResponses"] as? NSArray {
-             for i in temp2 {
-                 var orderAddress : String?
-                 var orderPrice : Int?
-                 var orderNumber : String?
-                 
-                 if let temp = i as? NSDictionary {
-                     
-                     if let orderCustomer = temp["orderCustomer"] as? [String:Any]{
-                         //                                            print("orderCustomer")
-                         //                                            print("고객명 : " + "\(orderCustomer["name"] as! String)")
-                         //                                            print("전화번호 : " + "\(orderCustomer["phoneNumber"] as! String)")
-                         orderNumber = orderCustomer["phoneNumber"] as! String
-                     }
-                     if let orderDelivery = temp["orderDelivery"] as? [String:Any]{
-                         //print("orderDelivery")
-                         //print("배달 주소 : " + "\(orderDelivery["address"] as! String)")
-                         //print("거리 : " + "\(orderDelivery["distance"] as! Int)")
-                         //print("가격 : " + "\(orderDelivery["price"] as! Int)")
-                         orderAddress = orderDelivery["address"] as! String
-                         orderPrice = orderDelivery["price"] as! Int
-                         //print("상태 : " + "\(orderDelivery["status"] as! REQUEST)")
-                     }
-                     if let orderRestaurant = temp["orderRestaurant"] as? [String:Any]{
-                         //print("orderRestaurant")
-                         //print("가게 주소 : " + "\(orderRestaurant["address"] as! String)")
-                         //print("가게 이름 : " + "\(orderRestaurant["name"] as! String)")
-                         //print("가게 번호 : " + "\(orderRestaurant["number"] as! String)")
-                         //print("상태 : " + "\(orderDelivery["status"] as! REQUEST)")
-                     }
-                     if let orderRider = temp["orderRider"] as? [String:Any]{
-                         //print(orderRider)
-                         //print("라이더 이름 : " + "\(orderRider["name"] as? String)")
-                         //print("라이더 번호 : " + "\(orderRider["phoneNumber"] as? String)")
-                         
-                     }
-                     if let orderStatus = temp["orderStatus"] as? [String:Any]{
-                         
-                         
-                     }
-                     if let menuNameCounts = temp["menuNameCounts"] as? [String:Any]{
-                         print("menuNameCounts")
-                         if let menuNameCountsT = menuNameCounts["menuNameCounts"] as? [[String:Any]]{
-                             print("menuNameCountsT")
-                             var orderProductName = ""
-                             
-                             for i in menuNameCountsT {
-                                 for item in i{
-                                     //print(item["name"] as? String ?? "")
-                                     //print(item.value)
-                                 }
-                                 var temp = i["name"] as? String ?? ""
-                                 var countTemp = i["count"] as? Int
-                         
-                                     orderProductName += temp + " x" + "\(countTemp!)\n"
-                                 
-                             }
-                             self.callList.append(order(productName: orderProductName, address: orderAddress, price: orderPrice, customerNumber: orderNumber))
-                             print("")
-                         }
-                     }
-                     
-                 }
-                 
-     */
+    
+    
+    @IBOutlet var address: UILabel!
+    @IBOutlet var totalPrice: UILabel!
+    
+    var totalPriceValue = 0
+    var addressStr: String?
+    
+    static var menuList = [menuAndCount]()
+    static var price = [Int]()
+    
+    @IBOutlet var TableMain: UITableView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        TableMain.delegate = self
+        TableMain.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getAddress()
+        address.text = addressStr
+        calculate()
+    }
+    
+    func calculate() {
+        for i in 0...LastOrderViewController.price.count - 1 {
+            print(i)
+            totalPriceValue += LastOrderViewController.menuList[i].count! * LastOrderViewController.price[i]
+        }
+        totalPrice.text = "\(totalPriceValue) 원"
+    }
+    
+    func getAddress() {
+        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/customers/customer/" + "\(CustomerOrderViewController.userId!)")!) { (data, response, error) in
+            if let dataJson = data {
+                
+                do {
+                    // JSONSerialization로 데이터 변환하기
+                    if let json = try JSONSerialization.jsonObject(with: dataJson, options: .allowFragments) as? [String: AnyObject]
+                    {
+//                        if let temp = json["address"] as? [String:Any] {
+//                            print("data!!")
+//                            self.addressStr = temp as? String
+//                        }
+                        
+                        if let temp = json["data"] as? [String:Any] {
+                            print("data!!")
+                            self.addressStr = temp["address"] as? String
+                        }
+                        
+                    }
+                }
+                catch {
+                    print("JSON 파상 에러")
+                    
+                }
+                print("JSON 파싱 완료") // 메일 쓰레드에서 화면 갱신 DispatchQueue.main.async { self.tvMovie.reloadData() }
+                
+            }
+            
+            
+            
+            // UI부분이니까 백그라운드 말고 메인에서 실행되도록 !
+            DispatchQueue.main.async {
+                //reloadData로 데이터를 가져왔으니 쓰라고 통보 ㅎㅎ
+                self.address.text = self.addressStr
+            }
+            
+        }
+        task.resume()
+    }
+    
+    
+    
     
     @IBAction func Order(_ sender: Any) {
         
         let url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/reception")
         let array = [["count": 1, "menuId": 1], ["count": 2, "menuId": 1]]
-
+        
         
         let jsonString = convertIntoJSONString(arrayObject: array)
         
-
+        
         
         //var menuIdCounts : [String:menuIdCountsArray]?
         var menuIdCounts : [String:Array<Dictionary<String,Any>>] = ["menuIdCounts":[["count":1, "menuId":1],["count":1, "menuId":1]]]
@@ -114,23 +115,17 @@ class LastOrderViewController: UIViewController {
         
     }
     func convertIntoJSONString(arrayObject: [Any]) -> String? {
-
-            do {
-                let jsonData: Data = try JSONSerialization.data(withJSONObject: arrayObject, options: [])
-                if  let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue) {
-                    return jsonString as String
-                }
-                
-            } catch let error as NSError {
-                print("Array convertIntoJSON - \(error.description)")
+        
+        do {
+            let jsonData: Data = try JSONSerialization.data(withJSONObject: arrayObject, options: [])
+            if  let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue) {
+                return jsonString as String
             }
-            return nil
+            
+        } catch let error as NSError {
+            print("Array convertIntoJSON - \(error.description)")
         }
+        return nil
+    }
     
 }
-//
-//struct menuIdCounts {
-//    var count : Int?
-//    var manu : Int?
-//}
-

@@ -190,6 +190,10 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
         let url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/order/" + "\(didSelectRowAt)" + "/assigned/" + "\(CallViewController.riderId!)")
         let param = [:] as? [String:Any]
         Put(param: param!, url: url!)
+        
+        TableViewMain.beginUpdates()
+        getItems()
+        TableViewMain.endUpdates()
     }
     
     func NoClick()

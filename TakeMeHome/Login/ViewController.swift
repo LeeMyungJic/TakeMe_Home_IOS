@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -21,13 +22,16 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       aaa()
-        
+        InstanceID.instanceID().instanceID { (result, error) in
+           if let error = error {
+               print("Error fetching remote instance ID: \(error)")
+           } else if let result = result {
+               print("Remote instance ID token: \(result.token)")
+                   
+           }
+        }
 
-        
-        
-
+        //aaa()
         
         // Do any additional setup after loading the view.
         let border = CALayer()

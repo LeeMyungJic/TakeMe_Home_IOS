@@ -11,6 +11,11 @@
 		9E11986F5EFCF7472A5774F9 /* Pods_TakeMeHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7685134D0F9ACDEA25456B3 /* Pods_TakeMeHome.framework */; };
 		C2E76C0A37DAE001012AB568 /* Pods_TakeMeHomeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6D398CE8D000A9E64A4BDA /* Pods_TakeMeHomeTests.framework */; };
 		DA4BC37325481ADC00DCEF1F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BC37225481ADC00DCEF1F /* Request.swift */; };
+		DA577065255D3A16007EF02E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA577064255D3A16007EF02E /* GoogleService-Info.plist */; };
+		DA577098255D3F71007EF02E /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA577097255D3F71007EF02E /* PushKit.framework */; };
+		DA5770A2255D4C30007EF02E /* CountOfProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5770A1255D4C30007EF02E /* CountOfProductViewController.swift */; };
+		DA5770A8255E823F007EF02E /* menuAndCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5770A7255E823F007EF02E /* menuAndCount.swift */; };
+		DA5770AC255E86A4007EF02E /* LastOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5770AB255E86A4007EF02E /* LastOrderCell.swift */; };
 		DAB9FEA72557D96600C12743 /* UpdateStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FEA62557D96600C12743 /* UpdateStoreViewController.swift */; };
 		DAB9FEF725592F7300C12743 /* OrderReceptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FEF625592F7300C12743 /* OrderReceptionViewController.swift */; };
 		DAB9FEFB25592FA700C12743 /* OrderReCeptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FEFA25592FA700C12743 /* OrderReCeptionCell.swift */; };
@@ -134,6 +139,11 @@
 		D7685134D0F9ACDEA25456B3 /* Pods_TakeMeHome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TakeMeHome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D78B49D4C2F2EB5BD36C5B55 /* Pods-TakeMeHome-TakeMeHomeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome-TakeMeHomeUITests.release.xcconfig"; path = "Target Support Files/Pods-TakeMeHome-TakeMeHomeUITests/Pods-TakeMeHome-TakeMeHomeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DA4BC37225481ADC00DCEF1F /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		DA577064255D3A16007EF02E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DA577097255D3F71007EF02E /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
+		DA5770A1255D4C30007EF02E /* CountOfProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountOfProductViewController.swift; sourceTree = "<group>"; };
+		DA5770A7255E823F007EF02E /* menuAndCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuAndCount.swift; sourceTree = "<group>"; };
+		DA5770AB255E86A4007EF02E /* LastOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastOrderCell.swift; sourceTree = "<group>"; };
 		DAB9FEA62557D96600C12743 /* UpdateStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStoreViewController.swift; sourceTree = "<group>"; };
 		DAB9FEF625592F7300C12743 /* OrderReceptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReceptionViewController.swift; sourceTree = "<group>"; };
 		DAB9FEFA25592FA700C12743 /* OrderReCeptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReCeptionCell.swift; sourceTree = "<group>"; };
@@ -397,6 +407,7 @@
 				DAC1D6BC2519EB2200B8328D /* DaumMap.framework in Frameworks */,
 				DAC1D5A32519E60700B8328D /* libsqlite3.tbd in Frameworks */,
 				DAC1D5952519E5B500B8328D /* CoreLocation.framework in Frameworks */,
+				DA577098255D3F71007EF02E /* PushKit.framework in Frameworks */,
 				DAC1D59F2519E5FE00B8328D /* libxml2.tbd in Frameworks */,
 				DAC1D5932519E5AA00B8328D /* SystemConfiguration.framework in Frameworks */,
 				DAC1D5912519E59500B8328D /* OpenGLES.framework in Frameworks */,
@@ -437,6 +448,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DA57708E255D3D0D007EF02E /* MyFireBase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MyFireBase;
+			sourceTree = "<group>";
+		};
 		DAC1D4F02519DDC600B8328D = {
 			isa = PBXGroup;
 			children = (
@@ -464,6 +482,8 @@
 		DAC1D4FB2519DDC600B8328D /* TakeMeHome */ = {
 			isa = PBXGroup;
 			children = (
+				DA57708E255D3D0D007EF02E /* MyFireBase */,
+				DA577064255D3A16007EF02E /* GoogleService-Info.plist */,
 				DAC7286D2553F4B800602FBD /* Customer */,
 				DAC7284E2553E57700602FBD /* Network */,
 				DAF2ACB9251B39BE00FD11C1 /* Order.swift */,
@@ -506,6 +526,7 @@
 		DAC1D58F2519E59500B8328D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DA577097255D3F71007EF02E /* PushKit.framework */,
 				DAC1D5A72519E62900B8328D /* DaumMap.embeddedframework */,
 				DAC1D59E2519E5F100B8328D /* libsqlite3.tbd */,
 				DAC1D59D2519E5E300B8328D /* libxml2.tbd */,
@@ -765,6 +786,9 @@
 				DAB9FF18255A758500C12743 /* StoreDetailViewController.swift */,
 				DAB9FF1C255A75A100C12743 /* StoreDetailCell.swift */,
 				DAB9FF22255A872C00C12743 /* LastOrderViewController.swift */,
+				DA5770A1255D4C30007EF02E /* CountOfProductViewController.swift */,
+				DA5770A7255E823F007EF02E /* menuAndCount.swift */,
+				DA5770AB255E86A4007EF02E /* LastOrderCell.swift */,
 			);
 			path = Customer;
 			sourceTree = "<group>";
@@ -979,6 +1003,7 @@
 				DAC1D6AB2519EB2200B8328D /* map_pin_red@3x.png in Resources */,
 				DAC1D6B62519EB2200B8328D /* map_pin.png in Resources */,
 				DAC1D6AF2519EB2200B8328D /* map_pin_red.png in Resources */,
+				DA577065255D3A16007EF02E /* GoogleService-Info.plist in Resources */,
 				DAC1D6A12519EB2200B8328D /* map_pinup_custom@3x.png in Resources */,
 				DAC7286F2553F4D000602FBD /* Customer.storyboard in Resources */,
 				DAC1D6A92519EB2200B8328D /* copyright.png in Resources */,
@@ -1141,6 +1166,8 @@
 				DA4BC37325481ADC00DCEF1F /* Request.swift in Sources */,
 				DAFA2876254C16D3001B7781 /* StoreTableViewCell.swift in Sources */,
 				DAC1D5012519DDC600B8328D /* ViewController.swift in Sources */,
+				DA5770A8255E823F007EF02E /* menuAndCount.swift in Sources */,
+				DA5770A2255D4C30007EF02E /* CountOfProductViewController.swift in Sources */,
 				DAC1D53A2519E14600B8328D /* MapViewController.swift in Sources */,
 				DAFA287A254C1740001B7781 /* ManagerViewController.swift in Sources */,
 				DAC728752553FC4D00602FBD /* AddRestaurantViewController.swift in Sources */,
@@ -1148,6 +1175,7 @@
 				DAB9FEFF255934DA00C12743 /* Put.swift in Sources */,
 				DAF2ACD72523118600FD11C1 /* AcceptanceCell.swift in Sources */,
 				DAC1D53F2519E15100B8328D /* SettingsViewController.swift in Sources */,
+				DA5770AC255E86A4007EF02E /* LastOrderCell.swift in Sources */,
 				DAC7287F2554075800602FBD /* Get.swift in Sources */,
 				DAFA28A3254C2A89001B7781 /* AddCallViewController.swift in Sources */,
 				DAB9FEFB25592FA700C12743 /* OrderReCeptionCell.swift in Sources */,

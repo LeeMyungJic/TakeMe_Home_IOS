@@ -11,7 +11,6 @@ class StoreDetailCell: UITableViewCell {
 
     @IBOutlet var Name: UILabel!
     @IBOutlet var Price: UILabel!
-    @IBOutlet var Status: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

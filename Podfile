@@ -6,7 +6,9 @@ target 'TakeMeHome' do
   use_frameworks!
    pod 'Alamofire', '~> 5.2'
    pod 'NVActivityIndicatorView'
-  pod 'SwiftyJSON' 
+   pod 'SwiftyJSON' 
+   pod 'Firebase/Analytics'
+   pod 'Firebase/Messaging'
 
   # Pods for TakeMeHome
 

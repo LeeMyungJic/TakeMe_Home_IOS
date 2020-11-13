@@ -5,7 +5,15 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
     static var restaurantName : String?
     static var restaurantId : Int?
     @IBOutlet var Label: UILabel!
+    @IBOutlet var totalPrice: UILabel!
+    
+    var completionHandler: (() -> ())?
+    
     var menus = [menu]()
+    
+    var totalPriceValue = 0
+    var isClick = false
+    
     @IBOutlet var TableMain: UITableView!
     
     func getMenus() {
@@ -22,12 +30,15 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
                             var getName : String?
                             var getPrice : Int?
                             var getStatus : String?
+                            var getMenuId : Int?
+                            
                             for item in temp2 {
                                 if let temp = item as? NSDictionary {
                                     getName = temp["name"] as? String
                                     getPrice = temp["price"] as? Int
                                     getStatus = temp["menuStatus"] as? String
-                                    self.menus.append(menu(name: getName, price: getPrice, status: getStatus))
+                                    getMenuId = temp["id"] as? Int
+                                    self.menus.append(menu(name: getName, price: getPrice, status: getStatus, menuId: getMenuId))
                                 }
                                 
                             }
@@ -54,6 +65,10 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
         }
         task.resume()
     }
+    
+   
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menus.count
     }
@@ -63,24 +78,57 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         cell.Name.text = menus[indexPath.row].name
         cell.Price.text = "\(menus[indexPath.row].price!)원"
-        cell.Status.text = menus[indexPath.row].status
         return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Customer", bundle: nil)
+        
+        let popUp = storyboard.instantiateViewController(identifier: "CountOfProduct")
+        popUp.modalPresentationStyle = .overCurrentContext
+        popUp.modalTransitionStyle = .crossDissolve
+        
+        let temp = popUp as? CountOfProductViewController
+        
+        temp?.productPrice = menus[indexPath.row].price!
+        temp?.nameStr = menus[indexPath.row].name
+        temp?.menuId = menus[indexPath.row].menuId!
+        
+        
+        self.present(popUp, animated: true, completion: nil)
+        _ = completionHandler?()
+        
+        temp?.completionHandler = {
+            result in
+            print("result : \(result)")
+            self.totalPriceValue += result
+            DispatchQueue.main.async {
+                self.totalPrice.text = "\(self.totalPriceValue)"
+            }
+            //self.totalPrice.text = "\(result) 원"
+            return result
+        }
+        
+        
+    
+        
+        print("디테일 뷰에서 값 : \(totalPriceValue)")
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         TableMain.delegate = self
         TableMain.dataSource = self
         
         // Do any additional setup after loading the view.
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         getMenus()
         Label.text = StoreDetailViewController.restaurantName
-        print(StoreDetailViewController.restaurantName)
-        print("\(StoreDetailViewController.restaurantId)")
+        
     }
     
     /*
@@ -94,3 +142,4 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
      */
     
 }
+

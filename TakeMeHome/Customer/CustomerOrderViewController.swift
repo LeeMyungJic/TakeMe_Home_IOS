@@ -83,6 +83,7 @@ class CustomerOrderViewController: UIViewController, UITableViewDelegate, UITabl
                 if let indexPath = TableMain.indexPathForSelectedRow {
                     StoreDetailViewController.restaurantName = stores[indexPath.row].name
                     StoreDetailViewController.restaurantId = stores[indexPath.row].id
+                    
                 }
             }
         }

@@ -25,12 +25,14 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                             var getName : String?
                             var getPrice : Int?
                             var getStatus : String?
+                            var getMenuId : Int?
                             for item in temp2 {
                                 if let temp = item as? NSDictionary {
                                     getName = temp["name"] as? String
                                     getPrice = temp["price"] as? Int
                                     getStatus = temp["menuStatus"] as? String
-                                    self.menus.append(menu(name: getName, price: getPrice, status: getStatus))
+                                    getMenuId = temp["id"] as? Int
+                                    self.menus.append(menu(name: getName, price: getPrice, status: getStatus, menuId: getMenuId))
                                 }
                                 
                             }
@@ -100,4 +102,5 @@ struct menu {
     var name: String?
     var price: Int?
     var status: String?
+    var menuId: Int?
 }
