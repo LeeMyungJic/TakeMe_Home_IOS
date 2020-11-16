@@ -127,8 +127,16 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewWillAppear(_ animated: Bool) {
         getMenus()
+        LastOrderViewController.menuList = [menuAndCount]()
+        LastOrderViewController.price = [Int]()
         Label.text = StoreDetailViewController.restaurantName
         
+    }
+    @IBAction func Pay(_ sender: Any) {
+        if totalPriceValue != 0 {
+            guard let temp = storyboard?.instantiateViewController(identifier: "LastOrderViewController") as? LastOrderViewController else { return }
+            present(temp, animated: true, completion: nil)
+        }
     }
     
     /*

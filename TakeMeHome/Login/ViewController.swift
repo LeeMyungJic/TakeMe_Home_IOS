@@ -19,20 +19,20 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     var loginBool : Bool = false
     var select : String?
     var ident : String?
+    var token : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        InstanceID.instanceID().instanceID { (result, error) in
-           if let error = error {
-               print("Error fetching remote instance ID: \(error)")
-           } else if let result = result {
-               print("Remote instance ID token: \(result.token)")
-                   
-           }
-        }
-
-        //aaa()
-        
+        //        InstanceID.instanceID().instanceID { (result, error) in
+        //           if let error = error {
+        //               print("Error fetching remote instance ID: \(error)")
+        //           } else if let result = result {
+        //               print("Remote instance ID token: \(result.token)")
+        //            self.token = result.token
+        //
+        //           }
+        //        }
+        abc()
         // Do any additional setup after loading the view.
         let border = CALayer()
         
@@ -60,39 +60,54 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         dismissPickerView()
     }
     
+    func abc() {
+        
+        let url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/reception")
+        let array = [["count": 2, "menuId": 1], ["count": 1, "menuId": 2]] as [[String:Any]]
+        
+        var menuIdCounts1 : [[String:Any]]?
+        var menuIdCounts : [String:Any] = ["menuIdCounts" : array]
+//        for item in LastOrderViewController.menuList {
+//            menuIdCounts.append(["count" : item.count!, "menuId" : item.menuId!])
+//        }
+        
+        let param = ["customId": 1, "deliveryOrderRequest": ["distance": 0, "price": 2000], "menuIdCounts" : menuIdCounts, "paymentStatus": "COMPLITE", "paymentType": "CARD", "restaurantId" : 1, "totalPrice" : 0] as [String : Any]
+        print("===================================================")
+        print(param)
+        print("===================================================")
+        Post(param: param, url: url!)
+    }
+    /*
+     if let menuNameCounts = temp["menuNameCounts"] as? [String:Any]{
+         print("menuNameCounts")
+         if let menuNameCountsT = menuNameCounts["menuNameCounts"] as? [[String:Any]]{
+             print("menuNameCountsT")
+             for i in 0...menuNameCountsT.count {
+                 if (i == menuNameCountsT.count - 1) {
+                     orderProductName += menuNameCountsT[0]["name"] as? String ?? ""
+                 }
+                 else {
+                     print("상품명 : " + "\(menuNameCountsT[0]["name"] as? String)")
+                     orderProductName += menuNameCountsT[0]["name"] as? String ?? "" + ","
+                 }
+             }
+         }
+     }
+     */
+
+    
+    
+    
     
     @IBAction func Join(_ sender: Any) {
         let addStore = self.storyboard?.instantiateViewController(withIdentifier: "JoinViewController")
         self.present(addStore!, animated: true, completion: nil)
     }
     
-    func aaa() {
-        let url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/reception")
-        
-        let cc = ["count" : 1] as? [String:Int]
-        let dd = ["menuId" : 1] as? [String:Int]
-        
-        let ns = ["count": 1, "menuId": 1] as [String:Int]
-        
-        let array:Array = [ns, ns]
-        
-        let result = array
-        
-        print(result)
-
-        
-        //var menuIdCounts : [String:menuIdCountsArray]?
-        var menuIdCounts : Array<Dictionary<String,Any>> = [["count":1, "menuId":1], ["count":1, "menuId":1]]
-        
-        print(array)
-        
-        let param = ["customId": 1, "menuIdCounts" : ["menuIdCounts" : array], "paymentStatus": "COMPLITE", "paymentType": "CARD", "restaurantId" : 1, "totalPrice" : 0] as [String : Any]
-        print(param)
-        Post(param: param, url: url!)
-    }
+    
     
     @IBAction func Login(_ sender: Any) {
-        
+        //, "token":token
         var url = URL(string: "")
         var param = ["email":idStr.text, "password":passStr.text] as [String:Any]
         switch personStr.text {
@@ -119,80 +134,80 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
             print("가입 유형을 선택하세요")
         }
         
-//        orderFindResponses =     (
-//                    {
-//                menuNameCounts =             {
-//                    menuNameCounts =                 (
-//                                            {
-//                            count = 2;
-//                            name = "\Uc544\Uba54\Ub9ac\Uce74\Ub178";
-//                        },
-//                                            {
-//                            count = 1;
-//                            name = "\Uc544\Uc774\Uc2a4\Ud2f0";
-//                        },
-//                                            {
-//                            count = 3;
-//                            name = "\Ubc84\Ube14\Ud2f0";
-//                        }
-//                    );
-//                };
-//                orderCustomer =             {
-//                    name = string;
-//                    phoneNumber = string;
-//                };
-//                orderDelivery =             {
-//                    address = string;
-//                    distance = 0;
-//                    price = 45000;
-//                    status = NONE;
-//                };
-//                orderRestaurant =             {
-//                    address = "\Ub9cc\Uc2181\Ub3d9";
-//                    name = "\Uc2a4\Ud0c0\Ubc85\Uc2a4";
-//                    number = "032 473 2141";
-//                };
-//                orderRider = "<null>";
-//                orderStatus = ORDER;
-//                paymentStatus = COMPLITE;
-//                paymentType = CARD;
-//                totalPrice = 0;
-//            },
-//                    {
-//                menuNameCounts =             {
-//                    menuNameCounts =                 (
-//                                            {
-//                            count = 3;
-//                            name = "\Uc544\Uba54\Ub9ac\Uce74\Ub178";
-//                        },
-//                                            {
-//                            count = 2;
-//                            name = "\Ubc84\Ube14\Ud2f0";
-//                        }
-//                    );
-//                };
-//                orderCustomer =             {
-//                    name = string;
-//                    phoneNumber = string;
-//                };
-//                orderDelivery =             {
-//                    address = string;
-//                    distance = 0;
-//                    price = 45000;
-//                    status = NONE;
-//                };
-//                orderRestaurant =             {
-//                    address = "\Ub9cc\Uc2181\Ub3d9";
-//                    name = "\Uc2a4\Ud0c0\Ubc85\Uc2a4";
-//                    number = "032 473 2141";
-//                };
-//                orderRider = "<null>";
-//                orderStatus = ORDER;
-//                paymentStatus = COMPLITE;
-//                paymentType = CARD;
-//                totalPrice = 0;
-//            }
-//        );
+        //        orderFindResponses =     (
+        //                    {
+        //                menuNameCounts =             {
+        //                    menuNameCounts =                 (
+        //                                            {
+        //                            count = 2;
+        //                            name = "\Uc544\Uba54\Ub9ac\Uce74\Ub178";
+        //                        },
+        //                                            {
+        //                            count = 1;
+        //                            name = "\Uc544\Uc774\Uc2a4\Ud2f0";
+        //                        },
+        //                                            {
+        //                            count = 3;
+        //                            name = "\Ubc84\Ube14\Ud2f0";
+        //                        }
+        //                    );
+        //                };
+        //                orderCustomer =             {
+        //                    name = string;
+        //                    phoneNumber = string;
+        //                };
+        //                orderDelivery =             {
+        //                    address = string;
+        //                    distance = 0;
+        //                    price = 45000;
+        //                    status = NONE;
+        //                };
+        //                orderRestaurant =             {
+        //                    address = "\Ub9cc\Uc2181\Ub3d9";
+        //                    name = "\Uc2a4\Ud0c0\Ubc85\Uc2a4";
+        //                    number = "032 473 2141";
+        //                };
+        //                orderRider = "<null>";
+        //                orderStatus = ORDER;
+        //                paymentStatus = COMPLITE;
+        //                paymentType = CARD;
+        //                totalPrice = 0;
+        //            },
+        //                    {
+        //                menuNameCounts =             {
+        //                    menuNameCounts =                 (
+        //                                            {
+        //                            count = 3;
+        //                            name = "\Uc544\Uba54\Ub9ac\Uce74\Ub178";
+        //                        },
+        //                                            {
+        //                            count = 2;
+        //                            name = "\Ubc84\Ube14\Ud2f0";
+        //                        }
+        //                    );
+        //                };
+        //                orderCustomer =             {
+        //                    name = string;
+        //                    phoneNumber = string;
+        //                };
+        //                orderDelivery =             {
+        //                    address = string;
+        //                    distance = 0;
+        //                    price = 45000;
+        //                    status = NONE;
+        //                };
+        //                orderRestaurant =             {
+        //                    address = "\Ub9cc\Uc2181\Ub3d9";
+        //                    name = "\Uc2a4\Ud0c0\Ubc85\Uc2a4";
+        //                    number = "032 473 2141";
+        //                };
+        //                orderRider = "<null>";
+        //                orderStatus = ORDER;
+        //                paymentStatus = COMPLITE;
+        //                paymentType = CARD;
+        //                totalPrice = 0;
+        //            }
+        //        );
         
         
         

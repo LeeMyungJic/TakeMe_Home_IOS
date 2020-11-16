@@ -15,6 +15,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var callList = [call]()
     
+    var selectedIndex : IndexPath?
     var mTimer:Timer?
     static var addCount = 0
     var count = 0
@@ -169,6 +170,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in
+            self.selectedIndex = indexPath
             self.YesClick(didSelectRowAt:self.callList[indexPath.row].orderId!)
         })
         
@@ -192,7 +194,8 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
         Put(param: param!, url: url!)
         
         TableViewMain.beginUpdates()
-        getItems()
+        TableViewMain.deleteRows(at: [IndexPath(row: selectedIndex!.row, section: 0)], with: .automatic)
+        callList.remove(at: selectedIndex!.row)
         TableViewMain.endUpdates()
     }
     
@@ -200,6 +203,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     {
         
     }
+    
     
     
     override func viewDidLoad() {

@@ -8,6 +8,10 @@
 import UIKit
 
 class LastOrderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var isClickCard = false
+    var isClickCash = false
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         LastOrderViewController.menuList.count
     }
@@ -22,11 +26,36 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     
+    @IBOutlet var Card: UIButton!
+    @IBOutlet var Cash: UIButton!
     @IBOutlet var address: UILabel!
     @IBOutlet var totalPrice: UILabel!
     
     var totalPriceValue = 0
     var addressStr: String?
+    
+    
+    @IBAction func cardClick(_ sender: Any) {
+        if(isClickCash) {
+            isClickCash = false
+            Cash.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            Cash.isEnabled = true
+        }
+        isClickCard = true
+        Card.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        Card.isEnabled = false
+    }
+    @IBAction func cashClick(_ sender: Any) {
+        if(isClickCard) {
+            isClickCard = false
+            Card.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            Card.isEnabled = true
+        }
+        isClickCash = true
+        Cash.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        Cash.isEnabled = false
+    }
+    
     
     static var menuList = [menuAndCount]()
     static var price = [Int]()
@@ -36,6 +65,8 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         TableMain.delegate = self
         TableMain.dataSource = self
+        TableMain.estimatedRowHeight = 44.0
+        TableMain.rowHeight = UITableView.automaticDimension
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,11 +137,26 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         
         
         //var menuIdCounts : [String:menuIdCountsArray]?
-        var menuIdCounts : [String:Array<Dictionary<String,Any>>] = ["menuIdCounts":[["count":1, "menuId":1],["count":1, "menuId":1]]]
+        var menuIdCounts : [[String:Any]] = []
+        print(menuIdCounts)
+        
+        for item in LastOrderViewController.menuList {
+            menuIdCounts.append(["count" : item.count!, "menuId" : item.menuId!])
+        }
         print(menuIdCounts)
         
         
-        let param = ["customId": CustomerOrderViewController.userId!, "deliveryOrderRequest": ["distance": 0, "price": 2000], "menuIdCounts" : ["menuIdCounts" : menuIdCounts], "paymentStatus": "COMPLITE", "paymentType": "CARD", "restaurantId" : StoreDetailViewController.restaurantId!, "totalPrice" : 0] as [String : Any]
+        let param = ["customId": CustomerOrderViewController.userId!, "deliveryOrderRequest": ["distance": 0, "price": 2000], "menuIdCounts" : ["menuIdCounts": [
+            [
+                "count" : 1,
+                "menuId": 2,
+            ],
+            [
+                "count" : 4,
+                "menuId": 1,
+            ]
+        ]], "paymentStatus": "COMPLITE", "paymentType": "CARD", "restaurantId" : StoreDetailViewController.restaurantId!, "totalPrice" : 0] as [String : Any]
+        print(param)
         Post(param: param, url: url!)
         
     }
@@ -127,5 +173,83 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         return nil
     }
+    
+    /*
+     if let dataJson = data {
+         do {
+             // JSONSerialization로 데이터 변환하기
+             if let json = try JSONSerialization.jsonObject(with: dataJson, options: .allowFragments) as? [String: AnyObject]
+             {
+                 print(json)
+                 //print(json["data"] as? [String:Any])
+                 if let temp = json["data"] as? [String:Any] {
+                     if let temp2 = temp["orderFindResponses"] as? NSArray {
+                         for i in temp2 {
+                             var orderAddress : String?
+                             var orderPrice : Int?
+                             var orderNumber : String?
+                             
+                             if let temp = i as? NSDictionary {
+                                 
+                                 if let orderCustomer = temp["orderCustomer"] as? [String:Any]{
+                                     //                                            print("orderCustomer")
+                                     //                                            print("고객명 : " + "\(orderCustomer["name"] as! String)")
+                                     //                                            print("전화번호 : " + "\(orderCustomer["phoneNumber"] as! String)")
+                                     orderNumber = orderCustomer["phoneNumber"] as! String
+                                 }
+                                 if let orderDelivery = temp["orderDelivery"] as? [String:Any]{
+                                     //print("orderDelivery")
+                                     //print("배달 주소 : " + "\(orderDelivery["address"] as! String)")
+                                     //print("거리 : " + "\(orderDelivery["distance"] as! Int)")
+                                     //print("가격 : " + "\(orderDelivery["price"] as! Int)")
+                                     orderAddress = orderDelivery["address"] as! String
+                                     orderPrice = orderDelivery["price"] as! Int
+                                     //print("상태 : " + "\(orderDelivery["status"] as! REQUEST)")
+                                 }
+                                 if let orderRestaurant = temp["orderRestaurant"] as? [String:Any]{
+                                     //print("orderRestaurant")
+                                     //print("가게 주소 : " + "\(orderRestaurant["address"] as! String)")
+                                     //print("가게 이름 : " + "\(orderRestaurant["name"] as! String)")
+                                     //print("가게 번호 : " + "\(orderRestaurant["number"] as! String)")
+                                     //print("상태 : " + "\(orderDelivery["status"] as! REQUEST)")
+                                 }
+                                 if let orderRider = temp["orderRider"] as? [String:Any]{
+                                     //print(orderRider)
+                                     //print("라이더 이름 : " + "\(orderRider["name"] as? String)")
+                                     //print("라이더 번호 : " + "\(orderRider["phoneNumber"] as? String)")
+                                     
+                                 }
+                                 if let orderStatus = temp["orderStatus"] as? [String:Any]{
+                                     
+                                     
+                                 }
+                                 if let menuNameCounts = temp["menuNameCounts"] as? [String:Any]{
+                                     print("menuNameCounts")
+                                     if let menuNameCountsT = menuNameCounts["menuNameCounts"] as? [[String:Any]]{
+                                         print("menuNameCountsT")
+                                         var orderProductName = ""
+                                         
+                                         for i in menuNameCountsT {
+                                             for item in i{
+                                                 //print(item["name"] as? String ?? "")
+                                                 //print(item.value)
+                                             }
+                                             var temp = i["name"] as? String ?? ""
+                                             var countTemp = i["count"] as? Int
+                                     
+                                                 orderProductName += temp + " x" + "\(countTemp!)\n"
+                                             
+                                         }
+                                         self.callList.append(order(productName: orderProductName, address: orderAddress, price: orderPrice, customerNumber: orderNumber))
+                                         print("")
+                                     }
+                                 }
+                                 
+                             }
+                             
+                         }
+                     }
+                 }
+     */
     
 }

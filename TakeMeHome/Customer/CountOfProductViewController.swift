@@ -49,7 +49,7 @@ class CountOfProductViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func addOrMinus(_ sender: UIStepper) {
-        countLabel.text = Int(sender.value).description
+        countLabel.text = Int(sender.value).description + " 개"
         price.text = "\(Int(sender.value) * productPrice!) 원"
         totalPrice = Int(sender.value) * productPrice!
     }

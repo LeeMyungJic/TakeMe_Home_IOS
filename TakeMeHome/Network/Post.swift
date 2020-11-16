@@ -16,7 +16,8 @@ func Post(param: [String:Any], url: URL, isGet: Bool = false, person: String = "
     // 4. HTTP 메시지에 포함될 헤더 설정
     request.addValue("application/json;charset=utf-8", forHTTPHeaderField: "Content-Type")
     request.setValue(String(paramData.count), forHTTPHeaderField: "Content-Length")
-    
+    print("====================================================")
+    print("====================================================")
     // 5. URLSession 객체를 통해 전송 및 응답값 처리 로직 작성
     
     let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
