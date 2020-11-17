@@ -152,21 +152,15 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = AcceptanceView.dequeueReusableCell(withIdentifier: "AcceptanceCell", for: indexPath) as! AcceptanceCell
         cell.nameStr.text = "배달지 : " + callList[indexPath.row].address!
-        cell.addressStr.text = "결제 여부 : " + callList[indexPath.row].payStatus!
+        if (callList[indexPath.row].payStatus! == "COMPLITE") {
+            cell.addressStr.text = "결제 여부 : 선결제 완료"
+        }
+        else {
+            cell.addressStr.text = "결제 여부 : 만나서 결제"
+        }
         cell.Time.text = "결제 금액 : " + "\(callList[indexPath.row].price!)"
         
-        //셀 디자인
-        cell.stack.layer.borderColor = #colorLiteral(red: 0.4344803691, green: 0.5318876505, blue: 1, alpha: 1)
-        //테두리 두께
-        cell.stack.layer.borderWidth = 1
-        // 모서리 둥글게
-        cell.stack.layer.cornerRadius = 5
-        
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: nil) as! AcceptanceCell
-            cell.stack.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        }
-        
+
         return cell
     }
     

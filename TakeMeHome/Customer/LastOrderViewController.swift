@@ -30,9 +30,11 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet var Cash: UIButton!
     @IBOutlet var address: UILabel!
     @IBOutlet var totalPrice: UILabel!
+    @IBOutlet var deliveryLabel: UILabel!
     
     var totalPriceValue = 0
     var addressStr: String?
+    var deliveryFee = 0
     
     
     @IBAction func cardClick(_ sender: Any) {
@@ -80,7 +82,50 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
             print(i)
             totalPriceValue += LastOrderViewController.menuList[i].count! * LastOrderViewController.price[i]
         }
-        totalPrice.text = "\(totalPriceValue) 원"
+        
+        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/restaurants/restaurant/\(StoreDetailViewController.restaurantId!)/\(CustomerOrderViewController.userId!)/distance")!) { (data, response, error) in
+            if let dataJson = data {
+                
+                do {
+                    // JSONSerialization로 데이터 변환하기
+                    if let json = try JSONSerialization.jsonObject(with: dataJson, options: .allowFragments) as? [String: AnyObject]
+                    {
+//                        if let temp = json["address"] as? [String:Any] {
+//                            print("data!!")
+//                            self.addressStr = temp as? String
+//                        }
+                        
+                        if let temp = json["data"] as? [String:Any] {
+                            print("data!!")
+                            guard let price = temp["price"] as? Int else {
+                                return
+                            }
+                            print("price!!")
+                            self.deliveryFee = price
+                        }
+                        
+                    }
+                }
+                catch {
+                    print("JSON 파상 에러")
+                    
+                }
+                print("JSON 파싱 완료") // 메일 쓰레드에서 화면 갱신 DispatchQueue.main.async { self.tvMovie.reloadData() }
+                
+            }
+            
+            
+            
+            // UI부분이니까 백그라운드 말고 메인에서 실행되도록 !
+            DispatchQueue.main.async {
+                //reloadData로 데이터를 가져왔으니 쓰라고 통보 ㅎㅎ
+                self.deliveryLabel.text = "\(self.deliveryFee) 원"
+                self.totalPrice.text = "\(self.totalPriceValue + self.deliveryFee) 원"
+            }
+            
+        }
+        task.resume()
+        
     }
     
     func getAddress() {

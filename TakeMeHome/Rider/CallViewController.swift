@@ -149,18 +149,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.storeAddress.text = "가게 주소 : " + callList[indexPath.row].storeAddress!
         cell.timeStr.text = "배달지까지 거리 : \(callList[indexPath.row].storeDistace!)Km"
         
-        //셀 디자인
-        cell.stack.layer.borderColor = #colorLiteral(red: 0.4344803691, green: 0.5318876505, blue: 1, alpha: 1)
-        //테두리 두께
-        cell.stack.layer.borderWidth = 1
-        // 모서리 둥글게
-        cell.stack.layer.cornerRadius = 5
         
-        // 빈 셀 출력 x
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: nil) as! CallCell
-            cell.stack.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        }
         
         return cell
     }

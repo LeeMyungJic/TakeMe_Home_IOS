@@ -11,6 +11,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var menus = [menu]()
     
+    var completionHandler: (() -> ())?
+    
     func getMenus() {
         menus = [menu]()
         let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/menus/" + "\(ManagerCallViewController.restaurantId)")!) { (data, response, error) in
@@ -68,7 +70,41 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.name.text = menus[indexPath.row].name
         cell.price.text = "\(menus[indexPath.row].price!)원"
+        if menus[indexPath.row].status == "SALE" {
+            cell.status.text = "판매중"
+        }
+        else {
+            cell.status.text = "품절"
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Owner", bundle: nil)
+        
+        let popUp = storyboard.instantiateViewController(identifier: "ChangeStatusViewController")
+        popUp.modalPresentationStyle = .overCurrentContext
+        popUp.modalTransitionStyle = .crossDissolve
+        
+        ChangeStatusViewController.menuId = menus[indexPath.row].menuId!
+        
+        let temp = popUp as? ChangeStatusViewController
+        
+        
+        
+        
+        self.present(popUp, animated: true, completion: nil)
+        
+        _ = completionHandler?()
+        
+        temp?.completionHandler = {
+            
+        }
+        guard let moveFirst = tabBarController?.viewControllers?[0] else {
+            return
+        }
+        tabBarController?.selectedViewController = moveFirst
+        
     }
     
     

@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 
 class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    @IBOutlet var titleLable: UILabel!
     
     let person = ["점주", "라이더", "사용자"]
     
@@ -59,7 +60,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         createPickerView()
         dismissPickerView()
     }
-    
+  
     func abc() {
         
         let url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/reception")
@@ -71,7 +72,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
 //            menuIdCounts.append(["count" : item.count!, "menuId" : item.menuId!])
 //        }
         
-        let param = ["customId": 1, "deliveryOrderRequest": ["distance": 0, "price": 2000], "menuIdCounts" : menuIdCounts, "paymentStatus": "COMPLITE", "paymentType": "CARD", "restaurantId" : 1, "totalPrice" : 0] as [String : Any]
+        let param = ["customId": 1, "deliveryOrderRequest": ["distance": 0, "price": 2000], "menuIdCounts" : array, "paymentStatus": "COMPLITE", "paymentType": "CARD", "restaurantId" : 1, "totalPrice" : 0] as [String : Any]
         print("===================================================")
         print(param)
         print("===================================================")
