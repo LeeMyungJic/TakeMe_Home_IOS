@@ -8,14 +8,6 @@ class CustomerOrderViewController: UIViewController, UITableViewDelegate, UITabl
     var stores = [store]()
     var canDelivery = [store]()
     
-    var handler: [() -> ()] = []
-    
-    func comp(completionHandler: @escaping ()->()) {
-        print("comp 안")
-        getStores()
-        handler.append(completionHandler)
-    }
-    
     
     func getStores() {
         stores = [store]()
@@ -33,7 +25,7 @@ class CustomerOrderViewController: UIViewController, UITableViewDelegate, UITabl
                                     if let temp = i as? NSDictionary {
                                         let nameStr = temp["name"] as! String
                                         let idStr = temp["id"] as! Int
-                                        self.isDelivery(item: store(name: nameStr, id: idStr))
+                                        self.stores.append(store(name: nameStr, id: idStr))
                                             
                                         
                                     }
@@ -101,13 +93,13 @@ class CustomerOrderViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return canDelivery.count
+        return stores.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = TableMain.dequeueReusableCell(withIdentifier: "CustomerOrderCell", for: indexPath) as! CustomerOrderCell
         
-        cell.StoreName.text = canDelivery[indexPath.row].name
+        cell.StoreName.text = stores[indexPath.row].name
         return cell
     }
     
@@ -118,12 +110,8 @@ class CustomerOrderViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        comp {
-            print("comp 밖")
-            //self.getStores()
-        }
+        getStores()
         print("getget : \(canDelivery.count)")
-        handler.first?()
         //print(self.stores.count)
         //self.isDelivery()
         TableMain.delegate = self
@@ -135,8 +123,8 @@ class CustomerOrderViewController: UIViewController, UITableViewDelegate, UITabl
         if let id = segue.identifier, "gogo" == id {
             if let controller = segue.destination as? StoreDetailViewController {
                 if let indexPath = TableMain.indexPathForSelectedRow {
-                    StoreDetailViewController.restaurantName = canDelivery[indexPath.row].name
-                    StoreDetailViewController.restaurantId = canDelivery[indexPath.row].id
+                    StoreDetailViewController.restaurantName = stores[indexPath.row].name
+                    StoreDetailViewController.restaurantId = stores[indexPath.row].id
                     
                 }
             }

@@ -16,6 +16,8 @@
 		DA5770A2255D4C30007EF02E /* CountOfProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5770A1255D4C30007EF02E /* CountOfProductViewController.swift */; };
 		DA5770A8255E823F007EF02E /* menuAndCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5770A7255E823F007EF02E /* menuAndCount.swift */; };
 		DA5770AC255E86A4007EF02E /* LastOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5770AB255E86A4007EF02E /* LastOrderCell.swift */; };
+		DA5770B0255E9531007EF02E /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5770AF255E9531007EF02E /* OrderListViewController.swift */; };
+		DA5770B42562AE34007EF02E /* ChangeStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5770B32562AE34007EF02E /* ChangeStatusViewController.swift */; };
 		DAB9FEA72557D96600C12743 /* UpdateStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FEA62557D96600C12743 /* UpdateStoreViewController.swift */; };
 		DAB9FEF725592F7300C12743 /* OrderReceptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FEF625592F7300C12743 /* OrderReceptionViewController.swift */; };
 		DAB9FEFB25592FA700C12743 /* OrderReCeptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9FEFA25592FA700C12743 /* OrderReCeptionCell.swift */; };
@@ -144,6 +146,9 @@
 		DA5770A1255D4C30007EF02E /* CountOfProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountOfProductViewController.swift; sourceTree = "<group>"; };
 		DA5770A7255E823F007EF02E /* menuAndCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuAndCount.swift; sourceTree = "<group>"; };
 		DA5770AB255E86A4007EF02E /* LastOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastOrderCell.swift; sourceTree = "<group>"; };
+		DA5770AF255E9531007EF02E /* OrderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewController.swift; sourceTree = "<group>"; };
+		DA5770B32562AE34007EF02E /* ChangeStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeStatusViewController.swift; sourceTree = "<group>"; };
+		DA5770B72563A9FC007EF02E /* Swift-Light-Italic-SC_43142.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Swift-Light-Italic-SC_43142.ttf"; sourceTree = "<group>"; };
 		DAB9FEA62557D96600C12743 /* UpdateStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStoreViewController.swift; sourceTree = "<group>"; };
 		DAB9FEF625592F7300C12743 /* OrderReceptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReceptionViewController.swift; sourceTree = "<group>"; };
 		DAB9FEFA25592FA700C12743 /* OrderReCeptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReCeptionCell.swift; sourceTree = "<group>"; };
@@ -482,6 +487,7 @@
 		DAC1D4FB2519DDC600B8328D /* TakeMeHome */ = {
 			isa = PBXGroup;
 			children = (
+				DA5770B72563A9FC007EF02E /* Swift-Light-Italic-SC_43142.ttf */,
 				DA57708E255D3D0D007EF02E /* MyFireBase */,
 				DA577064255D3A16007EF02E /* GoogleService-Info.plist */,
 				DAC7286D2553F4B800602FBD /* Customer */,
@@ -789,6 +795,7 @@
 				DA5770A1255D4C30007EF02E /* CountOfProductViewController.swift */,
 				DA5770A7255E823F007EF02E /* menuAndCount.swift */,
 				DA5770AB255E86A4007EF02E /* LastOrderCell.swift */,
+				DA5770AF255E9531007EF02E /* OrderListViewController.swift */,
 			);
 			path = Customer;
 			sourceTree = "<group>";
@@ -860,6 +867,7 @@
 				DAB9FEA62557D96600C12743 /* UpdateStoreViewController.swift */,
 				DAB9FEF625592F7300C12743 /* OrderReceptionViewController.swift */,
 				DAB9FEFA25592FA700C12743 /* OrderReCeptionCell.swift */,
+				DA5770B32562AE34007EF02E /* ChangeStatusViewController.swift */,
 			);
 			path = Owner;
 			sourceTree = "<group>";
@@ -1173,6 +1181,7 @@
 				DAC728752553FC4D00602FBD /* AddRestaurantViewController.swift in Sources */,
 				DAC728832557C94900602FBD /* MenuViewController.swift in Sources */,
 				DAB9FEFF255934DA00C12743 /* Put.swift in Sources */,
+				DA5770B0255E9531007EF02E /* OrderListViewController.swift in Sources */,
 				DAF2ACD72523118600FD11C1 /* AcceptanceCell.swift in Sources */,
 				DAC1D53F2519E15100B8328D /* SettingsViewController.swift in Sources */,
 				DA5770AC255E86A4007EF02E /* LastOrderCell.swift in Sources */,
@@ -1192,6 +1201,7 @@
 				DAB9FF1D255A75A100C12743 /* StoreDetailCell.swift in Sources */,
 				DAC1D4FF2519DDC600B8328D /* SceneDelegate.swift in Sources */,
 				DAB9FF11255A746200C12743 /* CustomerOrderViewController.swift in Sources */,
+				DA5770B42562AE34007EF02E /* ChangeStatusViewController.swift in Sources */,
 				DAB9FF19255A758500C12743 /* StoreDetailViewController.swift in Sources */,
 				DAFA286C25496A8F001B7781 /* JoinViewController.swift in Sources */,
 				DAC728872557C95E00602FBD /* MenuCell.swift in Sources */,

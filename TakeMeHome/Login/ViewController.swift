@@ -24,15 +24,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        InstanceID.instanceID().instanceID { (result, error) in
-        //           if let error = error {
-        //               print("Error fetching remote instance ID: \(error)")
-        //           } else if let result = result {
-        //               print("Remote instance ID token: \(result.token)")
-        //            self.token = result.token
-        //
-        //           }
-        //        }
+        //bbb()
         abc()
         // Do any additional setup after loading the view.
         let border = CALayer()
@@ -62,39 +54,91 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     }
   
     func abc() {
-        
+        print("ABC ABC ABC")
         let url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/reception")
-        let array = [["count": 2, "menuId": 1], ["count": 1, "menuId": 2]] as [[String:Any]]
+        let array = [["menuId": 1, "count": 1]]
         
-        var menuIdCounts1 : [[String:Any]]?
-        var menuIdCounts : [String:Any] = ["menuIdCounts" : array]
-//        for item in LastOrderViewController.menuList {
-//            menuIdCounts.append(["count" : item.count!, "menuId" : item.menuId!])
-//        }
+        //var menuIdCounts : [String:menuIdCountsArray]?
+        var menuIdCounts : [[String:Any]] = []
+      
         
-        let param = ["customId": 1, "deliveryOrderRequest": ["distance": 0, "price": 2000], "menuIdCounts" : array, "paymentStatus": "COMPLITE", "paymentType": "CARD", "restaurantId" : 1, "totalPrice" : 0] as [String : Any]
-        print("===================================================")
-        print(param)
-        print("===================================================")
-        Post(param: param, url: url!)
+        var array1 : NSArray = [array]
+        var array2 = ["menuIdCounts":array1]
+        
+        for item in LastOrderViewController.menuList {
+            menuIdCounts.append(["count" : item.count!, "menuId" : item.menuId!])
+        }
+        
+        
+        //let param = ["customId": 1, "menuIdCounts" : ["menuIdCounts": ["count":1, "menuId":1]], "paymentStatus": "COMPLITE", "paymentType": "CARD", "restaurantId" : 1, "totalPrice" : 2000] as [String : Any]
+        let param1 = ["customId": 1, "menuIdCounts" : ["menuIdCounts" : array], "paymentStatus": "COMPLITE", "paymentType": "CARD", "restaurantId" : 1, "totalPrice" : 2000] as [String : Any]
+        Post(param: param1, url: url!)
     }
-    /*
-     if let menuNameCounts = temp["menuNameCounts"] as? [String:Any]{
-         print("menuNameCounts")
-         if let menuNameCountsT = menuNameCounts["menuNameCounts"] as? [[String:Any]]{
-             print("menuNameCountsT")
-             for i in 0...menuNameCountsT.count {
-                 if (i == menuNameCountsT.count - 1) {
-                     orderProductName += menuNameCountsT[0]["name"] as? String ?? ""
-                 }
-                 else {
-                     print("상품명 : " + "\(menuNameCountsT[0]["name"] as? String)")
-                     orderProductName += menuNameCountsT[0]["name"] as? String ?? "" + ","
-                 }
-             }
-         }
-     }
-     */
+    
+    func bbb() {
+        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/orders/1")!) { (data, response, error) in
+            print("연결!")
+            if let dataJson = data {
+                do {
+                    // JSONSerialization로 데이터 변환하기
+                    if let json = try JSONSerialization.jsonObject(with: dataJson, options: .allowFragments) as? [String: AnyObject]
+                    {
+                        print(json)
+                        //print(json["data"] as? [String:Any])
+                        if let temp = json["data"] as? [String:Any] {
+                            if let temp2 = temp["orderFindResponses"] as? NSArray {
+                                for i in temp2 {
+                                    
+                                    if let temp = i as? NSDictionary {
+                                        
+                                        if let menuNameCounts = temp["menuNameCounts"] as? [String:Any]{
+                                            print("menuNameCounts")
+                                            if let menuNameCountsT = menuNameCounts["menuNameCounts"] as? [[String:Any]]{
+                                                print("menuNameCountsT")
+                                                var orderProductName = ""
+                                                
+                                                for i in menuNameCountsT {
+                                                    for item in i{
+                                                        //print(item["name"] as? String ?? "")
+                                                        //print(item.value)
+                                                    }
+                                                    var temp = i["name"] as? String ?? ""
+                                                    var countTemp = i["count"] as? Int
+                                            
+                                                    print(temp)
+                                                    print(countTemp)
+                                                    
+                                                }
+                                                
+                                            }
+                                        }
+                                        
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+                catch {
+                    print("JSON 파상 에러")
+                    
+                }
+                print("JSON 파싱 완료") // 메일 쓰레드에서 화면 갱신 DispatchQueue.main.async { self.tvMovie.reloadData() }
+                
+            }
+            
+            
+            
+            // UI부분이니까 백그라운드 말고 메인에서 실행되도록 !
+            
+        }
+        // Json Parsing
+        
+        
+        task.resume()
+    }
 
     
     

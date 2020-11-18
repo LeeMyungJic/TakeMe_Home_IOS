@@ -176,14 +176,12 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         let url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/reception")
         let array = [["count": 1, "menuId": 1], ["count": 2, "menuId": 1]]
         
-        
-        let jsonString = convertIntoJSONString(arrayObject: array)
-        
-        
-        
         //var menuIdCounts : [String:menuIdCountsArray]?
         var menuIdCounts : [[String:Any]] = []
         print(menuIdCounts)
+        
+        var array1 = [Any]()
+        array1.append(["count":1, "menuId":1])
         
         for item in LastOrderViewController.menuList {
             menuIdCounts.append(["count" : item.count!, "menuId" : item.menuId!])
@@ -191,33 +189,12 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         print(menuIdCounts)
         
         
-        let param = ["customId": CustomerOrderViewController.userId!, "deliveryOrderRequest": ["distance": 0, "price": 2000], "menuIdCounts" : ["menuIdCounts": [
-            [
-                "count" : 1,
-                "menuId": 2,
-            ],
-            [
-                "count" : 4,
-                "menuId": 1,
-            ]
-        ]], "paymentStatus": "COMPLITE", "paymentType": "CARD", "restaurantId" : StoreDetailViewController.restaurantId!, "totalPrice" : 0] as [String : Any]
+        let param = ["customId": CustomerOrderViewController.userId!, "deliveryOrderRequest": ["distance": 0, "price": 2000], "menuIdCounts" : ["menuIdCounts": array1], "paymentStatus": "COMPLITE", "paymentType": "CARD", "restaurantId" : StoreDetailViewController.restaurantId!, "totalPrice" : 0] as [String : Any]
         print(param)
         Post(param: param, url: url!)
         
     }
-    func convertIntoJSONString(arrayObject: [Any]) -> String? {
-        
-        do {
-            let jsonData: Data = try JSONSerialization.data(withJSONObject: arrayObject, options: [])
-            if  let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue) {
-                return jsonString as String
-            }
-            
-        } catch let error as NSError {
-            print("Array convertIntoJSON - \(error.description)")
-        }
-        return nil
-    }
+
     
     /*
      if let dataJson = data {
