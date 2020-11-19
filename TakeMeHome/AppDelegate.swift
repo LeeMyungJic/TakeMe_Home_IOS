@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
       let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-      print("[Log] deviceToken :", deviceTokenString)
+      //print("[Log] deviceToken :", deviceTokenString)
         
       Messaging.messaging().apnsToken = deviceToken
     }
@@ -52,8 +52,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 }
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-    print("Firebase registration token: \(fcmToken)")
+    //print("Firebase registration token: \(fcmToken)")
     let dataDict:[String: String] = ["token": fcmToken!]
+        
     NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
   }
 }

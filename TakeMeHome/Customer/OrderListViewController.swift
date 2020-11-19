@@ -11,6 +11,9 @@ class OrderListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_keyboard_arrow_left_2x"), style: .plain, target: self, action: nil)
+//        self.navigationController?.navigationBar.topItem?.title = "GoGoGo"
 
         // Do any additional setup after loading the view.
     }

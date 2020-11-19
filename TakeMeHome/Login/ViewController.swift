@@ -22,27 +22,40 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     var ident : String?
     var token : String?
     
+    func getToken(receivedToken : String) {
+        self.token = receivedToken
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //bbb()
-        abc()
-        // Do any additional setup after loading the view.
-        let border = CALayer()
         
-        let width = CGFloat(1.0)
+        InstanceID.instanceID().instanceID { (result, error) in
+            if let error = error {
+                print("Error fetching remote instance ID: \(error)")
+            }
+            else if let result = result {
+                print("Remote instance ID token: \(result.token)")
+                self.token = result.token
+                
+            }
+        }
         
-        border.borderColor = UIColor.lightGray.cgColor
-        
-        border.frame = CGRect(x: 0, y: personStr
-                                .frame.size.height - width, width:  personStr.frame.size.width, height: personStr.frame.size.height)
-        
-        
-        
-        border.borderWidth = width
-        
-        personStr.layer.addSublayer(border)
-        
-        personStr.layer.masksToBounds = true
+//        let border = CALayer()
+//
+//        let width = CGFloat(1.0)
+//
+//        border.borderColor = UIColor.lightGray.cgColor
+//
+//        border.frame = CGRect(x: 0, y: personStr
+//                                .frame.size.height - width, width:  personStr.frame.size.width, height: personStr.frame.size.height)
+//
+//
+//
+//        border.borderWidth = width
+//
+//        personStr.layer.addSublayer(border)
+//
+//        personStr.layer.masksToBounds = true
         
         
         
@@ -52,97 +65,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         createPickerView()
         dismissPickerView()
     }
-  
-    func abc() {
-        print("ABC ABC ABC")
-        let url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/reception")
-        let array = [["menuId": 1, "count": 1]]
-        
-        //var menuIdCounts : [String:menuIdCountsArray]?
-        var menuIdCounts : [[String:Any]] = []
-      
-        
-        var array1 : NSArray = [array]
-        var array2 = ["menuIdCounts":array1]
-        
-        for item in LastOrderViewController.menuList {
-            menuIdCounts.append(["count" : item.count!, "menuId" : item.menuId!])
-        }
-        
-        
-        //let param = ["customId": 1, "menuIdCounts" : ["menuIdCounts": ["count":1, "menuId":1]], "paymentStatus": "COMPLITE", "paymentType": "CARD", "restaurantId" : 1, "totalPrice" : 2000] as [String : Any]
-        let param1 = ["customId": 1, "menuIdCounts" : ["menuIdCounts" : array], "paymentStatus": "COMPLITE", "paymentType": "CARD", "restaurantId" : 1, "totalPrice" : 2000] as [String : Any]
-        Post(param: param1, url: url!)
-    }
-    
-    func bbb() {
-        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/orders/1")!) { (data, response, error) in
-            print("연결!")
-            if let dataJson = data {
-                do {
-                    // JSONSerialization로 데이터 변환하기
-                    if let json = try JSONSerialization.jsonObject(with: dataJson, options: .allowFragments) as? [String: AnyObject]
-                    {
-                        print(json)
-                        //print(json["data"] as? [String:Any])
-                        if let temp = json["data"] as? [String:Any] {
-                            if let temp2 = temp["orderFindResponses"] as? NSArray {
-                                for i in temp2 {
-                                    
-                                    if let temp = i as? NSDictionary {
-                                        
-                                        if let menuNameCounts = temp["menuNameCounts"] as? [String:Any]{
-                                            print("menuNameCounts")
-                                            if let menuNameCountsT = menuNameCounts["menuNameCounts"] as? [[String:Any]]{
-                                                print("menuNameCountsT")
-                                                var orderProductName = ""
-                                                
-                                                for i in menuNameCountsT {
-                                                    for item in i{
-                                                        //print(item["name"] as? String ?? "")
-                                                        //print(item.value)
-                                                    }
-                                                    var temp = i["name"] as? String ?? ""
-                                                    var countTemp = i["count"] as? Int
-                                            
-                                                    print(temp)
-                                                    print(countTemp)
-                                                    
-                                                }
-                                                
-                                            }
-                                        }
-                                        
-                                    }
-                                    
-                                }
-                            }
-                        }
-                    }
-                    
-                }
-                catch {
-                    print("JSON 파상 에러")
-                    
-                }
-                print("JSON 파싱 완료") // 메일 쓰레드에서 화면 갱신 DispatchQueue.main.async { self.tvMovie.reloadData() }
-                
-            }
-            
-            
-            
-            // UI부분이니까 백그라운드 말고 메인에서 실행되도록 !
-            
-        }
-        // Json Parsing
-        
-        
-        task.resume()
-    }
-
-    
-    
-    
     
     @IBAction func Join(_ sender: Any) {
         let addStore = self.storyboard?.instantiateViewController(withIdentifier: "JoinViewController")
@@ -154,7 +76,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     @IBAction func Login(_ sender: Any) {
         //, "token":token
         var url = URL(string: "")
-        var param = ["email":idStr.text, "password":passStr.text] as [String:Any]
+        var param = ["email":idStr.text, "password":passStr.text, "token" : token] as [String:Any]
         switch personStr.text {
         case "라이더":
             url = URL(string: NetWorkController.baseUrl + "/api/v1/riders/login")
@@ -178,133 +100,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         else {
             print("가입 유형을 선택하세요")
         }
-        
-        //        orderFindResponses =     (
-        //                    {
-        //                menuNameCounts =             {
-        //                    menuNameCounts =                 (
-        //                                            {
-        //                            count = 2;
-        //                            name = "\Uc544\Uba54\Ub9ac\Uce74\Ub178";
-        //                        },
-        //                                            {
-        //                            count = 1;
-        //                            name = "\Uc544\Uc774\Uc2a4\Ud2f0";
-        //                        },
-        //                                            {
-        //                            count = 3;
-        //                            name = "\Ubc84\Ube14\Ud2f0";
-        //                        }
-        //                    );
-        //                };
-        //                orderCustomer =             {
-        //                    name = string;
-        //                    phoneNumber = string;
-        //                };
-        //                orderDelivery =             {
-        //                    address = string;
-        //                    distance = 0;
-        //                    price = 45000;
-        //                    status = NONE;
-        //                };
-        //                orderRestaurant =             {
-        //                    address = "\Ub9cc\Uc2181\Ub3d9";
-        //                    name = "\Uc2a4\Ud0c0\Ubc85\Uc2a4";
-        //                    number = "032 473 2141";
-        //                };
-        //                orderRider = "<null>";
-        //                orderStatus = ORDER;
-        //                paymentStatus = COMPLITE;
-        //                paymentType = CARD;
-        //                totalPrice = 0;
-        //            },
-        //                    {
-        //                menuNameCounts =             {
-        //                    menuNameCounts =                 (
-        //                                            {
-        //                            count = 3;
-        //                            name = "\Uc544\Uba54\Ub9ac\Uce74\Ub178";
-        //                        },
-        //                                            {
-        //                            count = 2;
-        //                            name = "\Ubc84\Ube14\Ud2f0";
-        //                        }
-        //                    );
-        //                };
-        //                orderCustomer =             {
-        //                    name = string;
-        //                    phoneNumber = string;
-        //                };
-        //                orderDelivery =             {
-        //                    address = string;
-        //                    distance = 0;
-        //                    price = 45000;
-        //                    status = NONE;
-        //                };
-        //                orderRestaurant =             {
-        //                    address = "\Ub9cc\Uc2181\Ub3d9";
-        //                    name = "\Uc2a4\Ud0c0\Ubc85\Uc2a4";
-        //                    number = "032 473 2141";
-        //                };
-        //                orderRider = "<null>";
-        //                orderStatus = ORDER;
-        //                paymentStatus = COMPLITE;
-        //                paymentType = CARD;
-        //                totalPrice = 0;
-        //            }
-        //        );
-        
-        
-        
-        
-        //                guard let id = idStr.text, !id.isEmpty else { return }
-        //                        guard let password = passStr.text, !password.isEmpty else { return }
-        //
-        //                        // Model이 해당 유저를 가지고 있는지 검사
-        //                        var loginSuccess: Bool = false
-        //
-        //                if idStr.text == id, passStr.text == password {
-        //                    loginSuccess = true
-        //                }
-        //
-        //                if loginSuccess {
-        //                    print("로그인 성공")
-        //                    guard let main = self.storyboard?.instantiateViewController(identifier: "TabBar") else{return}
-        //                    self.present(main, animated: true)
-        //                }else {
-        //                    UIView.animate(withDuration: 0.2, animations: {
-        //                        self.idStr.frame.origin.x -= 10
-        //                        self.passStr.frame.origin.x -= 10
-        //                    }, completion: { _ in
-        //                        UIView.animate(withDuration: 0.2, animations: {
-        //                            self.idStr.frame.origin.x += 20
-        //                            self.passStr.frame.origin.x += 20
-        //                        }, completion: { _ in
-        //                            UIView.animate(withDuration: 0.2, animations: {
-        //                                self.idStr.frame.origin.x -= 10
-        //                                self.passStr.frame.origin.x -= 10
-        //                            })
-        //                        })
-        //                    })
-        //                }
-        //        if(idStr.text == "a") {
-        //            let storyboard = UIStoryboard.init(name: "Customer", bundle: nil)
-        //
-        //            let popUp = storyboard.instantiateViewController(identifier: "Customer")
-        //            popUp.modalPresentationStyle = .overCurrentContext
-        //            popUp.modalTransitionStyle = .crossDissolve
-        //
-        //            self.present(popUp, animated: true, completion: nil)
-        //        }
-        //        else {
-        //            let storyboard = UIStoryboard.init(name: "Rider", bundle: nil)
-        //
-        //            let popUp = storyboard.instantiateViewController(identifier: "TabBar")
-        //            popUp.modalPresentationStyle = .overCurrentContext
-        //            popUp.modalTransitionStyle = .crossDissolve
-        //
-        //            self.present(popUp, animated: true, completion: nil)
-        //        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){

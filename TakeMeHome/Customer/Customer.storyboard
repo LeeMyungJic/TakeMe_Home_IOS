@@ -380,7 +380,7 @@
                                         <rect key="frame" x="0.0" y="466.5" width="374" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STy-O2-3vf">
-                                                <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="124.5" height="30"/>
                                                 <state key="normal" title="카드">
                                                     <color key="titleColor" red="0.34192680689999999" green="0.43244599410000001" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
@@ -389,7 +389,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FjW-BM-mG6">
-                                                <rect key="frame" x="187" y="0.0" width="187" height="30"/>
+                                                <rect key="frame" x="124.5" y="0.0" width="125" height="30"/>
                                                 <state key="normal" title="현금">
                                                     <color key="titleColor" red="0.34192680689999999" green="0.43244599410000001" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
@@ -397,9 +397,19 @@
                                                     <action selector="cashClick:" destination="kGk-9b-IQJ" eventType="touchUpInside" id="Qgj-dZ-pPT"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QE9-7x-ZN7">
+                                                <rect key="frame" x="249.5" y="0.0" width="124.5" height="30"/>
+                                                <state key="normal" title="선결제">
+                                                    <color key="titleColor" red="0.34192680689999999" green="0.43244599410000001" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="preparePay:" destination="kGk-9b-IQJ" eventType="touchUpInside" id="nss-TO-UUz"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="STy-O2-3vf" firstAttribute="width" secondItem="yF3-xf-wSg" secondAttribute="width" multiplier="0.5" id="jGn-hD-QuP"/>
+                                            <constraint firstItem="FjW-BM-mG6" firstAttribute="width" secondItem="yF3-xf-wSg" secondAttribute="width" multiplier="0.3333" id="fAu-iY-qAV"/>
+                                            <constraint firstItem="STy-O2-3vf" firstAttribute="width" secondItem="yF3-xf-wSg" secondAttribute="width" multiplier="0.3333" id="jGn-hD-QuP"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -423,6 +433,7 @@
                     <connections>
                         <outlet property="Card" destination="STy-O2-3vf" id="EUY-mW-4XG"/>
                         <outlet property="Cash" destination="FjW-BM-mG6" id="5TF-0G-vPd"/>
+                        <outlet property="PreparePayment" destination="QE9-7x-ZN7" id="B51-1R-psK"/>
                         <outlet property="TableMain" destination="CAa-tg-zg1" id="rV1-c7-HCv"/>
                         <outlet property="address" destination="oFN-Ck-8JY" id="akU-Cz-VgT"/>
                         <outlet property="deliveryLabel" destination="WlX-nT-VZM" id="5nj-2r-VkW"/>
