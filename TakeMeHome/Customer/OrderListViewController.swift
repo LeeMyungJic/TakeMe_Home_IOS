@@ -11,6 +11,13 @@ class OrderListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let submitBtn = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: nil)
+                // 비슷한 메서드 주의 : btn.addTarget(self, action: #selector(submit(_:)), for: .touchUpInside)
+            self.navigationItem.rightBarButtonItem = submitBtn
+//        let more = UIButton(type: .system)
+//              more.frame = CGRect(x: 50, y: 10, width: 16, height: 16)
+//              more.setImage(UIImage(named: "more"), for: .normal)
+//              rightSideView.addSubview(more)
         
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_keyboard_arrow_left_2x"), style: .plain, target: self, action: nil)
 //        self.navigationController?.navigationBar.topItem?.title = "GoGoGo"

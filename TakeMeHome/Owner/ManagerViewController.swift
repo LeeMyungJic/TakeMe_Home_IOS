@@ -99,6 +99,13 @@ class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func logOut(_ sender: Any) {
+        let url = URL(string: NetWorkController.baseUrl + "/api/v1/customers/customer/" + "\(ManagerViewController.ownerId!)" + "/logout")
+        let param = [:] as [String : Any]
+        Delete(param: param, url: url!)
+        print("Logout !!")
+        self.dismiss(animated: true, completion: nil)
+    }
     
     /*
      // MARK: - Navigation

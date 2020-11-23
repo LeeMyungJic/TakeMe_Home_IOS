@@ -507,11 +507,17 @@
             </objects>
             <point key="canvasLocation" x="-1603" y="-319"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Customer-->
         <scene sceneID="Cwa-3g-qy3">
             <objects>
-                <tabBarController id="KOy-OM-14L" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="iOS-fW-Nfw"/>
+                <tabBarController id="KOy-OM-14L" customClass="TabCustomer" customModule="TakeMeHome" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="iOS-fW-Nfw">
+                        <barButtonItem key="rightBarButtonItem" title="로그아웃" id="385-i4-6tp">
+                            <connections>
+                                <action selector="logOut:" destination="KOy-OM-14L" id="xZ3-5i-LJ2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LCO-Yt-yHm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

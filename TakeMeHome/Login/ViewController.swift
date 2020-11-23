@@ -81,7 +81,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         case "라이더":
             url = URL(string: NetWorkController.baseUrl + "/api/v1/riders/login")
             select = "Rider"
-            ident = "TabBar"
+            ident = "Rider"
         case "점주":
             url = URL(string: NetWorkController.baseUrl + "/api/v1/owners/login")
             select = "Owner"

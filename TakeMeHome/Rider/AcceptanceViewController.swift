@@ -136,6 +136,7 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
         temp?.methodOfPaymentStr = callList[indexPath.row].payment!
         temp?.priceStr = "\(callList[indexPath.row].price!) 원"
         temp?.requirementStr = callList[indexPath.row].number!
+        //temp?.orderId = callList[indexPath.row].
         
         
         

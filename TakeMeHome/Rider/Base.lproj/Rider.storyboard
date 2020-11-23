@@ -23,7 +23,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xfu-ij-FZv">
-                                <rect key="frame" x="20" y="94.5" width="374" height="738.5"/>
+                                <rect key="frame" x="20" y="138.5" width="374" height="694.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -112,7 +112,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c9H-Rg-JQi">
-                                <rect key="frame" x="20" y="64" width="374" height="34"/>
+                                <rect key="frame" x="20" y="108" width="374" height="34"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xwr-mw-cE3">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
@@ -165,7 +165,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="콜목록" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2e-A2-5SS">
-                                <rect key="frame" x="185" y="64" width="44.5" height="20.5"/>
+                                <rect key="frame" x="185" y="108" width="44.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
@@ -259,11 +259,33 @@
             </objects>
             <point key="canvasLocation" x="3895.652173913044" y="-1159.1517857142856"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="D8I-aY-JvM">
+            <objects>
+                <navigationController storyboardIdentifier="Rider" id="kXw-oH-UNV" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="W5X-C8-CN2">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="n9T-AP-oRn" kind="relationship" relationship="rootViewController" id="iNg-Tv-VbZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0lC-ut-m2j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1733" y="-404"/>
+        </scene>
+        <!--Tab Rider-->
         <scene sceneID="wTd-7L-BdH">
             <objects>
-                <tabBarController storyboardIdentifier="TabBar" id="n9T-AP-oRn" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="OJy-Bg-bOO"/>
+                <tabBarController id="n9T-AP-oRn" customClass="TabRider" customModule="TakeMeHome" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="OJy-Bg-bOO">
+                        <barButtonItem key="rightBarButtonItem" title="로그아웃" id="DR8-tO-bUm">
+                            <connections>
+                                <action selector="logOut:" destination="n9T-AP-oRn" id="8Sn-qG-cDz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QXr-R8-UJS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

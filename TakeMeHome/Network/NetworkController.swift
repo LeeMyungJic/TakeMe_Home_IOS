@@ -8,7 +8,7 @@
 import Foundation
 
 class NetWorkController{
-    static var baseUrl = "http://5ed98b70e181.ngrok.io"
+    static var baseUrl = "http://localhost:8080/"
     
 }
 

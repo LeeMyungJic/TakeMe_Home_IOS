@@ -20,6 +20,7 @@ class OderViewController: UIViewController {
     var priceStr = ""
     var methodOfPaymentStr = ""
     var requirementStr = ""
+    var orderId = 0
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,39 @@ class OderViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func complete(_ sender: Any) {
+        let msg = UIAlertController(title: "배달 확인", message: "배달을 완료하셨습니까?", preferredStyle: .alert)
+        
+        let YES = UIAlertAction(title: "네", style: .default, handler: { (action) -> Void in
+            
+            self.YesClick()
+        })
+        
+        //Alert에 부여할 No이벤트 선언
+        let NO = UIAlertAction(title: "아니요", style: .cancel) { (action) -> Void in
+            self.NoClick()
+        }
+        
+        //Alert에 이벤트 연결
+        msg.addAction(YES)
+        msg.addAction(NO)
+        
+        //Alert 호출
+        self.present(msg, animated: true, completion: nil)
+    }
+    
+    func YesClick()
+    {
+        let url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/order/" + "\(orderId)" + "/assigned/" + "\(CallViewController.riderId!)")
+        let param = [:] as? [String:Any]
+        Put(param: param!, url: url!)
+        
+    }
+    
+    func NoClick()
+    {
+        
+    }
     /*
     // MARK: - Navigation
 

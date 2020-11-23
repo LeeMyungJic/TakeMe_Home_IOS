@@ -115,8 +115,15 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nag-mC-GUe">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ZU-BB-Xox">
                                         <rect key="frame" x="20" y="350" width="260" height="30"/>
+                                        <state key="normal" title="배달 완료"/>
+                                        <connections>
+                                            <action selector="complete:" destination="TV8-xh-bwU" eventType="touchUpInside" id="dMX-xg-Kde"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nag-mC-GUe">
+                                        <rect key="frame" x="20" y="300" width="260" height="30"/>
                                         <state key="normal" title="확인"/>
                                         <connections>
                                             <action selector="close:" destination="TV8-xh-bwU" eventType="touchUpInside" id="cqZ-mm-Ilx"/>
@@ -125,15 +132,18 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7ZU-BB-Xox" secondAttribute="trailing" constant="20" id="CMF-sl-i2Y"/>
                                     <constraint firstItem="SYX-xO-HRY" firstAttribute="top" secondItem="28h-o0-aGv" secondAttribute="bottom" constant="20" id="FR2-Vx-tJr"/>
                                     <constraint firstAttribute="width" constant="300" id="KYn-g6-p4h"/>
                                     <constraint firstAttribute="height" constant="400" id="ONK-OG-ds7"/>
                                     <constraint firstItem="Nag-mC-GUe" firstAttribute="leading" secondItem="Pnx-IG-Nze" secondAttribute="leading" constant="20" id="OyS-QX-ALQ"/>
                                     <constraint firstAttribute="trailing" secondItem="Nag-mC-GUe" secondAttribute="trailing" constant="20" id="TM9-3Z-NDe"/>
                                     <constraint firstItem="28h-o0-aGv" firstAttribute="centerX" secondItem="Pnx-IG-Nze" secondAttribute="centerX" id="VsJ-Pe-aSy"/>
+                                    <constraint firstAttribute="bottom" secondItem="7ZU-BB-Xox" secondAttribute="bottom" constant="20" id="ZU5-Yb-RVo"/>
+                                    <constraint firstItem="7ZU-BB-Xox" firstAttribute="top" secondItem="Nag-mC-GUe" secondAttribute="bottom" constant="20" id="ZyE-js-536"/>
                                     <constraint firstItem="28h-o0-aGv" firstAttribute="top" secondItem="Pnx-IG-Nze" secondAttribute="top" constant="20" id="a2o-1h-M4a"/>
+                                    <constraint firstItem="7ZU-BB-Xox" firstAttribute="leading" secondItem="Pnx-IG-Nze" secondAttribute="leading" constant="20" id="dzr-bF-JtM"/>
                                     <constraint firstItem="SYX-xO-HRY" firstAttribute="leading" secondItem="Pnx-IG-Nze" secondAttribute="leading" constant="5" id="oOU-oO-0X5"/>
-                                    <constraint firstAttribute="bottom" secondItem="Nag-mC-GUe" secondAttribute="bottom" constant="20" id="rzX-t5-UlF"/>
                                     <constraint firstAttribute="trailing" secondItem="SYX-xO-HRY" secondAttribute="trailing" constant="5" id="zi5-1m-Gcr"/>
                                 </constraints>
                             </view>

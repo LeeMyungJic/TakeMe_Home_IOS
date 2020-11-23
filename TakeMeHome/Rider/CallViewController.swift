@@ -222,10 +222,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         print("타임 콜백 !!")
         
-        TableViewMain.beginUpdates()
         
-        TableViewMain.insertRows(at: [IndexPath(row: Order.Orders.count - 1, section: 0)], with: .automatic)
-        TableViewMain.endUpdates()
     }
 }
 
