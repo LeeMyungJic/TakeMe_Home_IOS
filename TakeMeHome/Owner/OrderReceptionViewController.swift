@@ -136,7 +136,7 @@ class OrderReceptionViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let msg = UIAlertController(title: Order.Orders[indexPath.row].storeName, message: "주문을 접수하시겠습니까?", preferredStyle: .alert)
+        let msg = UIAlertController(title: orderList[indexPath.row].address, message: "주문을 접수하시겠습니까?", preferredStyle: .alert)
         
         
         let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in

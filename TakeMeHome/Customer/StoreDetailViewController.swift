@@ -8,7 +8,6 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet var totalPrice: UILabel!
     
     var completionHandler: (() -> ())?
-    
     var menus = [menu]()
     
     var totalPriceValue = 0
@@ -103,7 +102,7 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
             print("result : \(result)")
             self.totalPriceValue += result
             DispatchQueue.main.async {
-                self.totalPrice.text = "\(self.totalPriceValue)"
+                self.totalPrice.text = "\(self.totalPriceValue) 원"
             }
             //self.totalPrice.text = "\(result) 원"
             return result
@@ -119,6 +118,7 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.backBarButtonItem?.tintColor = .lightGray
         TableMain.delegate = self
         TableMain.dataSource = self
         
@@ -126,6 +126,7 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     override func viewWillAppear(_ animated: Bool) {
+       
         getMenus()
         LastOrderViewController.menuList = [menuAndCount]()
         LastOrderViewController.price = [Int]()

@@ -12,11 +12,18 @@ class ChangeStatusViewController: UIViewController {
     var url : URL?
     static var menuId : Int?
     
+    @IBOutlet var nameLabel: UITextField!
+    @IBOutlet var priceLabel: UITextField!
+    
+    var getName = ""
+    var getPrice = 0
     var completionHandler: (() -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        nameLabel.text = getName
+        priceLabel.text = "\(getPrice)"
         guard let temp = ChangeStatusViewController.menuId else {
             return
         }

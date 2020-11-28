@@ -132,15 +132,15 @@ class MapViewController: UIViewController, MTMapViewDelegate {
     
     func makeMarker(){
         // 콜 아이템 : 노랑 핀
-        for item in Order.Orders {
-            self.mapPoint1 = MTMapPoint(geoCoord: MTMapPointGeo(latitude: item.latitude!, longitude: item.longitude!
-            ))
-            poiItem1 = MTMapPOIItem()
-            poiItem1?.markerType = MTMapPOIItemMarkerType.yellowPin
-            poiItem1?.mapPoint = mapPoint1
-            poiItem1?.itemName = item.storeName
-            mapView!.add(poiItem1)
-        }
+//        for item in Order.Orders {
+//            self.mapPoint1 = MTMapPoint(geoCoord: MTMapPointGeo(latitude: item.latitude!, longitude: item.longitude!
+//            ))
+//            poiItem1 = MTMapPOIItem()
+//            poiItem1?.markerType = MTMapPOIItemMarkerType.yellowPin
+//            poiItem1?.mapPoint = mapPoint1
+//            poiItem1?.itemName = item.storeName
+//            mapView!.add(poiItem1)
+//        }
         
         // 접수 아이템 : 레드 핀
 //        for item in AcceptanceViewController.acceptanceCalls {

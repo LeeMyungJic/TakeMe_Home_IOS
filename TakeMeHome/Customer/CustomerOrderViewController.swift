@@ -4,6 +4,7 @@ class CustomerOrderViewController: UIViewController, UITableViewDelegate, UITabl
     
     static var restaurantId : Int?
     static var userId : Int?
+    
     @IBOutlet var TableMain: UITableView!
     var stores = [store]()
     var canDelivery = [store]()
@@ -111,6 +112,7 @@ class CustomerOrderViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         getStores()
+
         print("getget : \(canDelivery.count)")
         //print(self.stores.count)
         //self.isDelivery()
