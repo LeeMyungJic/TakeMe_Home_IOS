@@ -145,9 +145,9 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
          */
         
         
-        cell.storeNameStr.text = "가게 이름 : " + callList[indexPath.row].storeName!
-        cell.storeAddress.text = "가게 주소 : " + callList[indexPath.row].storeAddress!
-        cell.timeStr.text = "배달지까지 거리 : \(callList[indexPath.row].storeDistace!)Km"
+        cell.storeNameStr.text = callList[indexPath.row].storeName!
+        cell.storeAddress.text = callList[indexPath.row].storeAddress!
+        cell.timeStr.text = " \(callList[indexPath.row].storeDistace!) Km"
         
         
         

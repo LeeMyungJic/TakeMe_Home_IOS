@@ -64,6 +64,7 @@ class OderViewController: UIViewController {
         let url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/order/" + "\(orderId)" + "/assigned/" + "\(CallViewController.riderId!)")
         let param = [:] as? [String:Any]
         Put(param: param!, url: url!)
+        self.dismiss(animated: true, completion: nil)
         
     }
     

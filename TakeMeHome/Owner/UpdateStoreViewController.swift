@@ -31,7 +31,9 @@ class UpdateStoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        nameStr.attributedPlaceholder = NSAttributedString(string: "이름 입력", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        addressStr.attributedPlaceholder = NSAttributedString(string: "주소 입력", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        numberStr.attributedPlaceholder = NSAttributedString(string: "번호 입력", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         //getInfo()
 
         // Do any additional setup after loading the view.

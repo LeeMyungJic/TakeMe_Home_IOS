@@ -13,22 +13,28 @@ class JoinViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
     let person = ["점주", "라이더", "사용자"]
     
+    @IBOutlet var searchButton: UIButton!
+    @IBOutlet var joinButton: UIButton!
     let pickerView = UIPickerView()
     
     var latitude: Double?
     var longitude: Double?
     
+    @IBOutlet var nameStack: UIStackView!
     @IBOutlet var emailStr: UITextField!
     @IBOutlet var nameStr: UITextField!
     @IBOutlet var passStr: UITextField!
     @IBOutlet var addressStr: UITextField!
+    @IBOutlet var detailAddressStr: UITextField!
     @IBOutlet var phoneStr: UITextField!
     @IBOutlet var passChkStr: UITextField!
     @IBOutlet var personStr: UITextField!
     
+    @IBOutlet var mainStack: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         createPickerView()
         dismissPickerView()
         
@@ -40,7 +46,8 @@ class JoinViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         
         passChkStr.attributedPlaceholder = NSAttributedString(string: "비밀번호를 한 번 더 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         phoneStr.attributedPlaceholder = NSAttributedString(string: "휴대폰 번호를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-        addressStr.attributedPlaceholder = NSAttributedString(string: "주소 검색(ex : 인주대로 857)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        addressStr.attributedPlaceholder = NSAttributedString(string: "도로명 주소를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        detailAddressStr.attributedPlaceholder = NSAttributedString(string: "상세 주소를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         personStr.attributedPlaceholder = NSAttributedString(string: "가입자 유형을 선택하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
     }
     @IBAction func search(_ sender: Any) {
@@ -146,7 +153,7 @@ class JoinViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         case "점주":
             print("Manager 선택")
             url = URL(string: NetWorkController.baseUrl + "/api/v1/owners")
-            param = ["address": "\(addressStr.text!)", "email": "\(emailStr.text!)", "location": ["x":self.latitude, "y":self.longitude], "name": "\(nameStr.text!)", "password": "\(passStr.text!)", "phoneNumber": "\(phoneStr.text!)"]
+            param = ["address": "\(addressStr.text! + " " + detailAddressStr.text!)", "email": "\(emailStr.text!)", "location": ["x":self.latitude, "y":self.longitude], "name": "\(nameStr.text!)", "password": "\(passStr.text!)", "phoneNumber": "\(phoneStr.text!)"]
         default:
             print("")
         }

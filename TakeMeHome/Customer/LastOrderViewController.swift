@@ -51,7 +51,8 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         Cash.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         Cash.isEnabled = true
         
-        Card.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        Card.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+        Card.setTitleColor(.white, for: .disabled)
         Card.isEnabled = false
         
         PreparePayment.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -62,7 +63,8 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         isClickCard = false
         isClickPrepare = false
         
-        Cash.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        Cash.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+        Cash.setTitleColor(.white, for: .disabled)
         Cash.isEnabled = false
         
         Card.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -82,7 +84,8 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
         Card.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         Card.isEnabled = true
         
-        PreparePayment.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        PreparePayment.backgroundColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
+        PreparePayment.setTitleColor(.white, for: .disabled)
         PreparePayment.isEnabled = false
     }
     
