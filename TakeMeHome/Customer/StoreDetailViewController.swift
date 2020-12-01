@@ -37,7 +37,9 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
                                     getPrice = temp["price"] as? Int
                                     getStatus = temp["menuStatus"] as? String
                                     getMenuId = temp["id"] as? Int
+                                    
                                     self.menus.append(menu(name: getName, price: getPrice, status: getStatus, menuId: getMenuId))
+                                
                                 }
                                 
                             }
@@ -65,7 +67,7 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
         task.resume()
     }
     
-   
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -109,7 +111,7 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         
-    
+        
         
         print("디테일 뷰에서 값 : \(totalPriceValue)")
         
@@ -124,9 +126,9 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
-       
+        
         getMenus()
         LastOrderViewController.menuList = [menuAndCount]()
         LastOrderViewController.price = [Int]()
@@ -137,6 +139,18 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if totalPriceValue != 0 {
             guard let temp = storyboard?.instantiateViewController(identifier: "LastOrderViewController") as? LastOrderViewController else { return }
             present(temp, animated: true, completion: nil)
+        }
+        else {
+            
+            
+            let msg = UIAlertController(title: "", message: "메뉴를 선택해 주세요", preferredStyle: .alert)
+            let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in
+            })
+            //Alert에 이벤트 연결
+            msg.addAction(YES)
+            //Alert 호출
+            self.present(msg, animated: true, completion: nil)
+            
         }
     }
     

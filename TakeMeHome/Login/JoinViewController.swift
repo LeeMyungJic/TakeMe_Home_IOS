@@ -21,6 +21,7 @@ class JoinViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var longitude: Double?
     
     @IBOutlet var nameStack: UIStackView!
+    
     @IBOutlet var emailStr: UITextField!
     @IBOutlet var nameStr: UITextField!
     @IBOutlet var passStr: UITextField!
@@ -34,7 +35,7 @@ class JoinViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         createPickerView()
         dismissPickerView()
         
@@ -50,6 +51,18 @@ class JoinViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         detailAddressStr.attributedPlaceholder = NSAttributedString(string: "상세 주소를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         personStr.attributedPlaceholder = NSAttributedString(string: "가입자 유형을 선택하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
     }
+    
+    func printError(name : String) {
+        
+        let msg = UIAlertController(title: "", message: name, preferredStyle: .alert)
+        let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in
+        })
+        //Alert에 이벤트 연결
+        msg.addAction(YES)
+        //Alert 호출
+        self.present(msg, animated: true, completion: nil)
+    }
+    
     @IBAction func search(_ sender: Any) {
         
         let keyword = addressStr.text
@@ -137,29 +150,36 @@ class JoinViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         personStr.resignFirstResponder()
     }
     @IBAction func join(_ sender: Any) {
-        
-        var param: [String:Any] = ["":""]
-        var url = URL(string: NetWorkController.baseUrl + "http://localhost:8080/api/v1/customers");
-        //"address": "addressStr.text","location" : 0,
-        switch personStr.text {
-        case "사용자":
-            print("User 선택")
-            url = URL(string: NetWorkController.baseUrl + "/api/v1/riders")
-            param = ["address": "\(addressStr.text!)", "email": "\(emailStr.text!)", "location": ["x":self.latitude, "y":self.longitude], "name": "\(nameStr.text!)", "password": "\(passStr.text!)", "phoneNumber": "\(phoneStr.text!)"]
-        case "라이더":
-            print("Rider 선택")
-            url = URL(string: NetWorkController.baseUrl + "/api/v1/riders")
-            param = ["email": "\(emailStr.text!)", "name": "\(nameStr.text!)", "password": "\(passStr.text!)", "phoneNumber": "\(phoneStr.text!)"]
-        case "점주":
-            print("Manager 선택")
-            url = URL(string: NetWorkController.baseUrl + "/api/v1/owners")
-            param = ["address": "\(addressStr.text! + " " + detailAddressStr.text!)", "email": "\(emailStr.text!)", "location": ["x":self.latitude, "y":self.longitude], "name": "\(nameStr.text!)", "password": "\(passStr.text!)", "phoneNumber": "\(phoneStr.text!)"]
-        default:
-            print("")
+        if nameStr.text == "" || emailStr.text == "" || passStr.text == "" || addressStr.text == "" || detailAddressStr.text == "" || phoneStr.text == "" || passChkStr.text == "" {
+            printError(name: "모든 항목을 입력해 주세요")
         }
-        Post(param: param, url: url!)
-        self.dismiss(animated: true, completion: nil)
+        else if personStr.text == "" {
+            printError(name: "가입자 유형을 선택해 주세요")
+        }
         
+        else {
+            var param: [String:Any] = ["":""]
+            var url = URL(string: NetWorkController.baseUrl + "http://localhost:8080/api/v1/customers");
+            //"address": "addressStr.text","location" : 0,
+            switch personStr.text {
+            case "사용자":
+                print("User 선택")
+                url = URL(string: NetWorkController.baseUrl + "/api/v1/riders")
+                param = ["address": "\(addressStr.text!)", "email": "\(emailStr.text!)", "location": ["x":self.latitude, "y":self.longitude], "name": "\(nameStr.text!)", "password": "\(passStr.text!)", "phoneNumber": "\(phoneStr.text!)"]
+            case "라이더":
+                print("Rider 선택")
+                url = URL(string: NetWorkController.baseUrl + "/api/v1/riders")
+                param = ["email": "\(emailStr.text!)", "name": "\(nameStr.text!)", "password": "\(passStr.text!)", "phoneNumber": "\(phoneStr.text!)"]
+            case "점주":
+                print("Manager 선택")
+                url = URL(string: NetWorkController.baseUrl + "/api/v1/owners")
+                param = ["address": "\(addressStr.text! + " " + detailAddressStr.text!)", "email": "\(emailStr.text!)", "location": ["x":self.latitude, "y":self.longitude], "name": "\(nameStr.text!)", "password": "\(passStr.text!)", "phoneNumber": "\(phoneStr.text!)"]
+            default:
+                print("")
+            }
+            Post(param: param, url: url!)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     

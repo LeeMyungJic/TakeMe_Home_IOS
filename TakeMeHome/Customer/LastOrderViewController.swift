@@ -121,10 +121,10 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
                     // JSONSerialization로 데이터 변환하기
                     if let json = try JSONSerialization.jsonObject(with: dataJson, options: .allowFragments) as? [String: AnyObject]
                     {
-//                        if let temp = json["address"] as? [String:Any] {
-//                            print("data!!")
-//                            self.addressStr = temp as? String
-//                        }
+                        //                        if let temp = json["address"] as? [String:Any] {
+                        //                            print("data!!")
+                        //                            self.addressStr = temp as? String
+                        //                        }
                         
                         if let temp = json["data"] as? [String:Any] {
                             print("data!!")
@@ -167,10 +167,10 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
                     // JSONSerialization로 데이터 변환하기
                     if let json = try JSONSerialization.jsonObject(with: dataJson, options: .allowFragments) as? [String: AnyObject]
                     {
-//                        if let temp = json["address"] as? [String:Any] {
-//                            print("data!!")
-//                            self.addressStr = temp as? String
-//                        }
+                        //                        if let temp = json["address"] as? [String:Any] {
+                        //                            print("data!!")
+                        //                            self.addressStr = temp as? String
+                        //                        }
                         
                         if let temp = json["data"] as? [String:Any] {
                             print("data!!")
@@ -225,11 +225,24 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
         
-        let param = ["customerId": CustomerOrderViewController.userId!, "menuIdCounts" : ["menuIdCounts" : menuIdCounts], "paymentStatus": self.isPay, "paymentType": self.payment, "requiredTime" : 40 ,"restaurantId" : StoreDetailViewController.restaurantId!, "totalPrice" : self.totalPriceValue + self.deliveryFee] as? [String : Any]
-      
-        Post(param: param!, url: url!)
-        self.dismiss(animated: true, completion: nil)
+        if !isClickCard, !isClickCash, !isClickPrepare {
+            
+            let msg = UIAlertController(title: "", message: "결제수단을 선택해 주세요", preferredStyle: .alert)
+            let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in
+            })
+            //Alert에 이벤트 연결
+            msg.addAction(YES)
+            //Alert 호출
+            self.present(msg, animated: true, completion: nil)
+            
+        }
         
+        else {
+            let param = ["customerId": CustomerOrderViewController.userId!, "menuIdCounts" : ["menuIdCounts" : menuIdCounts], "paymentStatus": self.isPay, "paymentType": self.payment, "requiredTime" : 40 ,"restaurantId" : StoreDetailViewController.restaurantId!, "totalPrice" : self.totalPriceValue + self.deliveryFee] as? [String : Any]
+            
+            Post(param: param!, url: url!)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
 }

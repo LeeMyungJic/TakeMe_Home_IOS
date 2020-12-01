@@ -40,25 +40,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
             }
         }
         
-//        let border = CALayer()
-//
-//        let width = CGFloat(1.0)
-//
-//        border.borderColor = UIColor.lightGray.cgColor
-//
-//        border.frame = CGRect(x: 0, y: personStr
-//                                .frame.size.height - width, width:  personStr.frame.size.width, height: personStr.frame.size.height)
-//
-//
-//
-//        border.borderWidth = width
-//
-//        personStr.layer.addSublayer(border)
-//
-//        personStr.layer.masksToBounds = true
-        
-        
-        
         idStr.attributedPlaceholder = NSAttributedString(string: "ID", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         passStr.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         personStr.attributedPlaceholder = NSAttributedString(string: "회원 유형을 선택하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
@@ -72,35 +53,65 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     }
     
     
-    
     @IBAction func Login(_ sender: Any) {
-        //, "token":token
         var url = URL(string: "")
         var param = ["email":idStr.text, "password":passStr.text, "token" : token] as [String:Any]
-        switch personStr.text {
-        case "라이더":
-            url = URL(string: NetWorkController.baseUrl + "/api/v1/riders/login")
-            select = "Rider"
-            ident = "Rider"
-        case "점주":
-            url = URL(string: NetWorkController.baseUrl + "/api/v1/owners/login")
-            select = "Owner"
-            ident = select
-        case "사용자":
-            url = URL(string: NetWorkController.baseUrl + "/api/v1/customers/login")
-            select = "Customer"
-            ident = select
-        default:
-            print()
-        }
-        if let person = personStr.text, let urlT = url {
-            login(param: param, url: urlT, isGet: true, person: person)
+        
+        if idStr.text != "", passStr.text != ""{
+            
+            switch personStr.text {
+            case "라이더":
+                url = URL(string: NetWorkController.baseUrl + "/api/v1/riders/login")
+                select = "Rider"
+                ident = "Rider"
+            case "점주":
+                url = URL(string: NetWorkController.baseUrl + "/api/v1/owners/login")
+                select = "Owner"
+                ident = select
+            case "사용자":
+                url = URL(string: NetWorkController.baseUrl + "/api/v1/customers/login")
+                select = "Customer"
+                ident = select
+            default:
+                print()
+            }
+            if let person = personStr.text, let urlT = url {
+                login(param: param, url: urlT, isGet: true, person: person)
+                
+            }
+            else {
+                printError(name: "", code: 1)
+            }
             
         }
         else {
-            print("가입 유형을 선택하세요")
+            printError(name: "ID 혹은 PassWord", code: 2)
         }
     }
+    
+    func printError(name: String, code: Int) {
+        let msg : UIAlertController?
+        if(code == 1) {
+            msg = UIAlertController(title: "", message: "로그인 유형을 선택하세요", preferredStyle: .alert)
+        }
+        else {
+            msg = UIAlertController(title: "", message: name + "를 확인하세요", preferredStyle: .alert)
+        }
+        
+        let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in
+            
+            
+        })
+        
+        
+        //Alert에 이벤트 연결
+        msg!.addAction(YES)
+        
+        //Alert 호출
+        self.present(msg!, animated: true, completion: nil)
+    }
+    
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         
