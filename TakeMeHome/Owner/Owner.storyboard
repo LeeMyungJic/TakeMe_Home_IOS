@@ -38,61 +38,58 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="htb-4z-AHu">
-                                <rect key="frame" x="20" y="202" width="374" height="640"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIW-zg-YVE" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
+                                <rect key="frame" x="20" y="772" width="374" height="30"/>
+                                <state key="normal" title="매장 추가하기"/>
+                                <connections>
+                                    <action selector="addStore:" destination="xHL-bm-hLg" eventType="touchUpInside" id="djy-ju-DJn"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Whj-ZA-fxj">
+                                <rect key="frame" x="20" y="152" width="374" height="570"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="StoreTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StoreTableViewCell" id="D3F-wu-FEb" customClass="StoreTableViewCell" customModule="TakeMeHome" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="49"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StoreTableViewCell" id="aey-6v-6Vv" customClass="StoreTableViewCell" customModule="TakeMeHome" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D3F-wu-FEb" id="sbT-U5-m17">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="49"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aey-6v-6Vv" id="IFT-dT-dJm">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="StoreCell" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQE-yV-D4f">
-                                                    <rect key="frame" x="30" y="14" width="314" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2T-bZ-fER">
+                                                    <rect key="frame" x="40" y="11" width="294" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="BQE-yV-D4f" firstAttribute="top" secondItem="sbT-U5-m17" secondAttribute="topMargin" constant="3" id="jwG-tG-ocI"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="BQE-yV-D4f" secondAttribute="bottom" constant="3" id="rA2-Uc-N93"/>
-                                                <constraint firstItem="BQE-yV-D4f" firstAttribute="leading" secondItem="sbT-U5-m17" secondAttribute="leadingMargin" constant="10" id="vkv-bY-Nnb"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="BQE-yV-D4f" secondAttribute="trailing" constant="10" id="xjj-A8-Vzm"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="a2T-bZ-fER" secondAttribute="trailing" constant="20" id="St4-mp-a6z"/>
+                                                <constraint firstItem="a2T-bZ-fER" firstAttribute="centerY" secondItem="IFT-dT-dJm" secondAttribute="centerY" id="TJO-3K-gaT"/>
+                                                <constraint firstItem="a2T-bZ-fER" firstAttribute="leading" secondItem="IFT-dT-dJm" secondAttribute="leadingMargin" constant="20" id="hLf-Sc-9Mn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="StoreName" destination="BQE-yV-D4f" id="0Hx-Rc-is4"/>
-                                            <segue destination="Tih-7N-apc" kind="show" id="TJa-gA-LKt"/>
+                                            <outlet property="StoreName" destination="a2T-bZ-fER" id="xLP-aL-pi3"/>
+                                            <segue destination="Tih-7N-apc" kind="show" id="iOK-Rg-Gui"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i79-22-PyK" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
-                                <rect key="frame" x="20" y="152" width="374" height="30"/>
-                                <state key="normal" title="매장 추가하기">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="addStore:" destination="xHL-bm-hLg" eventType="touchUpInside" id="Mh7-8h-ERh"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pZW-Ir-IDo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="i79-22-PyK" firstAttribute="top" secondItem="dxm-OL-3tq" secondAttribute="bottom" constant="20" id="24c-HX-1jw"/>
-                            <constraint firstItem="pZW-Ir-IDo" firstAttribute="trailing" secondItem="dxm-OL-3tq" secondAttribute="trailing" constant="20" id="LoM-wI-gLL"/>
-                            <constraint firstItem="dxm-OL-3tq" firstAttribute="leading" secondItem="pZW-Ir-IDo" secondAttribute="leading" constant="20" id="Nnc-4a-XTj"/>
-                            <constraint firstItem="dxm-OL-3tq" firstAttribute="top" secondItem="pZW-Ir-IDo" secondAttribute="top" constant="20" id="Wjh-7b-Hgi"/>
-                            <constraint firstItem="pZW-Ir-IDo" firstAttribute="bottom" secondItem="htb-4z-AHu" secondAttribute="bottom" constant="20" id="bCn-4a-fpi"/>
-                            <constraint firstItem="htb-4z-AHu" firstAttribute="leading" secondItem="pZW-Ir-IDo" secondAttribute="leading" constant="20" id="d9r-Hu-DQp"/>
-                            <constraint firstItem="htb-4z-AHu" firstAttribute="top" secondItem="i79-22-PyK" secondAttribute="bottom" constant="20" id="nk6-UV-NQ8"/>
-                            <constraint firstItem="pZW-Ir-IDo" firstAttribute="trailing" secondItem="i79-22-PyK" secondAttribute="trailing" constant="20" id="rkH-QH-3Wz"/>
-                            <constraint firstItem="pZW-Ir-IDo" firstAttribute="trailing" secondItem="htb-4z-AHu" secondAttribute="trailing" constant="20" id="tFb-PH-SbK"/>
-                            <constraint firstItem="i79-22-PyK" firstAttribute="leading" secondItem="pZW-Ir-IDo" secondAttribute="leading" constant="20" id="yag-cz-EjS"/>
+                            <constraint firstItem="dIW-zg-YVE" firstAttribute="top" secondItem="Whj-ZA-fxj" secondAttribute="bottom" constant="50" id="6Qa-FN-8om"/>
+                            <constraint firstItem="pZW-Ir-IDo" firstAttribute="trailing" secondItem="dxm-OL-3tq" secondAttribute="trailing" constant="20" id="6gC-yN-IsT"/>
+                            <constraint firstItem="dxm-OL-3tq" firstAttribute="top" secondItem="pZW-Ir-IDo" secondAttribute="top" constant="20" id="C8Z-nk-9Xv"/>
+                            <constraint firstItem="Whj-ZA-fxj" firstAttribute="top" secondItem="dxm-OL-3tq" secondAttribute="bottom" constant="20" id="Fto-8v-UrU"/>
+                            <constraint firstItem="dxm-OL-3tq" firstAttribute="leading" secondItem="pZW-Ir-IDo" secondAttribute="leading" constant="20" id="PK2-OD-zI2"/>
+                            <constraint firstItem="Whj-ZA-fxj" firstAttribute="leading" secondItem="pZW-Ir-IDo" secondAttribute="leading" constant="20" id="VMb-lB-ED9"/>
+                            <constraint firstItem="pZW-Ir-IDo" firstAttribute="bottom" secondItem="dIW-zg-YVE" secondAttribute="bottom" constant="60" id="gwd-dN-OFT"/>
+                            <constraint firstItem="dIW-zg-YVE" firstAttribute="leading" secondItem="pZW-Ir-IDo" secondAttribute="leading" constant="20" id="sKW-cI-akb"/>
+                            <constraint firstItem="pZW-Ir-IDo" firstAttribute="trailing" secondItem="dIW-zg-YVE" secondAttribute="trailing" constant="20" id="wCA-j6-kUf"/>
+                            <constraint firstItem="pZW-Ir-IDo" firstAttribute="trailing" secondItem="Whj-ZA-fxj" secondAttribute="trailing" constant="20" id="wJG-Ge-SVK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wit-Z1-129">
@@ -104,7 +101,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="TableMain" destination="htb-4z-AHu" id="7LV-Ip-fbT"/>
+                        <outlet property="TableMain" destination="Whj-ZA-fxj" id="vYD-qz-9ez"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJH-Fd-oJn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -334,7 +331,7 @@
                                         <rect key="frame" x="20" y="142" width="260" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nvU-ZR-gTx" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="130" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="86.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                 <state key="normal" title="판매중">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -344,7 +341,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqX-Dm-keH" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
-                                                <rect key="frame" x="140" y="0.0" width="120" height="30"/>
+                                                <rect key="frame" x="96.5" y="0.0" width="87" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                 <state key="normal" title="품절">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -353,9 +350,20 @@
                                                     <action selector="soldOut:" destination="fNA-QY-5ks" eventType="touchUpInside" id="VmV-OM-cto"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nz8-1A-sDw" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
+                                                <rect key="frame" x="193.5" y="0.0" width="66.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <state key="normal" title="삭제">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="deleteItem:" destination="fNA-QY-5ks" eventType="touchUpInside" id="EqS-Tv-BHA"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="nvU-ZR-gTx" firstAttribute="width" secondItem="w50-ZK-P5T" secondAttribute="width" multiplier="0.5" id="BKV-L2-DYV"/>
+                                            <constraint firstItem="nvU-ZR-gTx" firstAttribute="width" secondItem="w50-ZK-P5T" secondAttribute="width" multiplier="0.3333" id="BKV-L2-DYV"/>
+                                            <constraint firstItem="xqX-Dm-keH" firstAttribute="width" secondItem="w50-ZK-P5T" secondAttribute="width" multiplier="0.3333" id="UcP-6u-aeC"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -457,7 +465,7 @@
         <!--가게 수정-->
         <scene sceneID="Wxg-4j-3YP">
             <objects>
-                <viewController id="x8G-6z-5v1" customClass="UpdateStoreViewController" customModule="TakeMeHome" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpdateStoreViewController" id="x8G-6z-5v1" customClass="UpdateStoreViewController" customModule="TakeMeHome" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TE0-HD-euA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -479,7 +487,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7wX-SU-jdu">
-                                <rect key="frame" x="20" y="152" width="374" height="97"/>
+                                <rect key="frame" x="20" y="152" width="374" height="130.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FEB-Jb-w7c">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -506,8 +514,19 @@
                                             <constraint firstItem="QB4-ys-FUf" firstAttribute="width" secondItem="FEB-Jb-w7c" secondAttribute="width" multiplier="0.8" id="DTo-1U-y3T"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTM-cx-cPh">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsx-ln-zuc">
                                         <rect key="frame" x="0.0" y="45" width="374" height="18.5"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ljT-LG-hvB" customClass="CustomUnderLine" customModule="TakeMeHome" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="18.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTM-cx-cPh">
+                                        <rect key="frame" x="0.0" y="78.5" width="374" height="18.5"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zj8-fn-Arw" customClass="CustomUnderLine" customModule="TakeMeHome" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="18.5"/>
@@ -518,7 +537,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Opj-2U-aYB">
-                                        <rect key="frame" x="0.0" y="78.5" width="374" height="18.5"/>
+                                        <rect key="frame" x="0.0" y="112" width="374" height="18.5"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T7j-Tc-erA" customClass="CustomUnderLine" customModule="TakeMeHome" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="18.5"/>
@@ -548,13 +567,14 @@
                     <tabBarItem key="tabBarItem" title="가게 수정" image="arrow.triangle.2.circlepath" catalog="system" id="zXR-sf-ww7"/>
                     <connections>
                         <outlet property="addressStr" destination="QB4-ys-FUf" id="kPp-Bx-XBe"/>
+                        <outlet property="detailAddressStr" destination="ljT-LG-hvB" id="Bqy-H6-Phj"/>
                         <outlet property="nameStr" destination="zj8-fn-Arw" id="VpN-gQ-jpp"/>
                         <outlet property="numberStr" destination="T7j-Tc-erA" id="Gk9-ES-BP7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQq-y5-Xp8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="874" y="1771"/>
+            <point key="canvasLocation" x="874" y="1772"/>
         </scene>
         <!--Owner Tab Bar-->
         <scene sceneID="53x-EO-UIJ">

@@ -90,7 +90,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let temp = popUp as? ChangeStatusViewController
         
-        
+        temp?.getName = menus[indexPath.row].name!
+        temp?.getPrice = menus[indexPath.row].price!
         
         
         self.present(popUp, animated: true, completion: nil)

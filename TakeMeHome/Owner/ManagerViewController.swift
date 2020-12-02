@@ -13,6 +13,8 @@ class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDa
     static var ownerId : Int?
     @IBOutlet var TableMain: UITableView!
     
+    var selectedIndex = -1
+    
     
     func getStores() {
         stores = [getItem]()
@@ -85,7 +87,21 @@ class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         ManagerCallViewController.getStoreName = stores[indexPath.row].name!
         ManagerCallViewController.restaurantId = stores[indexPath.row].id!
+        selectedIndex = indexPath.row
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let storyboard = UIStoryboard.init(name: "Owner", bundle: nil)
+//        
+//        let popUp = storyboard.instantiateViewController(identifier: "UpdateStoreViewController")
+//        
+//        let temp = popUp as? UpdateStoreViewController
+//        
+//        temp?.rName = stores[selectedIndex].name
+//        temp?.rAddress = stores[selectedIndex].address
+//        temp?.rNumber = stores[selectedIndex].number
+//
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         getStores()

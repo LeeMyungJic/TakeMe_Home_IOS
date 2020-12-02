@@ -14,6 +14,7 @@ class UpdateStoreViewController: UIViewController {
     @IBOutlet var addressStr: UITextField!
     @IBOutlet var nameStr: UITextField!
     @IBOutlet var numberStr: UITextField!
+    @IBOutlet var detailAddressStr: UITextField!
     
     var rAddress: String?
     var rName: String?
@@ -31,12 +32,35 @@ class UpdateStoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameStr.attributedPlaceholder = NSAttributedString(string: "이름 입력", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-        addressStr.attributedPlaceholder = NSAttributedString(string: "주소 입력", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-        numberStr.attributedPlaceholder = NSAttributedString(string: "번호 입력", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        
+        detailAddressStr.attributedPlaceholder = NSAttributedString(string: "상세주소 입력", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         //getInfo()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let nameTemp = rName else{return}
+        guard let addressTemp = rAddress else{return}
+        guard let numberTemp = rNumber else{return}
+        nameStr.text = nameTemp
+        addressStr.text = addressTemp
+        numberStr.text = numberTemp
+    }
+    
+    func printMessage() {
+        let msg : UIAlertController?
+            msg = UIAlertController(title: "", message: "수정을 완료하였습니다", preferredStyle: .alert)
+                
+        let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in
+          
+        })
+        
+        //Alert에 이벤트 연결
+        msg!.addAction(YES)
+        
+        //Alert 호출
+        self.present(msg!, animated: true, completion: nil)
     }
     
     @IBAction func search(_ sender: Any) {
@@ -83,7 +107,7 @@ class UpdateStoreViewController: UIViewController {
      */
     @IBAction func Update(_ sender: Any) {
         let url = URL(string: NetWorkController.baseUrl + "/api/v1/restaurants/restaurant/" + "\(ManagerCallViewController.restaurantId)")
-        let param = ["address": "\(addressStr.text!)", "location": ["x":self.latitude, "y":self.longitude], "name": "\(nameStr.text!)", "number": "\(numberStr.text!)", "ownerId": 1] as [String : Any]
+        let param = ["address": "\(addressStr.text!) " + detailAddressStr.text!, "location": ["x":self.latitude, "y":self.longitude], "name": "\(nameStr.text!)", "number": "\(numberStr.text!)", "ownerId": 1] as [String : Any]
         Put(param: param, url: url!)
         
         guard let moveFirst = tabBarController?.viewControllers?[0] else {

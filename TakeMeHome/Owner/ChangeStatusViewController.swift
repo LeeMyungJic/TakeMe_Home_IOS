@@ -22,6 +22,11 @@ class ChangeStatusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         nameLabel.text = getName
         priceLabel.text = "\(getPrice)"
         guard let temp = ChangeStatusViewController.menuId else {
@@ -29,12 +34,11 @@ class ChangeStatusViewController: UIViewController {
         }
         
         _ = completionHandler?()
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func sale(_ sender: Any) {
-        url = URL(string: NetWorkController.baseUrl + "/api/v1/menus/menu/" + "\(ChangeStatusViewController.menuId!)" + "/sale")
-        let param = [:] as? [String : Any]
+        url = URL(string: NetWorkController.baseUrl + "/api/v1/menus/menu/" + "\(ChangeStatusViewController.menuId!)")
+        let param = ["menuStatus": "SALE", "name" : nameLabel.text!, "price" : priceLabel.text!] as? [String : Any]
         Put(param: param!, url: url!)
         guard let temp1 = storyboard?.instantiateViewController(identifier: "MenuViewController") as? MenuViewController else {
             return
@@ -42,11 +46,11 @@ class ChangeStatusViewController: UIViewController {
         temp1.completionHandler = {
             
         }
-        self.dismiss(animated: true, completion: nil)
+        printState(code: 1)
     }
     @IBAction func soldOut(_ sender: Any) {
-        url = URL(string: NetWorkController.baseUrl + "/api/v1/menus/menu/" + "\(ChangeStatusViewController.menuId!)" + "/soldout")
-        let param = [:] as? [String : Any]
+        url = URL(string: NetWorkController.baseUrl + "/api/v1/menus/menu/" + "\(ChangeStatusViewController.menuId!)")
+        let param = ["menuStatus": "SOLDOUT", "name" : nameLabel.text!, "price" : priceLabel.text!] as? [String : Any]
         Put(param: param!, url: url!)
         
         guard let temp1 = storyboard?.instantiateViewController(identifier: "MenuViewController") as? MenuViewController else {
@@ -55,12 +59,49 @@ class ChangeStatusViewController: UIViewController {
         temp1.completionHandler = {
             
         }
-        self.dismiss(animated: true, completion: nil)
+        printState(code: 1)
         
     }
     
+    @IBAction func deleteItem(_ sender: Any) {
+        url = URL(string: NetWorkController.baseUrl + "/api/v1/menus/menu/" + "\(ChangeStatusViewController.menuId!)")
+        let param = [:] as? [String : Any]
+        Delete(param: param!, url: url!)
+        
+        guard let temp1 = storyboard?.instantiateViewController(identifier: "MenuViewController") as? MenuViewController else {
+            return
+        }
+        temp1.completionHandler = {
+            
+        }
+        printState(code: 2)
+    }
+    
+    func printState(code: Int) {
+        let msg : UIAlertController?
+        if(code == 1) {
+            msg = UIAlertController(title: "", message: "상품을 수정였습니다", preferredStyle: .alert)
+        }
+        else {
+            msg = UIAlertController(title: "", message: "상품을 삭제하였습니다", preferredStyle: .alert)
+        }
+        
+        let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in
+            self.YesClick()
+        })
+        
+        //Alert에 이벤트 연결
+        msg!.addAction(YES)
+        
+        //Alert 호출
+        self.present(msg!, animated: true, completion: nil)
+    }
+    
+    func YesClick() {
+        self.dismiss(animated: true, completion: nil)
+    }
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

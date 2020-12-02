@@ -241,8 +241,21 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
             let param = ["customerId": CustomerOrderViewController.userId!, "menuIdCounts" : ["menuIdCounts" : menuIdCounts], "paymentStatus": self.isPay, "paymentType": self.payment, "requiredTime" : 40 ,"restaurantId" : StoreDetailViewController.restaurantId!, "totalPrice" : self.totalPriceValue + self.deliveryFee] as? [String : Any]
             
             Post(param: param!, url: url!)
-            self.dismiss(animated: true, completion: nil)
+            
+            let msg = UIAlertController(title: "", message: "주문을 완료하였습니다", preferredStyle: .alert)
+            let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in
+                self.YesClick()
+            })
+           
+            //Alert에 이벤트 연결
+            msg.addAction(YES)
+            //Alert 호출
+            self.present(msg, animated: true, completion: nil)
+            
         }
+    }
+    func YesClick() {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
