@@ -30,7 +30,7 @@ class AddCallViewController: UIViewController {
         
         printError(code: 1)
         
-        guard let moveFirst = tabBarController?.viewControllers?[0] else {
+        guard let moveFirst = tabBarController?.viewControllers?[2] else {
             return
         }
         tabBarController?.selectedViewController = moveFirst
@@ -44,6 +44,8 @@ class AddCallViewController: UIViewController {
         //Alert에 이벤트 연결
         msg.addAction(YES)
         //Alert 호출
+        nameStr.text = ""
+        priceStr.text = ""
         self.present(msg, animated: true, completion: nil)
     }
     

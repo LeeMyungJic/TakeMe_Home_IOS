@@ -115,15 +115,6 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ZU-BB-Xox" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="350" width="260" height="30"/>
-                                        <state key="normal" title="배달 완료">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="complete:" destination="TV8-xh-bwU" eventType="touchUpInside" id="dMX-xg-Kde"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nag-mC-GUe" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
                                         <rect key="frame" x="20" y="300" width="260" height="30"/>
                                         <state key="normal" title="확인">
@@ -133,21 +124,50 @@
                                             <action selector="close:" destination="TV8-xh-bwU" eventType="touchUpInside" id="cqZ-mm-Ilx"/>
                                         </connections>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="l8P-Jx-zJA">
+                                        <rect key="frame" x="20" y="350" width="260" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAi-PI-rmp" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="배달시작">
+                                                    <color key="titleColor" red="0.94860857725143433" green="0.98469442129135132" blue="0.97309476137161255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="delivery:" destination="TV8-xh-bwU" eventType="touchUpInside" id="xZD-2D-uJH"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ZU-BB-Xox" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
+                                                <rect key="frame" x="140" y="0.0" width="120" height="30"/>
+                                                <state key="normal" title="배달 완료">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="complete:" destination="TV8-xh-bwU" eventType="touchUpInside" id="dMX-xg-Kde"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="sAi-PI-rmp" firstAttribute="width" secondItem="l8P-Jx-zJA" secondAttribute="width" multiplier="0.5" id="Z3l-2b-bQR"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="7ZU-BB-Xox" secondAttribute="trailing" constant="20" id="CMF-sl-i2Y"/>
+                                    <constraint firstAttribute="bottom" secondItem="l8P-Jx-zJA" secondAttribute="bottom" constant="20" id="2Sl-Ld-vHq"/>
+                                    <constraint firstAttribute="trailing" secondItem="l8P-Jx-zJA" secondAttribute="trailing" constant="20" id="Av6-4N-Qkc"/>
                                     <constraint firstItem="SYX-xO-HRY" firstAttribute="top" secondItem="28h-o0-aGv" secondAttribute="bottom" constant="20" id="FR2-Vx-tJr"/>
                                     <constraint firstAttribute="width" constant="300" id="KYn-g6-p4h"/>
                                     <constraint firstAttribute="height" constant="400" id="ONK-OG-ds7"/>
                                     <constraint firstItem="Nag-mC-GUe" firstAttribute="leading" secondItem="Pnx-IG-Nze" secondAttribute="leading" constant="20" id="OyS-QX-ALQ"/>
+                                    <constraint firstItem="l8P-Jx-zJA" firstAttribute="top" secondItem="Nag-mC-GUe" secondAttribute="bottom" constant="20" id="Rj0-Nx-JHb"/>
                                     <constraint firstAttribute="trailing" secondItem="Nag-mC-GUe" secondAttribute="trailing" constant="20" id="TM9-3Z-NDe"/>
                                     <constraint firstItem="28h-o0-aGv" firstAttribute="centerX" secondItem="Pnx-IG-Nze" secondAttribute="centerX" id="VsJ-Pe-aSy"/>
-                                    <constraint firstAttribute="bottom" secondItem="7ZU-BB-Xox" secondAttribute="bottom" constant="20" id="ZU5-Yb-RVo"/>
-                                    <constraint firstItem="7ZU-BB-Xox" firstAttribute="top" secondItem="Nag-mC-GUe" secondAttribute="bottom" constant="20" id="ZyE-js-536"/>
                                     <constraint firstItem="28h-o0-aGv" firstAttribute="top" secondItem="Pnx-IG-Nze" secondAttribute="top" constant="20" id="a2o-1h-M4a"/>
-                                    <constraint firstItem="7ZU-BB-Xox" firstAttribute="leading" secondItem="Pnx-IG-Nze" secondAttribute="leading" constant="20" id="dzr-bF-JtM"/>
+                                    <constraint firstAttribute="trailing" secondItem="l8P-Jx-zJA" secondAttribute="trailing" constant="20" id="jrb-Ms-pfe"/>
+                                    <constraint firstItem="l8P-Jx-zJA" firstAttribute="leading" secondItem="Pnx-IG-Nze" secondAttribute="leading" constant="20" id="le3-sY-FWd"/>
                                     <constraint firstItem="SYX-xO-HRY" firstAttribute="leading" secondItem="Pnx-IG-Nze" secondAttribute="leading" constant="5" id="oOU-oO-0X5"/>
+                                    <constraint firstItem="l8P-Jx-zJA" firstAttribute="leading" secondItem="Pnx-IG-Nze" secondAttribute="leading" constant="20" id="zE9-aj-Ovg"/>
                                     <constraint firstAttribute="trailing" secondItem="SYX-xO-HRY" secondAttribute="trailing" constant="5" id="zi5-1m-Gcr"/>
                                 </constraints>
                             </view>

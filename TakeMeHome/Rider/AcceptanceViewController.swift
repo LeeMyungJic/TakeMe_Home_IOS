@@ -30,7 +30,7 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
                         if let temp = json["data"] as? NSArray{
                             print(temp)
 //                            if let temp2 = temp["orderFindRequestStatusResponses"] as? NSArray {
-                                print("=================================================")
+                                
                                 for i in temp {
                                     var address: String?
                                     var price: Int?
@@ -40,6 +40,7 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
                                     var storeAddress: String?
                                     var storeNumber: String?
                                     var payStatus: String?
+                                    var getStoreId: Int?
                                     
                                     var status : String?
                                     if let temp = i as? NSDictionary {
@@ -80,12 +81,7 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
                                         if let paymentStatus = temp["paymentStatus"] {
                                             payStatus = paymentStatus as? String
                                         }
-                                        
-                                        
-                                            self.callList.append(getCall(address: address, price: price, number: number, payment: payment, distance: distance, storeAddress: storeAddress, storeNumber: storeNumber, payStatus: payStatus))
-                                        
-                                        
-                                        
+                                            self.callList.append(getCall(address: address, price: price, number: number, payment: payment, distance: distance, storeAddress: storeAddress, storeNumber: storeNumber, payStatus: payStatus, storeId: getStoreId))
                                         
                                     }
                                     
@@ -136,7 +132,7 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
         temp?.methodOfPaymentStr = callList[indexPath.row].payment!
         temp?.priceStr = "\(callList[indexPath.row].price!) 원"
         temp?.requirementStr = callList[indexPath.row].number!
-        //temp?.orderId = callList[indexPath.row].
+        //temp?.orderId = callList[indexPath.row]
         
         
         
@@ -209,5 +205,6 @@ struct getCall {
     var storeAddress: String?
     var storeNumber: String?
     var payStatus: String?
+    var storeId: Int?
     
 }

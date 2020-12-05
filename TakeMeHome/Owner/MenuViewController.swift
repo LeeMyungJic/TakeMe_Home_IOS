@@ -101,7 +101,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         temp?.completionHandler = {
             
         }
-        guard let moveFirst = tabBarController?.viewControllers?[0] else {
+        guard let moveFirst = tabBarController?.viewControllers?[3] else {
             return
         }
         tabBarController?.selectedViewController = moveFirst

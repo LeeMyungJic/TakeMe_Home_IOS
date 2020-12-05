@@ -224,7 +224,6 @@ class LastOrderViewController: UIViewController, UITableViewDelegate, UITableVie
                 payment = "CASH"
             }
         }
-        
         if !isClickCard, !isClickCash, !isClickPrepare {
             
             let msg = UIAlertController(title: "", message: "결제수단을 선택해 주세요", preferredStyle: .alert)

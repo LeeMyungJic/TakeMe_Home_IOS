@@ -8,6 +8,7 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet var totalPrice: UILabel!
     
     var completionHandler: (() -> ())?
+    var completionHandler2: (() -> ())?
     var menus = [menu]()
     
     var totalPriceValue = 0
@@ -138,7 +139,12 @@ class StoreDetailViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func Pay(_ sender: Any) {
         if totalPriceValue != 0 {
             guard let temp = storyboard?.instantiateViewController(identifier: "LastOrderViewController") as? LastOrderViewController else { return }
-            present(temp, animated: true, completion: nil)
+                        present(temp, animated: true, completion: nil)
+            
+            
+           
+            
+            //_ = navigationController?.popViewController(animated: true)
         }
         else {
             

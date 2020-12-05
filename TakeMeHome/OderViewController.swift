@@ -43,7 +43,7 @@ class OderViewController: UIViewController {
         
         let YES = UIAlertAction(title: "네", style: .default, handler: { (action) -> Void in
             
-            self.YesClick()
+            self.YesClick(code: 1)
         })
         
         //Alert에 부여할 No이벤트 선언
@@ -59,9 +59,35 @@ class OderViewController: UIViewController {
         self.present(msg, animated: true, completion: nil)
     }
     
-    func YesClick()
+    @IBAction func delivery(_ sender: Any) {
+        let msg = UIAlertController(title: "배달 확인", message: "배달을 시작하셨습니까?", preferredStyle: .alert)
+        
+        let YES = UIAlertAction(title: "네", style: .default, handler: { (action) -> Void in
+            
+            self.YesClick(code: 2)
+        })
+        
+        //Alert에 부여할 No이벤트 선언
+        let NO = UIAlertAction(title: "아니요", style: .cancel) { (action) -> Void in
+            self.NoClick()
+        }
+        
+        //Alert에 이벤트 연결
+        msg.addAction(YES)
+        msg.addAction(NO)
+        
+        //Alert 호출
+        self.present(msg, animated: true, completion: nil)
+    }
+    func YesClick(code: Int)
     {
-        let url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/order/" + "\(orderId)" + "/assigned/" + "\(CallViewController.riderId!)")
+        var url = URL(string : "")
+        if code == 1 {
+            url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/order/" + "\(orderId)" + "/complete/")
+        }
+        else {
+            url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/order/" + "\(orderId)" + "/pickup/")
+        }
         let param = [:] as? [String:Any]
         Put(param: param!, url: url!)
         self.dismiss(animated: true, completion: nil)

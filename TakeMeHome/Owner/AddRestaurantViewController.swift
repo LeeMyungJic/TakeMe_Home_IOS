@@ -65,7 +65,10 @@ class AddRestaurantViewController: UIViewController {
         let param = ["address": "\(addressStr.text!)", "location": ["x":self.latitude, "y":self.longitude], "name": "\(StoreName.text!)", "number": "\(Number.text!)", "ownerId": 1] as [String : Any]
         Post(param: param, url: url!)
         
-        self.dismiss(animated: true, completion: nil)
+        guard let moveFirst = tabBarController?.viewControllers?[0] else {
+            return
+        }
+        tabBarController?.selectedViewController = moveFirst
         
         
     }

@@ -164,7 +164,7 @@ class JoinViewController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             switch personStr.text {
             case "사용자":
                 print("User 선택")
-                url = URL(string: NetWorkController.baseUrl + "/api/v1/riders")
+                url = URL(string: NetWorkController.baseUrl + "/api/v1/customers")
                 param = ["address": "\(addressStr.text!)", "email": "\(emailStr.text!)", "location": ["x":self.latitude, "y":self.longitude], "name": "\(nameStr.text!)", "password": "\(passStr.text!)", "phoneNumber": "\(phoneStr.text!)"]
             case "라이더":
                 print("Rider 선택")

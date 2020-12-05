@@ -74,8 +74,8 @@ class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDa
         return stores.count
     }
     @IBAction func addStore(_ sender: Any) {
-        let addStore = self.storyboard?.instantiateViewController(withIdentifier: "AddRestaurantViewController")
-        self.present(addStore!, animated: true, completion: nil)
+//        let addStore = self.storyboard?.instantiateViewController(withIdentifier: "AddRestaurantViewController")
+//        self.present(addStore!, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,11 +92,11 @@ class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        let storyboard = UIStoryboard.init(name: "Owner", bundle: nil)
-//        
+//
 //        let popUp = storyboard.instantiateViewController(identifier: "UpdateStoreViewController")
-//        
+//
 //        let temp = popUp as? UpdateStoreViewController
-//        
+//
 //        temp?.rName = stores[selectedIndex].name
 //        temp?.rAddress = stores[selectedIndex].address
 //        temp?.rNumber = stores[selectedIndex].number
@@ -120,7 +120,6 @@ class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDa
         let param = [:] as [String : Any]
         Delete(param: param, url: url!)
         print("Logout !!")
-        self.dismiss(animated: true, completion: nil)
     }
     
     /*

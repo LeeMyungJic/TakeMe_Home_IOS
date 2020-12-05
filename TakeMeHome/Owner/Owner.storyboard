@@ -17,14 +17,34 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="xHL-bm-hLg" kind="relationship" relationship="rootViewController" id="mkn-go-XrE"/>
+                        <segue destination="xLn-2L-efL" kind="relationship" relationship="rootViewController" id="Awl-yn-acu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zjt-Kt-0Xt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1555" y="27"/>
+            <point key="canvasLocation" x="-2352" y="25"/>
         </scene>
-        <!--Manager View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="Ncx-vV-DhK">
+            <objects>
+                <tabBarController id="xLn-2L-efL" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6mc-i7-T27"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dqL-OO-DVt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.077826358380000002" green="0.0049267886210000002" blue="0.29021543259999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="xHL-bm-hLg" kind="relationship" relationship="viewControllers" id="cfI-IJ-MIQ"/>
+                        <segue destination="dPX-eV-Czz" kind="relationship" relationship="viewControllers" id="gtl-3Q-wRF"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k32-pE-amf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1541" y="27"/>
+        </scene>
+        <!--매장 선택-->
         <scene sceneID="bmp-xy-424">
             <objects>
                 <viewController id="xHL-bm-hLg" customClass="ManagerViewController" customModule="TakeMeHome" customModuleProvider="target" sceneMemberID="viewController">
@@ -38,15 +58,8 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIW-zg-YVE" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
-                                <rect key="frame" x="20" y="772" width="374" height="30"/>
-                                <state key="normal" title="매장 추가하기"/>
-                                <connections>
-                                    <action selector="addStore:" destination="xHL-bm-hLg" eventType="touchUpInside" id="djy-ju-DJn"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Whj-ZA-fxj">
-                                <rect key="frame" x="20" y="152" width="374" height="570"/>
+                                <rect key="frame" x="20" y="152" width="374" height="621"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StoreTableViewCell" id="aey-6v-6Vv" customClass="StoreTableViewCell" customModule="TakeMeHome" customModuleProvider="target">
@@ -80,18 +93,16 @@
                         <viewLayoutGuide key="safeArea" id="pZW-Ir-IDo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dIW-zg-YVE" firstAttribute="top" secondItem="Whj-ZA-fxj" secondAttribute="bottom" constant="50" id="6Qa-FN-8om"/>
                             <constraint firstItem="pZW-Ir-IDo" firstAttribute="trailing" secondItem="dxm-OL-3tq" secondAttribute="trailing" constant="20" id="6gC-yN-IsT"/>
                             <constraint firstItem="dxm-OL-3tq" firstAttribute="top" secondItem="pZW-Ir-IDo" secondAttribute="top" constant="20" id="C8Z-nk-9Xv"/>
                             <constraint firstItem="Whj-ZA-fxj" firstAttribute="top" secondItem="dxm-OL-3tq" secondAttribute="bottom" constant="20" id="Fto-8v-UrU"/>
                             <constraint firstItem="dxm-OL-3tq" firstAttribute="leading" secondItem="pZW-Ir-IDo" secondAttribute="leading" constant="20" id="PK2-OD-zI2"/>
                             <constraint firstItem="Whj-ZA-fxj" firstAttribute="leading" secondItem="pZW-Ir-IDo" secondAttribute="leading" constant="20" id="VMb-lB-ED9"/>
-                            <constraint firstItem="pZW-Ir-IDo" firstAttribute="bottom" secondItem="dIW-zg-YVE" secondAttribute="bottom" constant="60" id="gwd-dN-OFT"/>
-                            <constraint firstItem="dIW-zg-YVE" firstAttribute="leading" secondItem="pZW-Ir-IDo" secondAttribute="leading" constant="20" id="sKW-cI-akb"/>
-                            <constraint firstItem="pZW-Ir-IDo" firstAttribute="trailing" secondItem="dIW-zg-YVE" secondAttribute="trailing" constant="20" id="wCA-j6-kUf"/>
+                            <constraint firstItem="pZW-Ir-IDo" firstAttribute="bottom" secondItem="Whj-ZA-fxj" secondAttribute="bottom" constant="40" id="pWu-0n-zPS"/>
                             <constraint firstItem="pZW-Ir-IDo" firstAttribute="trailing" secondItem="Whj-ZA-fxj" secondAttribute="trailing" constant="20" id="wJG-Ge-SVK"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="매장 선택" image="text.badge.checkmark" catalog="system" id="8Gh-VD-JIY"/>
                     <navigationItem key="navigationItem" id="wit-Z1-129">
                         <barButtonItem key="rightBarButtonItem" title="로그아웃" id="eYs-W9-4CH">
                             <color key="tintColor" systemColor="systemGrayColor"/>
@@ -108,7 +119,7 @@
             </objects>
             <point key="canvasLocation" x="-736.23188405797111" y="26.785714285714285"/>
         </scene>
-        <!--Add Restaurant View Controller-->
+        <!--매장 추가-->
         <scene sceneID="Grz-9j-GTc">
             <objects>
                 <viewController storyboardIdentifier="AddRestaurantViewController" id="dPX-eV-Czz" customClass="AddRestaurantViewController" customModule="TakeMeHome" customModuleProvider="target" sceneMemberID="viewController">
@@ -117,25 +128,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가게 등록" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ili-mr-88c">
-                                <rect key="frame" x="20" y="64" width="374" height="24"/>
+                                <rect key="frame" x="20" y="108" width="374" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="MK0-Ie-UcY">
-                                <rect key="frame" x="20" y="138" width="374" height="97"/>
+                                <rect key="frame" x="20" y="182" width="374" height="136.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdS-8b-bml">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1NL-0k-Txn" customClass="CustomUnderLine" customModule="TakeMeHome" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="299" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCP-7B-ByU">
+                                                <rect key="frame" x="0.0" y="0.0" width="93.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1NL-0k-Txn" customClass="CustomUnderLine" customModule="TakeMeHome" customModuleProvider="target">
+                                                <rect key="frame" x="93.5" y="0.0" width="4" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPP-n8-p95" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
-                                                <rect key="frame" x="299" y="0.0" width="75" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPP-n8-p95" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
+                                                <rect key="frame" x="97.5" y="0.0" width="276.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="검색 하기">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -146,35 +163,73 @@
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="1NL-0k-Txn" firstAttribute="width" secondItem="qdS-8b-bml" secondAttribute="width" multiplier="0.8" id="ZTO-lE-cqs"/>
+                                            <constraint firstItem="GCP-7B-ByU" firstAttribute="width" secondItem="qdS-8b-bml" secondAttribute="width" multiplier="0.25" id="Y50-4e-ogZ"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vkM-OK-vKh">
+                                        <rect key="frame" x="0.0" y="45" width="374" height="20.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상세주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAj-J1-AiO">
+                                                <rect key="frame" x="0.0" y="0.0" width="93.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rcq-sz-IMj" customClass="CustomUnderLine" customModule="TakeMeHome" customModuleProvider="target">
+                                                <rect key="frame" x="93.5" y="0.0" width="280.5" height="20.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="TAj-J1-AiO" firstAttribute="width" secondItem="vkM-OK-vKh" secondAttribute="width" multiplier="0.25" id="fLx-eb-wUD"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnR-RU-SHy">
-                                        <rect key="frame" x="0.0" y="45" width="374" height="18.5"/>
+                                        <rect key="frame" x="0.0" y="80.5" width="374" height="20.5"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가게명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifp-NI-FLI">
+                                                <rect key="frame" x="0.0" y="0.0" width="93.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Bk-sD-PXN" customClass="CustomUnderLine" customModule="TakeMeHome" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="18.5"/>
+                                                <rect key="frame" x="93.5" y="0.0" width="280.5" height="20.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="ifp-NI-FLI" firstAttribute="width" secondItem="fnR-RU-SHy" secondAttribute="width" multiplier="0.25" id="euK-av-www"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLf-tw-S6k">
-                                        <rect key="frame" x="0.0" y="78.5" width="374" height="18.5"/>
+                                        <rect key="frame" x="0.0" y="116" width="374" height="20.5"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전화번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuh-pY-fMz">
+                                                <rect key="frame" x="0.0" y="0.0" width="93.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z6A-NK-dx7" customClass="CustomUnderLine" customModule="TakeMeHome" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="18.5"/>
+                                                <rect key="frame" x="93.5" y="0.0" width="280.5" height="20.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="yuh-pY-fMz" firstAttribute="width" secondItem="aLf-tw-S6k" secondAttribute="width" multiplier="0.25" id="PoD-XS-5mA"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIB-B8-jN4" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
-                                <rect key="frame" x="20" y="809" width="374" height="33"/>
+                                <rect key="frame" x="20" y="760" width="374" height="33"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="등록하기">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -198,6 +253,7 @@
                             <constraint firstItem="zAL-43-d8W" firstAttribute="bottom" secondItem="SIB-B8-jN4" secondAttribute="bottom" constant="20" id="zVg-xs-fFh"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="매장 추가" image="text.badge.plus" catalog="system" id="MM9-WD-9LP"/>
                     <navigationItem key="navigationItem" id="VA6-Bc-tnj"/>
                     <connections>
                         <outlet property="Number" destination="Z6A-NK-dx7" id="hDM-1h-Rw0"/>
@@ -207,7 +263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2XT-18-Ts9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-736" y="921"/>
+            <point key="canvasLocation" x="-736" y="763"/>
         </scene>
         <!--메뉴 관리-->
         <scene sceneID="VVG-66-XLt">
@@ -476,32 +532,28 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1az-zJ-Tfn" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
-                                <rect key="frame" x="20" y="760" width="374" height="33"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="변경">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="Update:" destination="x8G-6z-5v1" eventType="touchUpInside" id="yO6-cX-ZQj"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7wX-SU-jdu">
-                                <rect key="frame" x="20" y="152" width="374" height="130.5"/>
+                                <rect key="frame" x="20" y="152" width="374" height="136.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FEB-Jb-w7c">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FEB-Jb-w7c">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QB4-ys-FUf" customClass="CustomUnderLine" customModule="TakeMeHome" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="299" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPI-i1-bN5">
+                                                <rect key="frame" x="0.0" y="0.0" width="93.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QB4-ys-FUf" customClass="CustomUnderLine" customModule="TakeMeHome" customModuleProvider="target">
+                                                <rect key="frame" x="103.5" y="0.0" width="230.5" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HkR-rw-7NC" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
-                                                <rect key="frame" x="299" y="0.0" width="75" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HkR-rw-7NC" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
+                                                <rect key="frame" x="344" y="0.0" width="30" height="30"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="검색 하기">
+                                                <state key="normal" title="검색">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -511,57 +563,112 @@
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="QB4-ys-FUf" firstAttribute="width" secondItem="FEB-Jb-w7c" secondAttribute="width" multiplier="0.8" id="DTo-1U-y3T"/>
+                                            <constraint firstItem="GPI-i1-bN5" firstAttribute="width" secondItem="FEB-Jb-w7c" secondAttribute="width" multiplier="0.25" id="68F-PQ-KB5"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsx-ln-zuc">
-                                        <rect key="frame" x="0.0" y="45" width="374" height="18.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hsx-ln-zuc">
+                                        <rect key="frame" x="0.0" y="45" width="374" height="20.5"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상세 주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTn-yM-Me9">
+                                                <rect key="frame" x="0.0" y="0.0" width="93.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ljT-LG-hvB" customClass="CustomUnderLine" customModule="TakeMeHome" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="18.5"/>
+                                                <rect key="frame" x="103.5" y="0.0" width="270.5" height="20.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="fTn-yM-Me9" firstAttribute="width" secondItem="hsx-ln-zuc" secondAttribute="width" multiplier="0.25" id="tcQ-SJ-N1u"/>
+                                        </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTM-cx-cPh">
-                                        <rect key="frame" x="0.0" y="78.5" width="374" height="18.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BTM-cx-cPh">
+                                        <rect key="frame" x="0.0" y="80.5" width="374" height="20.5"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucQ-WF-N4D">
+                                                <rect key="frame" x="0.0" y="0.0" width="93.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zj8-fn-Arw" customClass="CustomUnderLine" customModule="TakeMeHome" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="18.5"/>
+                                                <rect key="frame" x="103.5" y="0.0" width="270.5" height="20.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="ucQ-WF-N4D" firstAttribute="width" secondItem="BTM-cx-cPh" secondAttribute="width" multiplier="0.25" id="stY-uK-LcG"/>
+                                        </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Opj-2U-aYB">
-                                        <rect key="frame" x="0.0" y="112" width="374" height="18.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Opj-2U-aYB">
+                                        <rect key="frame" x="0.0" y="116" width="374" height="20.5"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전화번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffe-N8-IEy">
+                                                <rect key="frame" x="0.0" y="0.0" width="93.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T7j-Tc-erA" customClass="CustomUnderLine" customModule="TakeMeHome" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="18.5"/>
+                                                <rect key="frame" x="103.5" y="0.0" width="270.5" height="20.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="ffe-N8-IEy" firstAttribute="width" secondItem="Opj-2U-aYB" secondAttribute="width" multiplier="0.25" id="OUA-p2-FC1"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Anu-Kk-Jjr">
+                                <rect key="frame" x="20" y="760" width="374" height="33"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1az-zJ-Tfn" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="187" height="33"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <state key="normal" title="변경">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Update:" destination="x8G-6z-5v1" eventType="touchUpInside" id="yO6-cX-ZQj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3a1-GM-Qcx" customClass="CustomButton" customModule="TakeMeHome" customModuleProvider="target">
+                                        <rect key="frame" x="197" y="0.0" width="177" height="33"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <state key="normal" title="가게 삭제">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteStore:" destination="x8G-6z-5v1" eventType="touchUpInside" id="x3c-hb-I2W"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="1az-zJ-Tfn" firstAttribute="width" secondItem="Anu-Kk-Jjr" secondAttribute="width" multiplier="0.5" id="upy-td-Yup"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5DP-Tw-0qX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="AlP-gX-hKf" firstAttribute="leading" secondItem="5DP-Tw-0qX" secondAttribute="leading" constant="20" id="7RF-8h-9gK"/>
-                            <constraint firstItem="1az-zJ-Tfn" firstAttribute="leading" secondItem="5DP-Tw-0qX" secondAttribute="leading" constant="20" id="8Fu-TM-hKi"/>
+                            <constraint firstItem="5DP-Tw-0qX" firstAttribute="trailing" secondItem="Anu-Kk-Jjr" secondAttribute="trailing" constant="20" id="Aun-Ak-lCh"/>
                             <constraint firstItem="5DP-Tw-0qX" firstAttribute="trailing" secondItem="AlP-gX-hKf" secondAttribute="trailing" constant="20" id="F9M-0c-NnZ"/>
                             <constraint firstItem="7wX-SU-jdu" firstAttribute="top" secondItem="AlP-gX-hKf" secondAttribute="bottom" constant="20" id="GSV-nb-e7G"/>
-                            <constraint firstItem="5DP-Tw-0qX" firstAttribute="bottom" secondItem="1az-zJ-Tfn" secondAttribute="bottom" constant="20" id="Izu-OA-c0o"/>
-                            <constraint firstItem="5DP-Tw-0qX" firstAttribute="trailing" secondItem="1az-zJ-Tfn" secondAttribute="trailing" constant="20" id="QAp-1L-uM2"/>
+                            <constraint firstItem="Anu-Kk-Jjr" firstAttribute="leading" secondItem="5DP-Tw-0qX" secondAttribute="leading" constant="20" id="Pcq-LA-59V"/>
                             <constraint firstItem="AlP-gX-hKf" firstAttribute="top" secondItem="5DP-Tw-0qX" secondAttribute="top" constant="20" id="UYK-yH-8ue"/>
                             <constraint firstItem="7wX-SU-jdu" firstAttribute="leading" secondItem="5DP-Tw-0qX" secondAttribute="leading" constant="20" id="Udb-HN-nDB"/>
                             <constraint firstItem="5DP-Tw-0qX" firstAttribute="trailing" secondItem="7wX-SU-jdu" secondAttribute="trailing" constant="20" id="cRz-Vc-IMF"/>
+                            <constraint firstItem="5DP-Tw-0qX" firstAttribute="bottom" secondItem="Anu-Kk-Jjr" secondAttribute="bottom" constant="20" id="f0O-QG-YO6"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="가게 수정" image="arrow.triangle.2.circlepath" catalog="system" id="zXR-sf-ww7"/>
@@ -795,6 +902,7 @@
         <image name="arrow.triangle.2.circlepath" catalog="system" width="128" height="101"/>
         <image name="list.star" catalog="system" width="128" height="94"/>
         <image name="scroll" catalog="system" width="128" height="116"/>
+        <image name="text.badge.checkmark" catalog="system" width="128" height="109"/>
         <image name="text.badge.plus" catalog="system" width="128" height="109"/>
         <image name="text.badge.star" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">

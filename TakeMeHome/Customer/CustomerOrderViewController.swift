@@ -76,7 +76,6 @@ class CustomerOrderViewController: UIViewController, UITableViewDelegate, UITabl
                                     return
                                 }
                                 self.canDelivery.append(item)
-                                print("등록등록#!ㄲ!$@%@")
                                 
                               
                             }

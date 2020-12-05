@@ -33,9 +33,8 @@ class UpdateStoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        detailAddressStr.attributedPlaceholder = NSAttributedString(string: "상세주소 입력", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         //getInfo()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -50,10 +49,10 @@ class UpdateStoreViewController: UIViewController {
     
     func printMessage() {
         let msg : UIAlertController?
-            msg = UIAlertController(title: "", message: "수정을 완료하였습니다", preferredStyle: .alert)
-                
+        msg = UIAlertController(title: "", message: "수정을 완료하였습니다", preferredStyle: .alert)
+        
         let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in
-          
+            
         })
         
         //Alert에 이벤트 연결
@@ -109,11 +108,51 @@ class UpdateStoreViewController: UIViewController {
         let url = URL(string: NetWorkController.baseUrl + "/api/v1/restaurants/restaurant/" + "\(ManagerCallViewController.restaurantId)")
         let param = ["address": "\(addressStr.text!) " + detailAddressStr.text!, "location": ["x":self.latitude, "y":self.longitude], "name": "\(nameStr.text!)", "number": "\(numberStr.text!)", "ownerId": 1] as [String : Any]
         Put(param: param, url: url!)
-        
+        printError(code: 1)
         guard let moveFirst = tabBarController?.viewControllers?[0] else {
             return
         }
         tabBarController?.selectedViewController = moveFirst
     }
+    @IBAction func deleteStore(_ sender: Any) {
+        printError(code: 2)
+    }
     
+    func printError(code: Int) {
+        let msg : UIAlertController?
+        if(code == 1) {
+            msg = UIAlertController(title: "", message: "수정을 성공하였습니다", preferredStyle: .alert)
+        }
+        else {
+            msg = UIAlertController(title: "", message: "가게를 삭제하였습니다", preferredStyle: .alert)
+            let YES = UIAlertAction(title: "확인", style: .default, handler: { (action) -> Void in
+                self.YesClick()
+                
+            })
+            let No = UIAlertAction(title: "취소", style: .default, handler: { (action) -> Void in
+                
+                
+            })
+            msg!.addAction(YES)
+        }
+        self.present(msg!, animated: true, completion: nil)
+    }
+    func YesClick() {
+        let url = URL(string: NetWorkController.baseUrl + "/api/v1/restaurants/restaurant/" + "\(ManagerCallViewController.restaurantId)")
+        let param = [:] as [String : Any]
+        Delete(param: param, url: url!)
+        
+        addressStr.text = ""
+        detailAddressStr.text = ""
+        nameStr.text = ""
+        numberStr.text = ""
+        
+//        guard let moveFirst = tabBarController?.viewControllers?[0] else {
+//            return
+//        }
+//        tabBarController?.selectedViewController = moveFirst
+        _ = navigationController?.popViewController(animated: true)
+    }
+
+
 }
