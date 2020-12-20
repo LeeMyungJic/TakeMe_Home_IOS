@@ -30,6 +30,7 @@ class OderViewController: UIViewController {
         price.text = priceStr
         methodOfPayment.text = methodOfPaymentStr
         requirement.text = requirementStr
+        print("\(orderId) ====================================")
     }
     
     

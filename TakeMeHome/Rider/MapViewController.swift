@@ -157,7 +157,7 @@ class MapViewController: UIViewController, MTMapViewDelegate {
     func circle(latitude:Double, longitude:Double) -> MTMapCircle {
         let circ = MTMapCircle()
         circ.circleCenterPoint = MTMapPoint(geoCoord:
-                                                MTMapPointGeo(latitude: latitude, longitude: longitude)
+                                                MTMapPointGeo(latitude: latitude.magnitude, longitude: longitude.magnitude)
         )
         circ.circleRadius = Float(SettingsViewController.range)
         circ.circleLineColor = UIColor.red
@@ -172,7 +172,7 @@ class MapViewController: UIViewController, MTMapViewDelegate {
     // Custom: 현 위치 트래킹 함수
     func mapView(_ mapView: MTMapView!, updateCurrentLocation location: MTMapPoint!, withAccuracy accuracy: MTMapLocationAccuracy) {
         let currentLocation = location?.mapPointGeo()
-        if let latitude = currentLocation?.latitude, let longitude = currentLocation?.longitude{
+        if let latitude = currentLocation?.latitude.magnitude, let longitude = currentLocation?.longitude.magnitude{
             print("MTMapView updateCurrentLocation (\(latitude),\(longitude)) accuracy (\(accuracy))")
             self.latitude = latitude
             self.longitude = longitude

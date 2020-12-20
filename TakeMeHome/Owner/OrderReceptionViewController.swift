@@ -28,40 +28,23 @@ class OrderReceptionViewController: UIViewController, UITableViewDelegate, UITab
                                     var orderPrice : Int?
                                     var orderNumber : String?
                                     var orderProductName = ""
+                                    var orderStatus : String?
                                     if let temp = i as? NSDictionary {
                                         
+                                        orderStatus = temp["orderStatus"] as! String
+                                        
                                         if let orderCustomer = temp["orderCustomer"] as? [String:Any]{
-                                            //                                            print("orderCustomer")
-                                            //                                            print("고객명 : " + "\(orderCustomer["name"] as! String)")
-                                            //                                            print("전화번호 : " + "\(orderCustomer["phoneNumber"] as! String)")
-                                            orderNumber = orderCustomer["phoneNumber"] as! String
+                                         orderNumber = orderCustomer["phoneNumber"] as! String
                                         }
                                         if let orderDelivery = temp["orderDelivery"] as? [String:Any]{
-                                            //print("orderDelivery")
-                                            //print("배달 주소 : " + "\(orderDelivery["address"] as! String)")
-                                            //print("거리 : " + "\(orderDelivery["distance"] as! Int)")
-                                            //print("가격 : " + "\(orderDelivery["price"] as! Int)")
+                                           
                                             orderAddress = orderDelivery["address"] as! String
                                             orderPrice = orderDelivery["price"] as! Int
-                                            //print("상태 : " + "\(orderDelivery["status"] as! REQUEST)")
+                                           
                                         }
-                                        if let orderRestaurant = temp["orderRestaurant"] as? [String:Any]{
-                                            //print("orderRestaurant")
-                                            //print("가게 주소 : " + "\(orderRestaurant["address"] as! String)")
-                                            //print("가게 이름 : " + "\(orderRestaurant["name"] as! String)")
-                                            //print("가게 번호 : " + "\(orderRestaurant["number"] as! String)")
-                                            //print("상태 : " + "\(orderDelivery["status"] as! REQUEST)")
-                                        }
-                                        if let orderRider = temp["orderRider"] as? [String:Any]{
-                                            //print(orderRider)
-                                            //print("라이더 이름 : " + "\(orderRider["name"] as? String)")
-                                            //print("라이더 번호 : " + "\(orderRider["phoneNumber"] as? String)")
-                                            
-                                        }
-                                        if let orderStatus = temp["orderStatus"] as? [String:Any]{
-                                            
-                                            
-                                        }
+                                    
+                                      
+                                        
                                         if let menuNameCounts = temp["menuNameCounts"] as? [String:Any]{
                                             print("menuNameCounts")
                                             if let menuNameCountsT = menuNameCounts["menuNameCounts"] as? [[String:Any]]{
@@ -71,15 +54,16 @@ class OrderReceptionViewController: UIViewController, UITableViewDelegate, UITab
                                                         orderProductName += menuNameCountsT[0]["name"] as? String ?? ""
                                                     }
                                                     else {
-                                                        print("상품명 : " + "\(menuNameCountsT[0]["name"] as? String)")
+                                                        
                                                         orderProductName += menuNameCountsT[0]["name"] as? String ?? "" + ","
                                                     }
                                                 }
                                             }
                                         }
-                                        
-                                        self.orderList.append(order(productName: orderProductName, address: orderAddress, price: orderPrice, customerNumber: orderNumber))
-                                        print("")
+                                        print(orderStatus ?? "nil" + "===========")
+                                        if(orderStatus == "RECEPTION") {
+                                            self.orderList.append(order(productName: orderProductName, address: orderAddress, price: orderPrice, customerNumber: orderNumber))
+                                        }
                                     }
                                     
                                 }
@@ -159,7 +143,7 @@ class OrderReceptionViewController: UIViewController, UITableViewDelegate, UITab
     func YesClick(didSelectRowAt indexPath: IndexPath)
     {
         print("YES Click")
-       
+        
     }
     
     func NoClick()
@@ -175,7 +159,9 @@ class OrderReceptionViewController: UIViewController, UITableViewDelegate, UITab
         // Do any additional setup after loading the view.
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        getOrder()
+    }
     /*
      // MARK: - Navigation
      

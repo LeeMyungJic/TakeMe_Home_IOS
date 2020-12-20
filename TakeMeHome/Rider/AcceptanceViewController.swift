@@ -14,6 +14,7 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
     var callList = [getCall]()
     
     var selectedIndex: Int?
+    var selectOrderId: Int?
     
     func getItems() {
         callList = [getCall]()
@@ -40,20 +41,21 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
                                     var storeAddress: String?
                                     var storeNumber: String?
                                     var payStatus: String?
-                                    var getStoreId: Int?
+                                    var getOrderId: Int?
                                     
                                     var status : String?
                                     if let temp = i as? NSDictionary {
                                         print("=======================================================")
+                                        
+                                       
+                                        getOrderId = temp["orderId"] as! Int
+                                        print("\(temp["orderId"] as! Int)")
                                         if let orderCustomer = temp["orderCustomer"] as? [String:Any]{
-                                            print("orderCustomer")
-                                            print("고객명 : " + "\(orderCustomer["name"] as! String)")
-                                            print("전화번호 : " + "\(orderCustomer["phoneNumber"] as! String)")
+                                            
                                             number = orderCustomer["phoneNumber"] as! String
                                         }
                                         if let orderDelivery = temp["orderDelivery"] as? [String:Any]{
-                                            print("orderDelivery")
-                                            print("배달 주소 : " + "\(orderDelivery["address"] as! String)")
+                                            
                                             distance = orderDelivery["distance"] as! Double
                                             address = orderDelivery["address"] as! String
                                             price = orderDelivery["price"] as! Int
@@ -62,26 +64,19 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
                                             status = orderDelivery["status"] as! String
                                         }
                                         if let orderRestaurant = temp["orderRestaurant"] as? [String:Any]{
-                                            print("orderRestaurant")
-                                            print("가게 주소 : " + "\(orderRestaurant["address"] as! String)")
-                                            print("가게 이름 : " + "\(orderRestaurant["name"] as! String)")
+                                    
                                             
                                             storeAddress = orderRestaurant["address"] as! String
-                                            print("가게 번호 : " + "\(orderRestaurant["number"] as! String)")
                                         }
-                                        if let orderRider = temp["orderRider"] as? [String:Any]{
-                                            print(orderRider)
-                                            print("라이더 이름 : " + "\(orderRider["name"] as? String)")
-                                            print("라이더 번호 : " + "\(orderRider["phoneNumber"] as? String)")
-                                            
-                                        }
+                                        
+                                        
                                         if let paymentType = temp["paymentType"] {
                                             payment = paymentType as? String
                                         }
                                         if let paymentStatus = temp["paymentStatus"] {
                                             payStatus = paymentStatus as? String
                                         }
-                                            self.callList.append(getCall(address: address, price: price, number: number, payment: payment, distance: distance, storeAddress: storeAddress, storeNumber: storeNumber, payStatus: payStatus, storeId: getStoreId))
+                                            self.callList.append(getCall(address: address, price: price, number: number, payment: payment, distance: distance, storeAddress: storeAddress, storeNumber: storeNumber, payStatus: payStatus, orderId: getOrderId))
                                         
                                     }
                                     
@@ -120,6 +115,7 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
         let storyboard = UIStoryboard.init(name: "OderView", bundle: nil)
         
         selectedIndex = indexPath.row
+        selectOrderId = callList[indexPath.row].orderId!
         
         let popUp = storyboard.instantiateViewController(identifier: "OderViewController")
         popUp.modalPresentationStyle = .overCurrentContext
@@ -132,11 +128,7 @@ class AcceptanceViewController: UIViewController, UITableViewDelegate, UITableVi
         temp?.methodOfPaymentStr = callList[indexPath.row].payment!
         temp?.priceStr = "\(callList[indexPath.row].price!) 원"
         temp?.requirementStr = callList[indexPath.row].number!
-        //temp?.orderId = callList[indexPath.row]
-        
-        
-        
-        
+        temp?.orderId = callList[indexPath.row].orderId!
         
         self.present(popUp, animated: true, completion: nil)
     }
@@ -205,6 +197,6 @@ struct getCall {
     var storeAddress: String?
     var storeNumber: String?
     var payStatus: String?
-    var storeId: Int?
+    var orderId: Int?
     
 }

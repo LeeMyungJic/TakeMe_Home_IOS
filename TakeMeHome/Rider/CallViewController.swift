@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class CallViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CallViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     var tempIndex:IndexPath? = nil
     var itemData:Array<Dictionary<String, Any>>?
@@ -15,9 +16,15 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var callList = [call]()
     
+    var locationManager:CLLocationManager!
+    
     var selectedIndex : IndexPath?
     var mTimer:Timer?
     static var addCount = 0
+    
+    var x: Double = 0.0
+    var y: Double = 0.0
+    
     var count = 0
     let interval = 2.0
     let timeSelector: Selector = #selector(CallViewController.timerCallback)
@@ -27,8 +34,13 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     // Call 아이템 가져오기
     func getItems() {
         callList = [call]()
-        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/orders/status/request")!) { (data, response, error) in
-            print("연결!")
+        
+        var components = URLComponents(string: NetWorkController.baseUrl + "/api/v1/orders/nearby")
+        let xQ = URLQueryItem(name: "x", value: "\(self.x)")
+        let yQ = URLQueryItem(name: "y", value: "\(self.y)")
+        components?.queryItems = [xQ, yQ]
+        print(components?.url)
+        let task = URLSession.shared.dataTask(with: (components?.url)!) { (data, response, error) in
             if let dataJson = data {
                 print(dataJson)
                 do {
@@ -37,18 +49,17 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
                     {
                         print(json)
                         //print(json["data"] as? [String:Any])
-                        if let temp = json["data"] as? [String:Any] {
+                        if let temp = json["data"] as? NSArray {
                             print(temp)
-                            if let temp2 = temp["orderFindRequestStatusResponses"] as? NSArray {
-                                print("orderFindRequestStatusResponses")
-                                for i in temp2 {
+                            
+                                for i in temp {
                                     var orderStore : String?
                                     var orderAddress : String?
                                     var orderDistance : Double?
                                     var status : String?
                                     var orderId: Int?
                                     if let temp = i as? NSDictionary {
-                                        
+                                        print("-----------------------------------------------")
                                         if let orderCustomer = temp["orderCustomer"] as? [String:Any]{
                                             print("orderCustomer")
                                             print("고객명 : " + "\(orderCustomer["name"] as! String)")
@@ -91,7 +102,7 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
                                         
                                     }
                                     
-                                }
+                                
                             }
                         }
                     }
@@ -215,7 +226,18 @@ class CallViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        
+        let coor = locationManager.location?.coordinate
+        self.x = coor?.latitude.magnitude ?? 0.0
+        self.y = coor?.longitude.magnitude ?? 0.0
+        print("\(x.magnitude)    \(y.magnitude)")
         getItems()
+        
     }
     
     @objc func timerCallback() {

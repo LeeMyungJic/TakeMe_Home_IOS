@@ -32,41 +32,27 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
                                     var orderAddress : String?
                                     var orderPrice : Int?
                                     var orderNumber : String?
+                                    var orderId : Int?
+                                    var orderStatus : String?
                                     
                                     if let temp = i as? NSDictionary {
                                         
+                                        orderId = temp["orderId"] as! Int
+                                        orderStatus = temp["orderStatus"] as! String
                                         if let orderCustomer = temp["orderCustomer"] as? [String:Any]{
-                                            //                                            print("orderCustomer")
-                                            //                                            print("고객명 : " + "\(orderCustomer["name"] as! String)")
-                                            //                                            print("전화번호 : " + "\(orderCustomer["phoneNumber"] as! String)")
+                                           
                                             orderNumber = orderCustomer["phoneNumber"] as! String
                                         }
                                         if let orderDelivery = temp["orderDelivery"] as? [String:Any]{
-                                            //print("orderDelivery")
-                                            //print("배달 주소 : " + "\(orderDelivery["address"] as! String)")
-                                            //print("거리 : " + "\(orderDelivery["distance"] as! Int)")
-                                            //print("가격 : " + "\(orderDelivery["price"] as! Int)")
+                                           
                                             orderAddress = orderDelivery["address"] as! String
-                                            orderPrice = orderDelivery["price"] as! Int
-                                            //print("상태 : " + "\(orderDelivery["status"] as! REQUEST)")
+                            
+                                          
                                         }
-                                        if let orderRestaurant = temp["orderRestaurant"] as? [String:Any]{
-                                            //print("orderRestaurant")
-                                            //print("가게 주소 : " + "\(orderRestaurant["address"] as! String)")
-                                            //print("가게 이름 : " + "\(orderRestaurant["name"] as! String)")
-                                            //print("가게 번호 : " + "\(orderRestaurant["number"] as! String)")
-                                            //print("상태 : " + "\(orderDelivery["status"] as! REQUEST)")
-                                        }
-                                        if let orderRider = temp["orderRider"] as? [String:Any]{
-                                            //print(orderRider)
-                                            //print("라이더 이름 : " + "\(orderRider["name"] as? String)")
-                                            //print("라이더 번호 : " + "\(orderRider["phoneNumber"] as? String)")
-                                            
-                                        }
-                                        if let orderStatus = temp["orderStatus"] as? [String:Any]{
-                                            
-                                            
-                                        }
+                                        
+                                        orderPrice = temp["totalPrice"] as! Int
+                                        
+                                   
                                         if let menuNameCounts = temp["menuNameCounts"] as? [String:Any]{
                                             print("menuNameCounts")
                                             if let menuNameCountsT = menuNameCounts["menuNameCounts"] as? [[String:Any]]{
@@ -84,8 +70,11 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
                                                         orderProductName += temp + " x" + "\(countTemp!)\n"
                                                     
                                                 }
-                                                self.callList.append(order(productName: orderProductName, address: orderAddress, price: orderPrice, customerNumber: orderNumber))
-                                                print("")
+                                                
+                                                if(orderStatus == "COMPLETE") {
+                                                self.callList.append(order(productName: orderProductName, address: orderAddress, price: orderPrice, customerNumber: orderNumber, orderId: orderId))
+                                                
+                                                }
                                             }
                                         }
                                         
@@ -138,6 +127,8 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
         temp?.requirementStr = callList[indexPath.row].productName!
         temp?.addressStr = callList[indexPath.row].address!
         temp?.priceStr = "\(callList[indexPath.row].price!) 원"
+        temp?.orderId = callList[indexPath.row].orderId!
+        
         
         //temp?.methodOfPaymentStr = callList[indexPath.row].methodOfPayment!
         //temp?.requirementStr = callList[indexPath.row].requirement!
@@ -201,6 +192,7 @@ struct order {
     var address: String?
     var price: Int?
     var customerNumber: String?
+    var orderId: Int?
 }
 
 //struct order {
