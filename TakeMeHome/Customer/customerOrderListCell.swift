@@ -9,6 +9,10 @@ import UIKit
 
 class customerOrderListCell: UITableViewCell {
 
+    @IBOutlet var time: UILabel!
+    @IBOutlet var name: UILabel!
+    @IBOutlet var price: UILabel!
+    @IBOutlet var status: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

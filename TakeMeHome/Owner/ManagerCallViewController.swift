@@ -54,9 +54,8 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
                                         
                                    
                                         if let menuNameCounts = temp["menuNameCounts"] as? [String:Any]{
-                                            print("menuNameCounts")
                                             if let menuNameCountsT = menuNameCounts["menuNameCounts"] as? [[String:Any]]{
-                                                print("menuNameCountsT")
+                                                
                                                 var orderProductName = ""
                                                 
                                                 for i in menuNameCountsT {
@@ -129,10 +128,6 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
         temp?.priceStr = "\(callList[indexPath.row].price!) 원"
         temp?.orderId = callList[indexPath.row].orderId!
         
-        
-        //temp?.methodOfPaymentStr = callList[indexPath.row].methodOfPayment!
-        //temp?.requirementStr = callList[indexPath.row].requirement!
-        
         self.present(popUp, animated: true, completion: nil)
     }
     
@@ -140,23 +135,10 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
         var cell = TableViewMain.dequeueReusableCell(withIdentifier: "ManagerCallCell", for: indexPath) as! ManagerCallCell
         
         
-        cell.address.text = "주소 : " + callList[indexPath.row].address!
-        cell.name.text = "메뉴 : " + callList[indexPath.row].productName!
-        cell.price.text = "가격 : \(callList[indexPath.row].price!) 원"
-        cell.number.text = "고객 번호 : \(callList[indexPath.row].customerNumber!)"
-        
-        //셀 디자인
-        cell.stack.layer.borderColor = #colorLiteral(red: 0.4344803691, green: 0.5318876505, blue: 1, alpha: 1)
-        //테두리 두께
-        cell.stack.layer.borderWidth = 1
-        // 모서리 둥글게
-        cell.stack.layer.cornerRadius = 5
-        
-        // 빈 셀 출력 x
-        //        else {
-        //            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: nil) as! ManagerCallCell
-        //            cell.stack.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        //        }
+        cell.address.text = callList[indexPath.row].address!
+        cell.name.text = callList[indexPath.row].productName!
+        cell.price.text = "\(callList[indexPath.row].price!) 원"
+        cell.number.text = " \(callList[indexPath.row].customerNumber!)"
         
         return cell
     }
@@ -194,49 +176,3 @@ struct order {
     var customerNumber: String?
     var orderId: Int?
 }
-
-//struct order {
-//    var orderFindResponses: [String:Any]?
-//
-//
-//struct orderFindResponses {
-//    var menuNameCounts: [String:Any]?
-//    var orderCustomer: [String:Any]?
-//    var orderDelivery: [String:Any]?
-//    var orderRestaurant: [String:Any]?
-//    var orderRider: [String:Any]?
-//    "orderFindResponses": [
-//      {
-//        "menuNameCounts": {
-//          "menuNameCounts": [
-//            {
-//              "count": 0,
-//              "name": "string"
-//            }
-//          ]
-//        },
-//        "orderCustomer": {
-//          "name": "string",
-//          "phoneNumber": "string"
-//        },
-//        "orderDelivery": {
-//          "address": "string",
-//          "distance": 0,
-//          "price": 0,
-//          "status": "REQUEST"
-//        },
-//        "orderRestaurant": {
-//          "address": "string",
-//          "name": "string",
-//          "number": "string"
-//        },
-//        "orderRider": {
-//          "name": "string",
-//          "phoneNumber": "string"
-//        },
-//        "orderStatus": "REQUEST"
-//      }
-//    ]
-//  }
-//}
-//}

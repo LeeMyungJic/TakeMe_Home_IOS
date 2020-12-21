@@ -19,7 +19,15 @@ class OrderListViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = TableMain.dequeueReusableCell(withIdentifier: "customerOrderListCell", for: indexPath) as! customerOrderListCell
-        
+        cell.name.text = orderList[indexPath.row].name!
+        cell.price.text = "\(orderList[indexPath.row].price!)"
+        if orderList[indexPath.row].state == "RECEPTION" {
+            cell.status.text = "조리중"
+        }
+        else if orderList[indexPath.row].state == "COMPLETE" {
+            cell.status.text = "배달중"
+        }
+        cell.time.text = orderList[indexPath.row].time!
         return cell
     }
     
@@ -29,25 +37,64 @@ class OrderListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func getOrderList() {
         orderList = [customerOrder]()
-        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/orders" + "\(CustomerOrderViewController.userId)")!) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/orders/customers/" + "\(CustomerOrderViewController.userId!)")!) { (data, response, error) in
             if let dataJson = data {
-                print(data)
                 do {
                     if let json = try JSONSerialization.jsonObject(with: dataJson, options: .allowFragments) as? [String: AnyObject]
                     {
-                        //print(json["data"] as? [String:Any])
-                        if let temp = json["data"] as? [String:Any] {
-                            if let temp2 = temp["restaurantFindAllResponse"] as? NSArray {
-                                for i in temp2 {
-                                    if let temp = i as? NSDictionary {
-                                        let nameStr = temp["name"] as! String
-                                        let idStr = temp["id"] as! Int
-                                        self.orderList.append(customerOrder(name: "", price: 1, state: ""))
+                        
+                        
+                        if let temp2 = json["data"] as? NSArray {
+                            print("tttttttttttt22222tt")
+                            for i in temp2 {
+                                if let temp = i as? NSDictionary {
+                                    print("NSDICTIONARY !!!!")
+                                    var getPrice = 0
+                                    var getTime = ""
+                                    var getState = ""
+                                    
+                                    
+                                    
+                                    if let totalPrice = temp["totalPrice"] as? Int {
+                                        print("price !!!!!")
+                                        getPrice = totalPrice
+                                    }
+                                    if let orderStatus = temp["orderStatus"] as? String {
+                                        print("status !!!!!")
+                                        getState = orderStatus
+                                    }
+                                    
+                                    if let time = temp["orderTime"] as? String {
+                                        print("Time !!!!!!!!")
+                                        getTime = time
+                                    }
+                                    
+                                    if let menuNameCounts = temp["menuNameCounts"] as? [String:Any]{
+                                        if let menuNameCountsT = menuNameCounts["menuNameCounts"] as? [[String:Any]]{
                                             
+                                            var orderProductName = ""
+                                            
+                                            for i in menuNameCountsT {
+                                                for item in i{
+                                                    //print(item["name"] as? String ?? "")
+                                                    //print(item.value)
+                                                }
+                                                var temp = i["name"] as? String ?? ""
+                                                var countTemp = i["count"] as? Int
                                         
+                                                    orderProductName += temp + " x" + "\(countTemp!)\n"
+                                                
+                                            }
+                                            
+                                           
+                                            self.orderList.append(customerOrder(name: orderProductName, time: getTime, price: getPrice, state: getState))
+                                            
+                                            print("카운트 : \(self.orderList.count)")
+                                        }
                                     }
                                     
                                 }
+                                
                             }
                         }
                     }
@@ -75,18 +122,25 @@ class OrderListViewController: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        TableMain.delegate = self
+        TableMain.dataSource = self
 //        let submitBtn = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: nil)
 //                // 비슷한 메서드 주의 : btn.addTarget(self, action: #selector(submit(_:)), for: .touchUpInside)
 //            self.navigationItem.rightBarButtonItem = submitBtn
 
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        getOrderList()
+    }
 
 
 }
 
 struct customerOrder {
     var name: String?
+    var time: String?
     var price: Int?
     var state: String?
 }

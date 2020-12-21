@@ -18,7 +18,7 @@ class ManagerViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
     func getStores() {
         stores = [getItem]()
-        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/restaurants/\(ManagerViewController.ownerId)")!) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/restaurants/\(ManagerViewController.ownerId!)")!) { (data, response, error) in
             
             if let dataJson = data {
                 

@@ -12,14 +12,15 @@ class OrderReceptionViewController: UIViewController, UITableViewDelegate, UITab
     var orderList = [order]()
     
     func getOrder() {
+        orderList = [order]()
         let task = URLSession.shared.dataTask(with: URL(string: NetWorkController.baseUrl + "/api/v1/orders/" + "\(ManagerCallViewController.restaurantId)")!) { (data, response, error) in
-            
+            print("연결!")
             if let dataJson = data {
-                
                 do {
                     // JSONSerialization로 데이터 변환하기
                     if let json = try JSONSerialization.jsonObject(with: dataJson, options: .allowFragments) as? [String: AnyObject]
                     {
+                        print(json)
                         //print(json["data"] as? [String:Any])
                         if let temp = json["data"] as? [String:Any] {
                             if let temp2 = temp["orderFindResponses"] as? NSArray {
@@ -27,43 +28,51 @@ class OrderReceptionViewController: UIViewController, UITableViewDelegate, UITab
                                     var orderAddress : String?
                                     var orderPrice : Int?
                                     var orderNumber : String?
-                                    var orderProductName = ""
+                                    var orderId : Int?
                                     var orderStatus : String?
+                                    
                                     if let temp = i as? NSDictionary {
                                         
+                                        orderId = temp["orderId"] as! Int
                                         orderStatus = temp["orderStatus"] as! String
-                                        
                                         if let orderCustomer = temp["orderCustomer"] as? [String:Any]{
-                                         orderNumber = orderCustomer["phoneNumber"] as! String
+                                           
+                                            orderNumber = orderCustomer["phoneNumber"] as! String
                                         }
                                         if let orderDelivery = temp["orderDelivery"] as? [String:Any]{
                                            
                                             orderAddress = orderDelivery["address"] as! String
-                                            orderPrice = orderDelivery["price"] as! Int
-                                           
+                            
+                                          
                                         }
-                                    
-                                      
                                         
+                                        orderPrice = temp["totalPrice"] as! Int
+                                        
+                                   
                                         if let menuNameCounts = temp["menuNameCounts"] as? [String:Any]{
-                                            print("menuNameCounts")
                                             if let menuNameCountsT = menuNameCounts["menuNameCounts"] as? [[String:Any]]{
-                                                print("menuNameCountsT")
-                                                for i in 0...menuNameCountsT.count {
-                                                    if (i == menuNameCountsT.count - 1) {
-                                                        orderProductName += menuNameCountsT[0]["name"] as? String ?? ""
+                                                
+                                                var orderProductName = ""
+                                                
+                                                for i in menuNameCountsT {
+                                                    for item in i{
+                                                        //print(item["name"] as? String ?? "")
+                                                        //print(item.value)
                                                     }
-                                                    else {
-                                                        
-                                                        orderProductName += menuNameCountsT[0]["name"] as? String ?? "" + ","
-                                                    }
+                                                    var temp = i["name"] as? String ?? ""
+                                                    var countTemp = i["count"] as? Int
+                                            
+                                                        orderProductName += temp + " x" + "\(countTemp!)\n"
+                                                    
+                                                }
+                                                
+                                                if(orderStatus == "RECEPTION") {
+                                                self.orderList.append(order(productName: orderProductName, address: orderAddress, price: orderPrice, customerNumber: orderNumber, orderId: orderId))
+                                                
                                                 }
                                             }
                                         }
-                                        print(orderStatus ?? "nil" + "===========")
-                                        if(orderStatus == "RECEPTION") {
-                                            self.orderList.append(order(productName: orderProductName, address: orderAddress, price: orderPrice, customerNumber: orderNumber))
-                                        }
+                                        
                                     }
                                     
                                 }
@@ -104,17 +113,10 @@ class OrderReceptionViewController: UIViewController, UITableViewDelegate, UITab
         var cell = TableMain.dequeueReusableCell(withIdentifier: "OrderReCeptionCell", for: indexPath) as! OrderReCeptionCell
         
         
-        cell.address.text = "주소 : " + orderList[indexPath.row].address!
-        cell.name.text = "메뉴 : " + orderList[indexPath.row].productName!
-        cell.price.text = "가격 : \(orderList[indexPath.row].price!) 원"
-        cell.number.text = "고객 번호 : \(orderList[indexPath.row].customerNumber!)"
-        
-        //셀 디자인
-        cell.stack.layer.borderColor = #colorLiteral(red: 0.4344803691, green: 0.5318876505, blue: 1, alpha: 1)
-        //테두리 두께
-        cell.stack.layer.borderWidth = 1
-        // 모서리 둥글게
-        cell.stack.layer.cornerRadius = 5
+        cell.address.text = orderList[indexPath.row].address!
+        cell.name.text = orderList[indexPath.row].productName!
+        cell.price.text = "\(orderList[indexPath.row].price!) 원"
+        cell.number.text = orderList[indexPath.row].customerNumber!
         
         return cell
     }
@@ -155,6 +157,8 @@ class OrderReceptionViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet var TableMain: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        TableMain.delegate = self
+        TableMain.dataSource = self
         
         // Do any additional setup after loading the view.
     }
