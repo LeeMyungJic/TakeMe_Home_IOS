@@ -55,14 +55,17 @@ class OrderReceptionViewController: UIViewController, UITableViewDelegate, UITab
                                                 var orderProductName = ""
                                                 
                                                 for i in menuNameCountsT {
-                                                    for item in i{
-                                                        //print(item["name"] as? String ?? "")
-                                                        //print(item.value)
-                                                    }
+                                                    var cnt = 0
+                                                    
                                                     var temp = i["name"] as? String ?? ""
                                                     var countTemp = i["count"] as? Int
                                             
-                                                        orderProductName += temp + " x" + "\(countTemp!)\n"
+                                                    orderProductName += temp + " x" + "\(countTemp!)"
+                                                    
+                                                    if(cnt != menuNameCountsT.count - 1) {
+                                                        orderProductName += "\n"
+                                                    }
+                                                    cnt += 1
                                                     
                                                 }
                                                 
@@ -142,9 +145,17 @@ class OrderReceptionViewController: UIViewController, UITableViewDelegate, UITab
         self.present(msg, animated: true, completion: nil)
     }
     
+    
     func YesClick(didSelectRowAt indexPath: IndexPath)
     {
-        print("YES Click")
+        let url = URL(string: NetWorkController.baseUrl + "/api/v1/orders/order/" + "\(orderList[indexPath.row].orderId!)" + "/request/delivery/")
+        let param = [:] as? [String:Any]
+        Put(param: param!, url: url!)
+        
+        TableMain.beginUpdates()
+        TableMain.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .automatic)
+        orderList.remove(at: indexPath.row)
+        TableMain.endUpdates()
         
     }
     

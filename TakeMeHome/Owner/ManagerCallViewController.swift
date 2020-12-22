@@ -59,15 +59,17 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
                                                 var orderProductName = ""
                                                 
                                                 for i in menuNameCountsT {
-                                                    for item in i{
-                                                        //print(item["name"] as? String ?? "")
-                                                        //print(item.value)
-                                                    }
+                                                    var cnt = 0
+                                                    
                                                     var temp = i["name"] as? String ?? ""
                                                     var countTemp = i["count"] as? Int
                                             
-                                                        orderProductName += temp + " x" + "\(countTemp!)\n"
+                                                    orderProductName += temp + " x" + "\(countTemp!)"
                                                     
+                                                    if(cnt != menuNameCountsT.count - 1) {
+                                                        orderProductName += "\n"
+                                                    }
+                                                    cnt += 1
                                                 }
                                                 
                                                 if(orderStatus == "COMPLETE") {
@@ -138,7 +140,7 @@ class ManagerCallViewController: UIViewController, UITableViewDelegate, UITableV
         cell.address.text = callList[indexPath.row].address!
         cell.name.text = callList[indexPath.row].productName!
         cell.price.text = "\(callList[indexPath.row].price!) 원"
-        cell.number.text = " \(callList[indexPath.row].customerNumber!)"
+        cell.number.text = "\(callList[indexPath.row].customerNumber!)"
         
         return cell
     }

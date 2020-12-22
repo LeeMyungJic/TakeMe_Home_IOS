@@ -45,10 +45,8 @@ class OrderListViewController: UIViewController, UITableViewDelegate, UITableVie
                         
                         
                         if let temp2 = json["data"] as? NSArray {
-                            print("tttttttttttt22222tt")
                             for i in temp2 {
                                 if let temp = i as? NSDictionary {
-                                    print("NSDICTIONARY !!!!")
                                     var getPrice = 0
                                     var getTime = ""
                                     var getState = ""
@@ -56,40 +54,37 @@ class OrderListViewController: UIViewController, UITableViewDelegate, UITableVie
                                     
                                     
                                     if let totalPrice = temp["totalPrice"] as? Int {
-                                        print("price !!!!!")
                                         getPrice = totalPrice
                                     }
                                     if let orderStatus = temp["orderStatus"] as? String {
-                                        print("status !!!!!")
                                         getState = orderStatus
                                     }
                                     
                                     if let time = temp["orderTime"] as? String {
-                                        print("Time !!!!!!!!")
                                         getTime = time
                                     }
                                     
                                     if let menuNameCounts = temp["menuNameCounts"] as? [String:Any]{
                                         if let menuNameCountsT = menuNameCounts["menuNameCounts"] as? [[String:Any]]{
-                                            
                                             var orderProductName = ""
                                             
                                             for i in menuNameCountsT {
-                                                for item in i{
-                                                    //print(item["name"] as? String ?? "")
-                                                    //print(item.value)
-                                                }
+                                                var cnt = 0
+                                                
                                                 var temp = i["name"] as? String ?? ""
                                                 var countTemp = i["count"] as? Int
                                         
-                                                    orderProductName += temp + " x" + "\(countTemp!)\n"
+                                                orderProductName += temp + " x" + "\(countTemp!)"
+                                                
+                                                if(cnt != menuNameCountsT.count - 1) {
+                                                    orderProductName += "\n"
+                                                }
+                                                cnt += 1
                                                 
                                             }
                                             
-                                           
                                             self.orderList.append(customerOrder(name: orderProductName, time: getTime, price: getPrice, state: getState))
                                             
-                                            print("카운트 : \(self.orderList.count)")
                                         }
                                     }
                                     
@@ -122,18 +117,15 @@ class OrderListViewController: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         TableMain.delegate = self
         TableMain.dataSource = self
+        
 //        let submitBtn = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: nil)
 //                // 비슷한 메서드 주의 : btn.addTarget(self, action: #selector(submit(_:)), for: .touchUpInside)
 //            self.navigationItem.rightBarButtonItem = submitBtn
 
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        getOrderList()
-    }
 
 
 }
