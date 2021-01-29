@@ -25,3 +25,6 @@
  - 배창 요청시 음식이 만들어지는 소요 시간을 알려줍니다.
  - 기간 및 주문 상태 별 주문 목록을 확인할 수 있습니다.
  - 배차 요청시 라이더에게 알림이 갑니다.
+ 
+## 시연 영상
+https://www.youtube.com/watch?v=UZK01HczJjA&list=PLdeK3aeGpu2MchI_GmHhUfRKp7qQgqjIc&index=1
